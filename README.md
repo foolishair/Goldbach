@@ -8,6 +8,18 @@
 > 这是从 PrimeNumberTheoremAnd 项目脱离出来的独立 Lake 项目，
 > 只依赖 mathlib4，不依赖 PNT 任何模块。
 
+## Hardy-Littlewood 渐近数值实验
+
+数值实验验证 Goldbach 计数函数 r(n) 与 HL 公式 𝔖(n)·n/log²n 的比值
+（数据见配套 `../numerical/hl_asymptotic_plot.py`）：
+
+![HL ratio plot](hl_ratio.png)
+
+- 实测均值 ≈ 0.644（N=10⁴）
+- 理论极限 = 1（n → ∞）
+- 散点带宽随 N 增大收敛 ⇒ 与 HL 渐近形态一致
+- 偏离 1 是 log n 二阶修正主导（N=10⁴ 时 log≈9，二阶/首阶 ≈ 24%）
+
 ## 结构
 
 ```
