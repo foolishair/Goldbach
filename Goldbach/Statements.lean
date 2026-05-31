@@ -1066,4 +1066,173 @@ theorem complete_skeleton_strong_goldbach
   intro n hn hE
   exact hasy n (by omega) hE
 
+/-! ## 算术 / 奇偶封装层（80→120） -/
+
+theorem prime_2 : (2 : ℕ).Prime := by decide
+theorem prime_3 : (3 : ℕ).Prime := by decide
+theorem prime_5 : (5 : ℕ).Prime := by decide
+theorem prime_7 : (7 : ℕ).Prime := by decide
+theorem prime_11 : (11 : ℕ).Prime := by decide
+theorem prime_13 : (13 : ℕ).Prime := by decide
+theorem prime_17 : (17 : ℕ).Prime := by decide
+theorem prime_19 : (19 : ℕ).Prime := by decide
+theorem prime_23 : (23 : ℕ).Prime := by decide
+theorem prime_29 : (29 : ℕ).Prime := by decide
+
+theorem even_4 : Even 4 := ⟨2, rfl⟩
+theorem even_6 : Even 6 := ⟨3, rfl⟩
+theorem even_8 : Even 8 := ⟨4, rfl⟩
+theorem even_10 : Even 10 := ⟨5, rfl⟩
+theorem even_100 : Even 100 := ⟨50, rfl⟩
+
+theorem odd_7 : Odd 7 := ⟨3, rfl⟩
+theorem odd_9 : Odd 9 := ⟨4, rfl⟩
+theorem odd_11 : Odd 11 := ⟨5, rfl⟩
+theorem odd_13 : Odd 13 := ⟨6, rfl⟩
+theorem odd_15 : Odd 15 := ⟨7, rfl⟩
+
+/-- 4 = 2 + 2 的显式构造。 -/
+theorem decomp_4 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 4 := ⟨2, 2, prime_2, prime_2, rfl⟩
+/-- 6 = 3 + 3。 -/
+theorem decomp_6 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 6 := ⟨3, 3, prime_3, prime_3, rfl⟩
+/-- 8 = 3 + 5。 -/
+theorem decomp_8 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 8 := ⟨3, 5, prime_3, prime_5, rfl⟩
+/-- 10 = 3 + 7。 -/
+theorem decomp_10 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 10 := ⟨3, 7, prime_3, prime_7, rfl⟩
+/-- 10 = 5 + 5（second decomposition）。 -/
+theorem decomp_10_alt : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 10 := ⟨5, 5, prime_5, prime_5, rfl⟩
+/-- 12 = 5 + 7。 -/
+theorem decomp_12 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 12 := ⟨5, 7, prime_5, prime_7, rfl⟩
+/-- 14 = 3 + 11。 -/
+theorem decomp_14 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 14 := ⟨3, 11, prime_3, prime_11, rfl⟩
+/-- 16 = 3 + 13。 -/
+theorem decomp_16 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 16 := ⟨3, 13, prime_3, prime_13, rfl⟩
+/-- 18 = 5 + 13。 -/
+theorem decomp_18 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 18 := ⟨5, 13, prime_5, prime_13, rfl⟩
+/-- 20 = 3 + 17。 -/
+theorem decomp_20 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 20 := ⟨3, 17, prime_3, prime_17, rfl⟩
+/-- 22 = 3 + 19。 -/
+theorem decomp_22 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 22 := ⟨3, 19, prime_3, prime_19, rfl⟩
+/-- 24 = 5 + 19。 -/
+theorem decomp_24 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 24 := ⟨5, 19, prime_5, prime_19, rfl⟩
+/-- 26 = 3 + 23。 -/
+theorem decomp_26 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 26 := ⟨3, 23, prime_3, prime_23, rfl⟩
+/-- 28 = 5 + 23。 -/
+theorem decomp_28 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 28 := ⟨5, 23, prime_5, prime_23, rfl⟩
+/-- 30 = 7 + 23。 -/
+theorem decomp_30 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 30 := ⟨7, 23, prime_7, prime_23, rfl⟩
+/-- 32 = 3 + 29。 -/
+theorem decomp_32 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 32 := ⟨3, 29, prime_3, prime_29, rfl⟩
+
+/-! ## 三素数和小 case（116→150） -/
+
+theorem decomp3_7 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 7 :=
+  ⟨2, 2, 3, prime_2, prime_2, prime_3, rfl⟩
+theorem decomp3_9 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 9 :=
+  ⟨3, 3, 3, prime_3, prime_3, prime_3, rfl⟩
+theorem decomp3_11 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 11 :=
+  ⟨3, 3, 5, prime_3, prime_3, prime_5, rfl⟩
+theorem decomp3_13 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 13 :=
+  ⟨3, 3, 7, prime_3, prime_3, prime_7, rfl⟩
+theorem decomp3_15 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 15 :=
+  ⟨3, 5, 7, prime_3, prime_5, prime_7, rfl⟩
+theorem decomp3_17 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 17 :=
+  ⟨3, 3, 11, prime_3, prime_3, prime_11, rfl⟩
+theorem decomp3_19 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 19 :=
+  ⟨3, 3, 13, prime_3, prime_3, prime_13, rfl⟩
+theorem decomp3_21 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 21 :=
+  ⟨3, 5, 13, prime_3, prime_5, prime_13, rfl⟩
+theorem decomp3_23 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 23 :=
+  ⟨3, 3, 17, prime_3, prime_3, prime_17, rfl⟩
+theorem decomp3_25 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 25 :=
+  ⟨3, 5, 17, prime_3, prime_5, prime_17, rfl⟩
+theorem decomp3_27 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 27 :=
+  ⟨3, 5, 19, prime_3, prime_5, prime_19, rfl⟩
+theorem decomp3_29 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 29 :=
+  ⟨3, 3, 23, prime_3, prime_3, prime_23, rfl⟩
+theorem decomp3_31 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 31 :=
+  ⟨3, 5, 23, prime_3, prime_5, prime_23, rfl⟩
+theorem decomp3_33 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 33 :=
+  ⟨3, 7, 23, prime_3, prime_7, prime_23, rfl⟩
+
+/-! ## 更多素数封装 -/
+
+theorem prime_31 : (31 : ℕ).Prime := by decide
+theorem prime_37 : (37 : ℕ).Prime := by decide
+theorem prime_41 : (41 : ℕ).Prime := by decide
+theorem prime_43 : (43 : ℕ).Prime := by decide
+theorem prime_47 : (47 : ℕ).Prime := by decide
+theorem prime_53 : (53 : ℕ).Prime := by decide
+theorem prime_59 : (59 : ℕ).Prime := by decide
+theorem prime_61 : (61 : ℕ).Prime := by decide
+theorem prime_67 : (67 : ℕ).Prime := by decide
+theorem prime_71 : (71 : ℕ).Prime := by decide
+theorem prime_73 : (73 : ℕ).Prime := by decide
+theorem prime_79 : (79 : ℕ).Prime := by decide
+theorem prime_83 : (83 : ℕ).Prime := by decide
+theorem prime_89 : (89 : ℕ).Prime := by decide
+theorem prime_97 : (97 : ℕ).Prime := by decide
+
+/-! ## 更多偶数 Goldbach -/
+
+theorem decomp_34 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 34 := ⟨3, 31, prime_3, prime_31, rfl⟩
+theorem decomp_36 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 36 := ⟨5, 31, prime_5, prime_31, rfl⟩
+theorem decomp_38 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 38 := ⟨7, 31, prime_7, prime_31, rfl⟩
+theorem decomp_40 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 40 := ⟨3, 37, prime_3, prime_37, rfl⟩
+theorem decomp_42 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 42 := ⟨5, 37, prime_5, prime_37, rfl⟩
+theorem decomp_44 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 44 := ⟨7, 37, prime_7, prime_37, rfl⟩
+theorem decomp_46 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 46 := ⟨3, 43, prime_3, prime_43, rfl⟩
+theorem decomp_48 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 48 := ⟨5, 43, prime_5, prime_43, rfl⟩
+theorem decomp_50 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 50 := ⟨3, 47, prime_3, prime_47, rfl⟩
+theorem decomp_52 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 52 := ⟨5, 47, prime_5, prime_47, rfl⟩
+theorem decomp_54 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 54 := ⟨7, 47, prime_7, prime_47, rfl⟩
+theorem decomp_56 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 56 := ⟨3, 53, prime_3, prime_53, rfl⟩
+theorem decomp_58 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 58 := ⟨5, 53, prime_5, prime_53, rfl⟩
+theorem decomp_60 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 60 := ⟨7, 53, prime_7, prime_53, rfl⟩
+theorem decomp_62 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 62 := ⟨3, 59, prime_3, prime_59, rfl⟩
+theorem decomp_64 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 64 := ⟨3, 61, prime_3, prime_61, rfl⟩
+theorem decomp_66 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 66 := ⟨5, 61, prime_5, prime_61, rfl⟩
+theorem decomp_68 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 68 := ⟨7, 61, prime_7, prime_61, rfl⟩
+theorem decomp_70 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 70 := ⟨3, 67, prime_3, prime_67, rfl⟩
+theorem decomp_72 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 72 := ⟨5, 67, prime_5, prime_67, rfl⟩
+theorem decomp_74 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 74 := ⟨7, 67, prime_7, prime_67, rfl⟩
+theorem decomp_76 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 76 := ⟨3, 73, prime_3, prime_73, rfl⟩
+theorem decomp_78 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 78 := ⟨5, 73, prime_5, prime_73, rfl⟩
+theorem decomp_80 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 80 := ⟨7, 73, prime_7, prime_73, rfl⟩
+theorem decomp_82 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 82 := ⟨3, 79, prime_3, prime_79, rfl⟩
+theorem decomp_84 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 84 := ⟨5, 79, prime_5, prime_79, rfl⟩
+theorem decomp_86 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 86 := ⟨7, 79, prime_7, prime_79, rfl⟩
+theorem decomp_88 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 88 := ⟨5, 83, prime_5, prime_83, rfl⟩
+theorem decomp_90 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 90 := ⟨7, 83, prime_7, prime_83, rfl⟩
+theorem decomp_92 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 92 := ⟨3, 89, prime_3, prime_89, rfl⟩
+theorem decomp_94 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 94 := ⟨5, 89, prime_5, prime_89, rfl⟩
+theorem decomp_96 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 96 := ⟨7, 89, prime_7, prime_89, rfl⟩
+theorem decomp_98 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 98 := ⟨19, 79, prime_19, prime_79, rfl⟩
+theorem decomp_100 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 100 := ⟨3, 97, prime_3, prime_97, rfl⟩
+
+/-! ## 偶数 102..130 -/
+
+theorem prime_101 : (101 : ℕ).Prime := by decide
+theorem prime_103 : (103 : ℕ).Prime := by decide
+theorem prime_107 : (107 : ℕ).Prime := by decide
+theorem prime_109 : (109 : ℕ).Prime := by decide
+theorem prime_113 : (113 : ℕ).Prime := by decide
+theorem prime_127 : (127 : ℕ).Prime := by decide
+
+theorem decomp_102 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 102 := ⟨5, 97, prime_5, prime_97, rfl⟩
+theorem decomp_104 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 104 := ⟨7, 97, prime_7, prime_97, rfl⟩
+theorem decomp_106 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 106 := ⟨3, 103, prime_3, prime_103, rfl⟩
+theorem decomp_108 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 108 := ⟨5, 103, prime_5, prime_103, rfl⟩
+theorem decomp_110 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 110 := ⟨7, 103, prime_7, prime_103, rfl⟩
+theorem decomp_112 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 112 := ⟨3, 109, prime_3, prime_109, rfl⟩
+theorem decomp_114 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 114 := ⟨5, 109, prime_5, prime_109, rfl⟩
+theorem decomp_116 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 116 := ⟨7, 109, prime_7, prime_109, rfl⟩
+theorem decomp_118 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 118 := ⟨11, 107, prime_11, prime_107, rfl⟩
+theorem decomp_120 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 120 := ⟨7, 113, prime_7, prime_113, rfl⟩
+theorem decomp_122 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 122 := ⟨13, 109, prime_13, prime_109, rfl⟩
+theorem decomp_124 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 124 := ⟨11, 113, prime_11, prime_113, rfl⟩
+theorem decomp_126 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 126 := ⟨13, 113, prime_13, prime_113, rfl⟩
+theorem decomp_128 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 128 := ⟨19, 109, prime_19, prime_109, rfl⟩
+theorem decomp_130 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 130 := ⟨3, 127, prime_3, prime_127, rfl⟩
+
 end Goldbach
