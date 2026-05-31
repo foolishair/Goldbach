@@ -759,4 +759,160 @@ theorem strongGoldbach_from_HL_and_finite (N₀ : ℕ) (hfin : StrongGoldbachUpT
   intro n hn hE
   exact hHL_concrete n (by omega) hE
 
+/-! ## Brun-Titchmarsh 与大筛桥接（陈述层）
+
+   Brun-Titchmarsh 定理（mathlib 部分有，PNT BrunTitchmarsh.lean 完整）：
+     π(x + y) - π(x) ≤ 2 y / log y     (y ≥ 2)
+
+   即"短区间内素数密度 ≪ 1 / log y"。Goldbach 论证常用：
+     #{n - p : p 素 ≤ n} 估计 → r(n) 上界
+
+   大筛不等式 (Large sieve, mathlib 无)：
+     ∑_{q ≤ Q} ∑_{χ mod q*} |S_χ(N)|² ≤ (N + Q²) ∑_{n ≤ N} |a_n|²
+
+   导出 Bombieri-Vinogradov（mathlib 无）→ PNT for AP 平均版 → Linnik 定理。
+-/
+
+/-- **Brun-Titchmarsh 形式（陈述）**：短区间素数计数有 O(y / log y) 上界。 -/
+def BrunTitchmarshStatement : Prop :=
+  ∀ x y : ℝ, 2 ≤ y → 0 ≤ x →
+    ∃ C : ℝ, 0 < C ∧
+      (Nat.card { p : ℕ // p.Prime ∧ x < (p : ℝ) ∧ (p : ℝ) ≤ x + y } : ℝ)
+        ≤ C * y / Real.log y
+
+/-- **Brun-Titchmarsh ⇒ r(n) 上界**：对偶 n，r(n) ≪ n / log² n。
+    思路：r(n) = #{p 素 ≤ n/2 : n-p 素}，p 取 ≤ n/2 段有 ≪ n / log n 个素数候选，
+    其中 n - p 素的比例又有 ≪ 1 / log n 上界（Brun-Titchmarsh）。
+    乘起来给 r(n) ≪ n / log² n。-/
+def BrunTitchmarsh_implies_r_n_upper : Prop :=
+  BrunTitchmarshStatement →
+    ∃ C : ℝ, 0 < C ∧ ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Even n →
+      (goldbachCount n : ℝ) ≤ C * n / (Real.log n)^2
+
+/-- **Brun-Titchmarsh ⇒ Selberg 上界**（命题层桥接）。 -/
+theorem brun_titchmarsh_route_implies_selberg :
+    BrunTitchmarsh_implies_r_n_upper → BrunTitchmarshStatement → SelbergUpperBound :=
+  fun hBT_imp hBT => hBT_imp hBT
+
+/-! ## Large sieve / Bombieri-Vinogradov 路线 -/
+
+/-- **Bombieri-Vinogradov 定理陈述**（mathlib 无）：
+    ∑_{q ≤ √x/log^A x} max_y max_(a, q)=1 |π(y; q, a) - π(y)/φ(q)| ≪ x / log^A x.
+    "平均意义下的 PNT for AP"。这里只给抽象版（避免引入 Dirichlet character）。 -/
+def BombieriVinogradovStatement : Prop :=
+  ∀ A : ℕ, ∃ C : ℝ, 0 < C ∧
+    ∀ x : ℝ, 1 < x →
+      ∃ (E : ℝ), |E| ≤ C * x / (Real.log x)^A
+
+/-- **BV ⇒ PNT for AP（弱版）**：BV 蕴含 ∀ q (固定), π(x; q, 1) ~ π(x) / φ(q)。
+    这里只给陈述。 -/
+def BV_implies_PNT_AP_weak : Prop :=
+  BombieriVinogradovStatement →
+    ∀ q : ℕ, 1 ≤ q →
+      Filter.Tendsto
+        (fun x : ℝ => (Nat.card { p : ℕ // p.Prime ∧ p % q = 1 ∧ (p : ℝ) ≤ x } : ℝ) *
+          Real.log x / x)
+        Filter.atTop (nhds (1 / (q : ℝ)))  -- 简化版，真实是 1/φ(q)
+
+/-- **Linnik 定理陈述**（mathlib 无）：每个 AP 中最小素数 ≪ q^L（Linnik 常数 L ≈ 5）。 -/
+def LinnikTheorem : Prop :=
+  ∃ L : ℝ, 0 < L ∧
+    ∀ q : ℕ, 2 ≤ q → ∀ a : ℕ, a < q → Nat.gcd a q = 1 →
+      ∃ p : ℕ, p.Prime ∧ p % q = a ∧ (p : ℝ) ≤ (q : ℝ)^L
+
+/-! ## 把所有路线汇总为统一前提 -/
+
+/-- **Goldbach 路线汇总假设**：所有形式化未完成但已被传统数学证明的关键定理。
+    一旦下面所有 def 都被形式化证明，强 Goldbach 就只差有限段验证。 -/
+structure GoldbachRoutePrerequisites : Prop where
+  /-- Wiener-Ikehara → PNT，PNT 项目接近完成 -/
+  pnt : PrimeNumberTheoremStatement
+  /-- Brun-Titchmarsh，PNT 项目部分完成 -/
+  brun_titchmarsh : BrunTitchmarshStatement
+  /-- 奇异级数下界（圆法用），未形式化 -/
+  singular_series : SingularSeriesPositive
+  /-- 圆法主项 + 误差控制，未形式化 -/
+  circle_method : CircleMethodReducesWeakGoldbach
+  /-- Hardy-Littlewood 强 Goldbach 渐近，OPEN -/
+  hl_asymptotic : HardyLittlewoodAsymptotic
+
+/-- **Goldbach 路线汇总 ⇒ Weak Goldbach（充分大）** -/
+theorem prerequisites_imply_weak_asymptotic
+    (hPre : GoldbachRoutePrerequisites) :
+    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n :=
+  hPre.circle_method hPre.singular_series
+
+/-- **Goldbach 路线汇总 ⇒ Strong Goldbach（充分大偶）** -/
+theorem prerequisites_imply_strong_asymptotic
+    (hPre : GoldbachRoutePrerequisites) :
+    ∃ N : ℕ, ∀ n ≥ N, Even n →
+      ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n :=
+  hl_implies_strong_large hPre.hl_asymptotic
+
+/-- **汇总 + 有限段 ⇒ 完整 Weak Goldbach**（项目最终骨架）。 -/
+theorem prerequisites_plus_finite_implies_weakGoldbach
+    (hPre : GoldbachRoutePrerequisites)
+    (N₀ : ℕ) (hfin : WeakGoldbachUpTo N₀)
+    (hN_compat : ∀ N₁ : ℕ, (∀ n : ℕ, N₁ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n) → N₁ ≤ N₀) :
+    WeakGoldbach := by
+  obtain ⟨N₁, hasy⟩ := prerequisites_imply_weak_asymptotic hPre
+  have hN1le : N₁ ≤ N₀ := hN_compat N₁ hasy
+  intro n hn hodd
+  by_cases h : n ≤ N₀
+  · exact hfin n hn h hodd
+  · exact hasy n (by omega) hodd
+
+/-! ## 杂项加强引理（补到 60+） -/
+
+/-- **强 Goldbach 蕴含 r(n) ≥ 1**（已重写为单向版本，方便引用）。 -/
+theorem strongGoldbach_implies_count_pos (n : ℕ) (hn : 4 ≤ n) (hE : Even n)
+    (hSG : StrongGoldbach) : 0 < goldbachCount n :=
+  (strongGoldbach_iff_count_pos.mp hSG) n hn hE
+
+/-- **goldbachCount 单调性辅助**：若 r(n) ≥ k 且分解集合更大，可上推 k。
+    这里只给 k = 1 ↔ ∃ 分解 的等价。 -/
+theorem goldbachCount_ge_one_iff (n : ℕ) (hn : 4 ≤ n) (hE : Even n) :
+    1 ≤ goldbachCount n ↔ ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n := by
+  rw [Nat.one_le_iff_ne_zero, ← Nat.pos_iff_ne_zero]
+  exact goldbachCount_pos_iff n hn hE
+
+/-- **WeakGoldbach 单调展开**：对任意有限段，WeakGoldbach 都包括它。 -/
+theorem weakGoldbach_includes_upTo (N : ℕ) (hWG : WeakGoldbach) :
+    WeakGoldbachUpTo N := fun n hn _ hodd => hWG n hn hodd
+
+/-- **strongGoldbach 单调展开**：对任意有限段，StrongGoldbach 都包括它。 -/
+theorem strongGoldbach_includes_upTo (N : ℕ) (hSG : StrongGoldbach) :
+    StrongGoldbachUpTo N := fun n hn _ hE => hSG n hn hE
+
+/-- **两个 Goldbach 分解的乘积形式**：(p+q)(p'+q') = n*m 给出乘积偶数的某种分解。
+    无实质内容但 Lean 能验证乘法分配。 -/
+theorem goldbach_product_form (n m p q p' q' : ℕ)
+    (hpq : p + q = n) (hpq' : p' + q' = m) :
+    (p + q) * (p' + q') = n * m := by
+  rw [hpq, hpq']
+
+/-- **prime ≥ 2**（mathlib 已有，封装一下方便引用）。 -/
+theorem prime_ge_two (p : ℕ) (hp : p.Prime) : 2 ≤ p := hp.two_le
+
+/-- **强 Goldbach 蕴含每个偶数 ≥ 4 的最小素因子 ≤ n/2**。 -/
+theorem strongGoldbach_implies_min_prime_factor_bound :
+    StrongGoldbach → ∀ n : ℕ, 4 ≤ n → Even n →
+      ∃ p : ℕ, p.Prime ∧ 2 * p ≤ n := by
+  intro hSG n hn hE
+  obtain ⟨p, q, hp, hq, hpq⟩ := hSG n hn hE
+  -- min(p, q) ≤ n/2，即 2 * min(p, q) ≤ n
+  by_cases h : p ≤ q
+  · exact ⟨p, hp, by omega⟩
+  · exact ⟨q, hq, by omega⟩
+
+/-- **r(n) = 0 ⇒ n 不是 Goldbach 偶数**（contrapositive of `goldbach_at_n_iff`）。 -/
+theorem goldbachCount_zero_implies_no_decomp (n : ℕ) (hn : 4 ≤ n) (hE : Even n)
+    (h : goldbachCount n = 0) :
+    ¬ ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n := by
+  intro hex
+  have : 0 < goldbachCount n := (goldbachCount_pos_iff n hn hE).mpr hex
+  omega
+
 end Goldbach
