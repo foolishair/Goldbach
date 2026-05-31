@@ -1,0 +1,43 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# 取消同一 ref 的旧 run，加速 PR 迭代
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: lake build
+
+    steps:
+      # mathlib + Lean 4 cache 加起来 5+ GB，CI runner 默认空间紧
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true       # 释放约 12 GB
+          dotnet: false
+          haskell: false
+          large-packages: false
+          docker-images: false
+          swap-storage: false
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # lean-action 会自动:
+      #   1) 读 lean-toolchain 装 elan + Lean 4.29.0
+      #   2) lake exe cache get （拉 mathlib 预编译 olean，省 1+ 小时 mathlib build）
+      #   3) lake build
+      - name: Build with lake
+        uses: leanprover/lean-action@v1
+        with:
+          use-github-cache: false

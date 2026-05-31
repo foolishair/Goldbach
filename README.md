@@ -1,5 +1,10 @@
 # Goldbach 独立 Lean 子项目
 
+[![Build](https://github.com/foolishair/Goldbach/actions/workflows/build.yml/badge.svg)](https://github.com/foolishair/Goldbach/actions/workflows/build.yml)
+[![Lean 4.29.0](https://img.shields.io/badge/Lean-4.29.0-blueviolet)](https://leanprover-community.github.io/)
+[![mathlib v4.29.0](https://img.shields.io/badge/mathlib-v4.29.0-orange)](https://github.com/leanprover-community/mathlib4)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > 这是从 PrimeNumberTheoremAnd 项目脱离出来的独立 Lake 项目，
 > 只依赖 mathlib4，不依赖 PNT 任何模块。
 
