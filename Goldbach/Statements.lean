@@ -273,4 +273,62 @@ theorem not_weakGoldbach_of_counterexample (n : ℕ) (hn : 7 ≤ n) (hO : Odd n)
     (h_no : ¬ ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n) :
     ¬ WeakGoldbach := fun hWG => h_no (hWG n hn hO)
 
+/-! ## 更多结构性引理（数值实验启发） -/
+
+/-- **HL 渐近 ⇒ 充分大 r(n) 严格正**（更精细版本，标出依赖于 ε = C/2 的下界）。 -/
+theorem hl_implies_count_lower_bound : HardyLittlewoodAsymptotic →
+    ∃ C : ℝ, 0 < C ∧ ∃ N : ℕ, ∀ n ≥ N, Even n → 2 ≤ n →
+      (C / 2) * n / (Real.log n)^2 < goldbachCount n := by
+  rintro ⟨C, hC, hHL⟩
+  refine ⟨C, hC, ?_⟩
+  obtain ⟨N, hN⟩ := hHL (C / 2) (by linarith)
+  refine ⟨max N 2, fun n hn hEven _hn2 => ?_⟩
+  have hnN : N ≤ n := le_of_max_le_left hn
+  have hbound := hN n hnN hEven
+  have habs := abs_sub_lt_iff.mp hbound
+  have heq : C * (n : ℝ) / (Real.log n)^2 - C / 2 * n / (Real.log n)^2
+      = C / 2 * n / (Real.log n)^2 := by ring
+  linarith [habs.1]
+
+/-- **Goldbach 偶数最大素因子下界**：如果 p + q = n 是 Goldbach 分解，
+    那么 max(p, q) ≥ n / 2。 -/
+theorem goldbach_max_prime_lower (n p q : ℕ) (hpq : p + q = n) :
+    n ≤ 2 * max p q := by
+  have h := le_max_left p q
+  have h' := le_max_right p q
+  omega
+
+/-- **Goldbach 分解中最小素至多 n / 2**。 -/
+theorem goldbach_min_prime_upper (n p q : ℕ) (hpq : p + q = n) :
+    2 * min p q ≤ n := by
+  have h := min_le_left p q
+  have h' := min_le_right p q
+  omega
+
+/-- **强 Goldbach 蕴含 Schnirelmann 密度全集**（任何充分大偶数都是两素数和）。 -/
+theorem strongGoldbach_implies_full_density :
+    StrongGoldbach →
+    ∀ n : ℕ, 4 ≤ n → Even n →
+      ∃ p ∈ {p : ℕ | p.Prime ∧ p ≤ n}, (n - p).Prime := by
+  intro hSG n hn hE
+  obtain ⟨p, q, hp, hq, hpq⟩ := hSG n hn hE
+  refine ⟨p, ⟨hp, ?_⟩, ?_⟩
+  · omega
+  · have : n - p = q := by omega
+    rw [this]; exact hq
+
+/-- **r(n) 与 r(n+2) 无单调关系** 的断言形式（陈述，非定理；
+    实际上 r(n) 在不同 n 上波动很大，见 `experiments/numerical/singular_series.py`）。 -/
+def goldbachCount_not_monotone_statement : Prop :=
+  ∀ n : ℕ, goldbachCount n ≤ goldbachCount (n + 2)
+
+/-- **r(4) = 1**：唯一分解 4 = 2 + 2。 -/
+theorem goldbachCount_4 : goldbachCount 4 = 1 := by decide
+
+/-- **r(6) = 1**：唯一分解 6 = 3 + 3。 -/
+theorem goldbachCount_6 : goldbachCount 6 = 1 := by decide
+
+/-- **r(10) = 2**：分解 10 = 3 + 7 和 10 = 5 + 5。 -/
+theorem goldbachCount_10 : goldbachCount 10 = 2 := by decide
+
 end Goldbach
