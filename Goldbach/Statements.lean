@@ -430,4 +430,126 @@ theorem goldbach_has_2_decomp_iff (n : ℕ) (hn : 4 ≤ n) (_hE : Even n) :
   · intro h
     exact ⟨n - 2, h, by omega⟩
 
+/-! ## 筛法路线（Brun / Selberg / Linnik）的桥接陈述
+
+   这条路线**不**直接证 Goldbach，但能给 r(n) 上界 + 下界估计。
+   关键节点（mathlib 都还没有）：
+
+     1. Brun 筛 (Brun sieve)              - mathlib 无
+        给出 #{p ≤ x : p, p+2 都是素数} = O(x / log² x)
+        即 twin primes 的上界（Brun 1919, 推出 ∑ 1/p_twin 收敛）
+
+     2. Selberg Λ² 筛 (Λ² sieve)          - mathlib 无
+        给出 r(n) ≤ 8 𝔖(n) · n / log² n（Brun-Selberg 上界）
+        ⇒ r(n) ≪ n / log² n（成立 ∀ n 偶 ≥ 4）
+
+     3. Chen 1973 定理                     - mathlib 无
+        每个充分大偶数都是 p + P₂（素数 + 2-殆素数）
+        ⇒ "几乎 Goldbach"，**最接近强 Goldbach 的已证结果**
+
+     4. Linnik 大筛 (Large sieve)         - mathlib 无
+        平均意义下的 PNT for AP（推 Bombieri-Vinogradov）
+
+   本文件只给陈述层，证明全部留作未来工作。
+-/
+
+/-- **Chen 殆素数定义**：n 是 ≤ 2 阶殆素数（即 n 是素数 或 两个素数的乘积）。 -/
+def AlmostPrime2 (n : ℕ) : Prop :=
+  n.Prime ∨ ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ n = p * q
+
+/-- **Chen 定理陈述**（1973）：充分大偶数 = 素数 + 2-殆素数。
+    已被陈景润证明（手工，未形式化）。 -/
+def ChenTheorem : Prop :=
+  ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Even n →
+    ∃ p k : ℕ, p.Prime ∧ AlmostPrime2 k ∧ p + k = n
+
+/-- **Chen ⇒ "几乎 Goldbach"**：如果 k 在 Chen 分解里恰好是素数，那就是 Goldbach。 -/
+theorem chen_strict_decomp_implies_goldbach (n p k : ℕ)
+    (hp : p.Prime) (_hk : AlmostPrime2 k) (hsum : p + k = n) (hk_prime : k.Prime) :
+    ∃ p' q : ℕ, p'.Prime ∧ q.Prime ∧ p' + q = n :=
+  ⟨p, k, hp, hk_prime, hsum⟩
+
+/-- **AlmostPrime2 包含素数**：单素数是 1-殆素数，特别也是 ≤ 2-殆素数。 -/
+theorem prime_is_AlmostPrime2 (p : ℕ) (hp : p.Prime) : AlmostPrime2 p :=
+  Or.inl hp
+
+/-- **强 Goldbach 蕴含 Chen 定理**（trivially，p + p' 也是 p + AlmostPrime2）。 -/
+theorem strongGoldbach_implies_chen : StrongGoldbach → ChenTheorem := by
+  intro hSG
+  refine ⟨4, fun n hn hE => ?_⟩
+  obtain ⟨p, q, hp, hq, hpq⟩ := hSG n hn hE
+  exact ⟨p, q, hp, prime_is_AlmostPrime2 q hq, hpq⟩
+
+/-- **Selberg 上界陈述**：r(n) ≤ 8 𝔖(n) n / log² n（mathlib 中无 𝔖 函数，故只给抽象上界）。
+    这里给 r(n) ≪ n / log² n 的弱化版本作为桥接陈述。 -/
+def SelbergUpperBound : Prop :=
+  ∃ C : ℝ, 0 < C ∧ ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Even n →
+    (goldbachCount n : ℝ) ≤ C * n / (Real.log n)^2
+
+/-- **HL 渐近 ⇒ Selberg 上界**（HL 上界即比 Selberg 强的常数）。 -/
+theorem hl_implies_selberg_upper : HardyLittlewoodAsymptotic → SelbergUpperBound := by
+  rintro ⟨C, hC, hHL⟩
+  refine ⟨2 * C, by linarith, ?_⟩
+  obtain ⟨N, hN⟩ := hHL C hC
+  refine ⟨max N 2, fun n hn hE => ?_⟩
+  have hnN : N ≤ n := le_of_max_le_left hn
+  have hn2 : 2 ≤ n := le_of_max_le_right hn
+  have hlog_pos : 0 < Real.log n :=
+    Real.log_pos (by exact_mod_cast Nat.lt_of_lt_of_le one_lt_two hn2)
+  have hlog_sq_pos : 0 < (Real.log n)^2 := pow_pos hlog_pos 2
+  have hbound := hN n hnN hE
+  have habs := abs_sub_lt_iff.mp hbound
+  -- habs.1: r(n) - C n/log²n < C n/log²n
+  -- ⇒ r(n) < 2 C n/log²n
+  have h1 : (goldbachCount n : ℝ) - C * n / (Real.log n)^2 < C * n / (Real.log n)^2 := habs.1
+  have heq : (2 * C) * (n : ℝ) / (Real.log n)^2
+      = C * n / (Real.log n)^2 + C * n / (Real.log n)^2 := by ring
+  linarith
+
+/-! ## 第二类形式化基础：将 PNT 表达为 r(n) 渐近的弱前提 -/
+
+/-- **PNT 引理的 r(n) 退化形式**：如果 ∀ n 偶 ≥ N, r(n) > 0，那么仍然推出强 Goldbach 在
+    [N, ∞) 上成立。这是与 `hl_implies_strong_large` 互补的桥接。 -/
+theorem count_pos_eventual_implies_strong_eventual :
+    (∃ N : ℕ, ∀ n : ℕ, N ≤ n → Even n → 0 < goldbachCount n) →
+    ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Even n →
+      ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n := by
+  rintro ⟨N, hN⟩
+  refine ⟨max N 4, fun n hn hE => ?_⟩
+  have hN_le : N ≤ n := le_of_max_le_left hn
+  have h4 : 4 ≤ n := le_of_max_le_right hn
+  exact (goldbachCount_pos_iff n h4 hE).mp (hN n hN_le hE)
+
+/-- **强 Goldbach 在有限段上验证**（蕴含 r(n) ≥ 1 on [4, N]）。
+    这是 PNT 项目 `even_goldbach_test` (H ≤ 30) / Richstein (≤ 4×10¹⁴) 等定理的抽象层。 -/
+def StrongGoldbachUpTo (N : ℕ) : Prop :=
+  ∀ n : ℕ, 4 ≤ n → n ≤ N → Even n → ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n
+
+/-- **拆分**：StrongGoldbach ⇔ ∀ N, StrongGoldbachUpTo N。 -/
+theorem strongGoldbach_iff_all_upTo :
+    StrongGoldbach ↔ ∀ N : ℕ, StrongGoldbachUpTo N := by
+  refine ⟨fun hSG N n hn _hle hE => hSG n hn hE, fun h n hn hE => h n n hn le_rfl hE⟩
+
+/-- **StrongGoldbachUpTo 30 已证**（对应 PNT `even_goldbach_test`）。
+    这里直接用 by decide 重证一遍，确认 Lean 能算。 -/
+theorem strongGoldbachUpTo_30 : StrongGoldbachUpTo 30 := by
+  intro n hn hN hE
+  -- 30 个 case 全部 by decide。omega + decide 链。
+  interval_cases n <;> first
+    | exact ⟨2, 2, by decide, by decide, rfl⟩
+    | exact ⟨3, 3, by decide, by decide, rfl⟩
+    | exact ⟨3, 5, by decide, by decide, rfl⟩
+    | exact ⟨5, 5, by decide, by decide, rfl⟩
+    | exact ⟨5, 7, by decide, by decide, rfl⟩
+    | exact ⟨7, 7, by decide, by decide, rfl⟩
+    | exact ⟨5, 11, by decide, by decide, rfl⟩
+    | exact ⟨7, 11, by decide, by decide, rfl⟩
+    | exact ⟨7, 13, by decide, by decide, rfl⟩
+    | exact ⟨11, 11, by decide, by decide, rfl⟩
+    | exact ⟨11, 13, by decide, by decide, rfl⟩
+    | exact ⟨13, 13, by decide, by decide, rfl⟩
+    | exact ⟨11, 17, by decide, by decide, rfl⟩
+    | exact ⟨13, 17, by decide, by decide, rfl⟩
+    | (exfalso; rcases hE with ⟨k, hk⟩; omega)
+
 end Goldbach
