@@ -21,6 +21,45 @@ PrimeNumberTheoremAnd 的 `IEANTN/Goldbach.lean` 已经形式化了：
 - Vinogradov (1937): 充分大的奇数是三个素数之和
 - Helfgott (2013, arXiv:1305.2897): 弱 Goldbach 完全证明（≥ 7 的奇数 = 3 素数）
 - Oliveira e Silva 等 (2014): 强 Goldbach 数值验证至 4 × 10^18
+
+================================================================================
+Wiener-Ikehara 路线（从 PNT 到弱 Goldbach 的形式化链）
+================================================================================
+
+PNT 项目（`PrimeNumberTheoremAnd`）正在沿这条线走：
+
+  ζ 函数零点自由域            (ZetaBounds.lean, 3845 行 - 部分完成)
+        ↓
+  Perron 公式                  (PerronFormula.lean, 1071 行 - 完成)
+        ↓
+  Wiener-Ikehara 定理         (Wiener.lean, 4118 行 - 主体完成, 2 sorry)
+        ↓
+  ψ(x) ~ x 渐近               (StrongPNT.lean, 2466 行 - 6 sorry)
+        ↓
+  π(x) ~ Li(x)，即标准 PNT   (`pi_alt`，已证)
+        ↓
+  ─────── 到此为止是 PNT 项目目前的主要内容 ───────
+
+  PNT for arithmetic progressions  (mathlib4 + PNT 都 **没有**)
+        ↓
+  Siegel-Walfisz 定理              (**没有**)
+        ↓
+  圆法 (Hardy-Littlewood circle method, **没有**)
+   + Vaughan 恒等式                (**没有**)
+   + 主项 ∼ 𝔖(n) · n²/2            (奇异级数 𝔖(n), 见 singular_series.py)
+   + Minor arcs O(n²/log^A n)      (**没有**)
+        ↓
+  Vinogradov 三素数定理 (1937)    (**没有**)
+        ↓
+  Helfgott 显式量化 N₀ = 7 (2013) (**没有**)
+        ↓
+  完整弱 Goldbach (∀ n ≥ 7 奇)    (**形式化目标**)
+
+预估剩余 Lean 行数：22,500 (Vinogradov) - 48,500 (Helfgott 全量)。
+详见 `../../../notes/goldbach_blueprint_gaps.md`。
+
+本文件 `Statements.lean` 是这条长链最末端的"陈述层"+"等价层"，
+不参与中段 22K-48K 行的硬证明。
 -/
 
 import Mathlib.NumberTheory.Bertrand
@@ -330,5 +369,65 @@ theorem goldbachCount_6 : goldbachCount 6 = 1 := by decide
 
 /-- **r(10) = 2**：分解 10 = 3 + 7 和 10 = 5 + 5。 -/
 theorem goldbachCount_10 : goldbachCount 10 = 2 := by decide
+
+/-! ## Wiener-Ikehara 路线的桥接引理（陈述层） -/
+
+/-- **PNT 形式声明**：素数计数函数 π(x) 渐近 x/log(x)。
+    PNT 项目 `pi_alt` 已证。本声明只是给桥接定理一个名字。 -/
+def PrimeNumberTheoremStatement : Prop :=
+  Filter.Tendsto
+    (fun x : ℝ => (Nat.card { p : ℕ // p.Prime ∧ (p : ℝ) ≤ x } : ℝ) * Real.log x / x)
+    Filter.atTop (nhds 1)
+
+/-- **桥接陈述**：(Vinogradov 路线) 弱 Goldbach 可拆为
+    (a) 充分大奇数能分解 + (b) 7..N₀ 有限验证。
+    PNT 项目 `kadiri_lumley_odd_goldbach_finite` 已经做了 (b) 到 N₀ = 7.78×10²⁷。 -/
+def WeakGoldbach_via_finite_and_asymptotic : Prop :=
+  ∃ N₀ : ℕ, (∀ n : ℕ, 7 ≤ n → n ≤ N₀ → Odd n →
+    ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n) ∧
+    (∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n)
+
+/-- **拆分等价**：上面的桥接命题等价于直接的 `WeakGoldbach`。 -/
+theorem WeakGoldbach_iff_split :
+    WeakGoldbach ↔ WeakGoldbach_via_finite_and_asymptotic := by
+  constructor
+  · intro hWG
+    -- 取 N₀ = 6，finite 部分空真，asymptotic 部分覆盖 n > 6（即 n ≥ 7）
+    refine ⟨6, fun n hn h6 _hodd => ?_, fun n hN0 hodd => hWG n (by omega) hodd⟩
+    omega
+  · rintro ⟨N₀, hfin, hasy⟩ n hn hodd
+    by_cases h : n ≤ N₀
+    · exact hfin n hn h hodd
+    · exact hasy n (by omega) hodd
+
+/-- **强 Goldbach 蕴含 r(n) ≥ 1 对所有 n ≥ 4 偶**。 -/
+theorem strongGoldbach_implies_count_ge_one :
+    StrongGoldbach → ∀ n : ℕ, 4 ≤ n → Even n → 1 ≤ goldbachCount n := by
+  intro hSG n hn hE
+  have := (strongGoldbach_iff_count_pos.mp hSG) n hn hE
+  omega
+
+/-- **r(n) ≥ 1 对所有 n ≥ 4 偶 ⇒ 强 Goldbach**（与上互逆）。 -/
+theorem count_ge_one_implies_strongGoldbach :
+    (∀ n : ℕ, 4 ≤ n → Even n → 1 ≤ goldbachCount n) → StrongGoldbach := by
+  intro h n hn hE
+  have h1 : 0 < goldbachCount n := h n hn hE
+  exact (goldbachCount_pos_iff n hn hE).mp h1
+
+/-- **强 Goldbach 等价于 ∀ n ≥ 4 偶, r(n) ≥ 1**（更强陈述等价）。 -/
+theorem strongGoldbach_iff_count_ge_one :
+    StrongGoldbach ↔ ∀ n : ℕ, 4 ≤ n → Even n → 1 ≤ goldbachCount n :=
+  ⟨strongGoldbach_implies_count_ge_one, count_ge_one_implies_strongGoldbach⟩
+
+/-- **2 + (n-2) 形式分解判定**：偶数 n ≥ 4 有 2-起始 Goldbach 分解 ⇔ n-2 是素数。 -/
+theorem goldbach_has_2_decomp_iff (n : ℕ) (hn : 4 ≤ n) (_hE : Even n) :
+    (∃ q : ℕ, q.Prime ∧ 2 + q = n) ↔ (n - 2).Prime := by
+  constructor
+  · rintro ⟨q, hq, hqn⟩
+    have : n - 2 = q := by omega
+    rw [this]; exact hq
+  · intro h
+    exact ⟨n - 2, h, by omega⟩
 
 end Goldbach
