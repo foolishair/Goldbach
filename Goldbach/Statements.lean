@@ -1235,4 +1235,341 @@ theorem decomp_126 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 126 := ⟨13, 113,
 theorem decomp_128 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 128 := ⟨19, 109, prime_19, prime_109, rfl⟩
 theorem decomp_130 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 130 := ⟨3, 127, prime_3, prime_127, rfl⟩
 
+
+/-! ## 偶数 132..500 -/
+
+theorem prime_131 : (131 : ℕ).Prime := by decide
+theorem prime_137 : (137 : ℕ).Prime := by decide
+theorem prime_139 : (139 : ℕ).Prime := by decide
+theorem prime_149 : (149 : ℕ).Prime := by decide
+theorem prime_151 : (151 : ℕ).Prime := by norm_num
+theorem prime_157 : (157 : ℕ).Prime := by norm_num
+theorem prime_163 : (163 : ℕ).Prime := by norm_num
+theorem prime_167 : (167 : ℕ).Prime := by norm_num
+theorem prime_173 : (173 : ℕ).Prime := by norm_num
+theorem prime_179 : (179 : ℕ).Prime := by norm_num
+theorem prime_181 : (181 : ℕ).Prime := by norm_num
+theorem prime_191 : (191 : ℕ).Prime := by norm_num
+theorem prime_193 : (193 : ℕ).Prime := by norm_num
+theorem prime_197 : (197 : ℕ).Prime := by norm_num
+theorem prime_199 : (199 : ℕ).Prime := by norm_num
+theorem prime_211 : (211 : ℕ).Prime := by norm_num
+theorem prime_223 : (223 : ℕ).Prime := by norm_num
+theorem prime_227 : (227 : ℕ).Prime := by norm_num
+theorem prime_229 : (229 : ℕ).Prime := by norm_num
+theorem prime_233 : (233 : ℕ).Prime := by norm_num
+theorem prime_239 : (239 : ℕ).Prime := by norm_num
+theorem prime_241 : (241 : ℕ).Prime := by norm_num
+theorem prime_251 : (251 : ℕ).Prime := by norm_num
+theorem prime_257 : (257 : ℕ).Prime := by norm_num
+theorem prime_263 : (263 : ℕ).Prime := by norm_num
+theorem prime_269 : (269 : ℕ).Prime := by norm_num
+theorem prime_271 : (271 : ℕ).Prime := by norm_num
+theorem prime_277 : (277 : ℕ).Prime := by norm_num
+theorem prime_281 : (281 : ℕ).Prime := by norm_num
+theorem prime_283 : (283 : ℕ).Prime := by norm_num
+theorem prime_293 : (293 : ℕ).Prime := by norm_num
+theorem prime_307 : (307 : ℕ).Prime := by norm_num
+theorem prime_311 : (311 : ℕ).Prime := by norm_num
+theorem prime_313 : (313 : ℕ).Prime := by norm_num
+theorem prime_317 : (317 : ℕ).Prime := by norm_num
+theorem prime_331 : (331 : ℕ).Prime := by norm_num
+theorem prime_337 : (337 : ℕ).Prime := by norm_num
+theorem prime_347 : (347 : ℕ).Prime := by norm_num
+theorem prime_349 : (349 : ℕ).Prime := by norm_num
+theorem prime_353 : (353 : ℕ).Prime := by norm_num
+theorem prime_359 : (359 : ℕ).Prime := by norm_num
+theorem prime_367 : (367 : ℕ).Prime := by norm_num
+theorem prime_373 : (373 : ℕ).Prime := by norm_num
+theorem prime_379 : (379 : ℕ).Prime := by norm_num
+theorem prime_383 : (383 : ℕ).Prime := by norm_num
+theorem prime_389 : (389 : ℕ).Prime := by norm_num
+theorem prime_397 : (397 : ℕ).Prime := by norm_num
+theorem prime_401 : (401 : ℕ).Prime := by norm_num
+theorem prime_409 : (409 : ℕ).Prime := by norm_num
+theorem prime_419 : (419 : ℕ).Prime := by norm_num
+theorem prime_421 : (421 : ℕ).Prime := by norm_num
+theorem prime_431 : (431 : ℕ).Prime := by norm_num
+theorem prime_433 : (433 : ℕ).Prime := by norm_num
+theorem prime_439 : (439 : ℕ).Prime := by norm_num
+theorem prime_443 : (443 : ℕ).Prime := by norm_num
+theorem prime_449 : (449 : ℕ).Prime := by norm_num
+theorem prime_457 : (457 : ℕ).Prime := by norm_num
+theorem prime_461 : (461 : ℕ).Prime := by norm_num
+theorem prime_463 : (463 : ℕ).Prime := by norm_num
+theorem prime_467 : (467 : ℕ).Prime := by norm_num
+theorem prime_479 : (479 : ℕ).Prime := by norm_num
+theorem prime_487 : (487 : ℕ).Prime := by norm_num
+theorem prime_491 : (491 : ℕ).Prime := by norm_num
+
+theorem decomp_132 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 132 := ⟨5, 127, prime_5, prime_127, rfl⟩
+theorem decomp_134 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 134 := ⟨3, 131, prime_3, prime_131, rfl⟩
+theorem decomp_136 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 136 := ⟨5, 131, prime_5, prime_131, rfl⟩
+theorem decomp_138 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 138 := ⟨7, 131, prime_7, prime_131, rfl⟩
+theorem decomp_140 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 140 := ⟨3, 137, prime_3, prime_137, rfl⟩
+theorem decomp_142 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 142 := ⟨3, 139, prime_3, prime_139, rfl⟩
+theorem decomp_144 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 144 := ⟨5, 139, prime_5, prime_139, rfl⟩
+theorem decomp_146 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 146 := ⟨7, 139, prime_7, prime_139, rfl⟩
+theorem decomp_148 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 148 := ⟨11, 137, prime_11, prime_137, rfl⟩
+theorem decomp_150 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 150 := ⟨11, 139, prime_11, prime_139, rfl⟩
+theorem decomp_152 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 152 := ⟨3, 149, prime_3, prime_149, rfl⟩
+theorem decomp_154 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 154 := ⟨3, 151, prime_3, prime_151, rfl⟩
+theorem decomp_156 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 156 := ⟨5, 151, prime_5, prime_151, rfl⟩
+theorem decomp_158 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 158 := ⟨7, 151, prime_7, prime_151, rfl⟩
+theorem decomp_160 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 160 := ⟨3, 157, prime_3, prime_157, rfl⟩
+theorem decomp_162 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 162 := ⟨5, 157, prime_5, prime_157, rfl⟩
+theorem decomp_164 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 164 := ⟨7, 157, prime_7, prime_157, rfl⟩
+theorem decomp_166 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 166 := ⟨3, 163, prime_3, prime_163, rfl⟩
+theorem decomp_168 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 168 := ⟨5, 163, prime_5, prime_163, rfl⟩
+theorem decomp_170 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 170 := ⟨3, 167, prime_3, prime_167, rfl⟩
+theorem decomp_172 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 172 := ⟨5, 167, prime_5, prime_167, rfl⟩
+theorem decomp_174 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 174 := ⟨7, 167, prime_7, prime_167, rfl⟩
+theorem decomp_176 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 176 := ⟨3, 173, prime_3, prime_173, rfl⟩
+theorem decomp_178 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 178 := ⟨5, 173, prime_5, prime_173, rfl⟩
+theorem decomp_180 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 180 := ⟨7, 173, prime_7, prime_173, rfl⟩
+theorem decomp_182 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 182 := ⟨3, 179, prime_3, prime_179, rfl⟩
+theorem decomp_184 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 184 := ⟨3, 181, prime_3, prime_181, rfl⟩
+theorem decomp_186 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 186 := ⟨5, 181, prime_5, prime_181, rfl⟩
+theorem decomp_188 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 188 := ⟨7, 181, prime_7, prime_181, rfl⟩
+theorem decomp_190 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 190 := ⟨11, 179, prime_11, prime_179, rfl⟩
+theorem decomp_192 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 192 := ⟨11, 181, prime_11, prime_181, rfl⟩
+theorem decomp_194 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 194 := ⟨3, 191, prime_3, prime_191, rfl⟩
+theorem decomp_196 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 196 := ⟨3, 193, prime_3, prime_193, rfl⟩
+theorem decomp_198 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 198 := ⟨5, 193, prime_5, prime_193, rfl⟩
+theorem decomp_200 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 200 := ⟨3, 197, prime_3, prime_197, rfl⟩
+theorem decomp_202 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 202 := ⟨3, 199, prime_3, prime_199, rfl⟩
+theorem decomp_204 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 204 := ⟨5, 199, prime_5, prime_199, rfl⟩
+theorem decomp_206 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 206 := ⟨7, 199, prime_7, prime_199, rfl⟩
+theorem decomp_208 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 208 := ⟨11, 197, prime_11, prime_197, rfl⟩
+theorem decomp_210 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 210 := ⟨11, 199, prime_11, prime_199, rfl⟩
+theorem decomp_212 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 212 := ⟨13, 199, prime_13, prime_199, rfl⟩
+theorem decomp_214 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 214 := ⟨3, 211, prime_3, prime_211, rfl⟩
+theorem decomp_216 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 216 := ⟨5, 211, prime_5, prime_211, rfl⟩
+theorem decomp_218 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 218 := ⟨7, 211, prime_7, prime_211, rfl⟩
+theorem decomp_220 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 220 := ⟨23, 197, prime_23, prime_197, rfl⟩
+theorem decomp_222 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 222 := ⟨11, 211, prime_11, prime_211, rfl⟩
+theorem decomp_224 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 224 := ⟨13, 211, prime_13, prime_211, rfl⟩
+theorem decomp_226 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 226 := ⟨3, 223, prime_3, prime_223, rfl⟩
+theorem decomp_228 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 228 := ⟨5, 223, prime_5, prime_223, rfl⟩
+theorem decomp_230 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 230 := ⟨3, 227, prime_3, prime_227, rfl⟩
+theorem decomp_232 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 232 := ⟨3, 229, prime_3, prime_229, rfl⟩
+theorem decomp_234 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 234 := ⟨5, 229, prime_5, prime_229, rfl⟩
+theorem decomp_236 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 236 := ⟨3, 233, prime_3, prime_233, rfl⟩
+theorem decomp_238 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 238 := ⟨5, 233, prime_5, prime_233, rfl⟩
+theorem decomp_240 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 240 := ⟨7, 233, prime_7, prime_233, rfl⟩
+theorem decomp_242 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 242 := ⟨3, 239, prime_3, prime_239, rfl⟩
+theorem decomp_244 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 244 := ⟨3, 241, prime_3, prime_241, rfl⟩
+theorem decomp_246 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 246 := ⟨5, 241, prime_5, prime_241, rfl⟩
+theorem decomp_248 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 248 := ⟨7, 241, prime_7, prime_241, rfl⟩
+theorem decomp_250 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 250 := ⟨11, 239, prime_11, prime_239, rfl⟩
+theorem decomp_252 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 252 := ⟨11, 241, prime_11, prime_241, rfl⟩
+theorem decomp_254 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 254 := ⟨3, 251, prime_3, prime_251, rfl⟩
+theorem decomp_256 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 256 := ⟨5, 251, prime_5, prime_251, rfl⟩
+theorem decomp_258 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 258 := ⟨7, 251, prime_7, prime_251, rfl⟩
+theorem decomp_260 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 260 := ⟨3, 257, prime_3, prime_257, rfl⟩
+theorem decomp_262 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 262 := ⟨5, 257, prime_5, prime_257, rfl⟩
+theorem decomp_264 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 264 := ⟨7, 257, prime_7, prime_257, rfl⟩
+theorem decomp_266 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 266 := ⟨3, 263, prime_3, prime_263, rfl⟩
+theorem decomp_268 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 268 := ⟨5, 263, prime_5, prime_263, rfl⟩
+theorem decomp_270 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 270 := ⟨7, 263, prime_7, prime_263, rfl⟩
+theorem decomp_272 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 272 := ⟨3, 269, prime_3, prime_269, rfl⟩
+theorem decomp_274 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 274 := ⟨3, 271, prime_3, prime_271, rfl⟩
+theorem decomp_276 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 276 := ⟨5, 271, prime_5, prime_271, rfl⟩
+theorem decomp_278 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 278 := ⟨7, 271, prime_7, prime_271, rfl⟩
+theorem decomp_280 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 280 := ⟨3, 277, prime_3, prime_277, rfl⟩
+theorem decomp_282 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 282 := ⟨5, 277, prime_5, prime_277, rfl⟩
+theorem decomp_284 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 284 := ⟨3, 281, prime_3, prime_281, rfl⟩
+theorem decomp_286 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 286 := ⟨3, 283, prime_3, prime_283, rfl⟩
+theorem decomp_288 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 288 := ⟨5, 283, prime_5, prime_283, rfl⟩
+theorem decomp_290 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 290 := ⟨7, 283, prime_7, prime_283, rfl⟩
+theorem decomp_292 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 292 := ⟨11, 281, prime_11, prime_281, rfl⟩
+theorem decomp_294 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 294 := ⟨11, 283, prime_11, prime_283, rfl⟩
+theorem decomp_296 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 296 := ⟨3, 293, prime_3, prime_293, rfl⟩
+theorem decomp_298 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 298 := ⟨5, 293, prime_5, prime_293, rfl⟩
+theorem decomp_300 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 300 := ⟨7, 293, prime_7, prime_293, rfl⟩
+theorem decomp_302 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 302 := ⟨19, 283, prime_19, prime_283, rfl⟩
+theorem decomp_304 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 304 := ⟨11, 293, prime_11, prime_293, rfl⟩
+theorem decomp_306 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 306 := ⟨13, 293, prime_13, prime_293, rfl⟩
+theorem decomp_308 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 308 := ⟨31, 277, prime_31, prime_277, rfl⟩
+theorem decomp_310 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 310 := ⟨3, 307, prime_3, prime_307, rfl⟩
+theorem decomp_312 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 312 := ⟨5, 307, prime_5, prime_307, rfl⟩
+theorem decomp_314 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 314 := ⟨3, 311, prime_3, prime_311, rfl⟩
+theorem decomp_316 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 316 := ⟨3, 313, prime_3, prime_313, rfl⟩
+theorem decomp_318 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 318 := ⟨5, 313, prime_5, prime_313, rfl⟩
+theorem decomp_320 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 320 := ⟨3, 317, prime_3, prime_317, rfl⟩
+theorem decomp_322 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 322 := ⟨5, 317, prime_5, prime_317, rfl⟩
+theorem decomp_324 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 324 := ⟨7, 317, prime_7, prime_317, rfl⟩
+theorem decomp_326 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 326 := ⟨13, 313, prime_13, prime_313, rfl⟩
+theorem decomp_328 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 328 := ⟨11, 317, prime_11, prime_317, rfl⟩
+theorem decomp_330 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 330 := ⟨13, 317, prime_13, prime_317, rfl⟩
+theorem decomp_332 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 332 := ⟨19, 313, prime_19, prime_313, rfl⟩
+theorem decomp_334 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 334 := ⟨3, 331, prime_3, prime_331, rfl⟩
+theorem decomp_336 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 336 := ⟨5, 331, prime_5, prime_331, rfl⟩
+theorem decomp_338 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 338 := ⟨7, 331, prime_7, prime_331, rfl⟩
+theorem decomp_340 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 340 := ⟨3, 337, prime_3, prime_337, rfl⟩
+theorem decomp_342 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 342 := ⟨5, 337, prime_5, prime_337, rfl⟩
+theorem decomp_344 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 344 := ⟨7, 337, prime_7, prime_337, rfl⟩
+theorem decomp_346 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 346 := ⟨29, 317, prime_29, prime_317, rfl⟩
+theorem decomp_348 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 348 := ⟨11, 337, prime_11, prime_337, rfl⟩
+theorem decomp_350 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 350 := ⟨3, 347, prime_3, prime_347, rfl⟩
+theorem decomp_352 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 352 := ⟨3, 349, prime_3, prime_349, rfl⟩
+theorem decomp_354 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 354 := ⟨5, 349, prime_5, prime_349, rfl⟩
+theorem decomp_356 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 356 := ⟨3, 353, prime_3, prime_353, rfl⟩
+theorem decomp_358 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 358 := ⟨5, 353, prime_5, prime_353, rfl⟩
+theorem decomp_360 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 360 := ⟨7, 353, prime_7, prime_353, rfl⟩
+theorem decomp_362 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 362 := ⟨3, 359, prime_3, prime_359, rfl⟩
+theorem decomp_364 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 364 := ⟨5, 359, prime_5, prime_359, rfl⟩
+theorem decomp_366 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 366 := ⟨7, 359, prime_7, prime_359, rfl⟩
+theorem decomp_368 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 368 := ⟨19, 349, prime_19, prime_349, rfl⟩
+theorem decomp_370 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 370 := ⟨3, 367, prime_3, prime_367, rfl⟩
+theorem decomp_372 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 372 := ⟨5, 367, prime_5, prime_367, rfl⟩
+theorem decomp_374 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 374 := ⟨7, 367, prime_7, prime_367, rfl⟩
+theorem decomp_376 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 376 := ⟨3, 373, prime_3, prime_373, rfl⟩
+theorem decomp_378 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 378 := ⟨5, 373, prime_5, prime_373, rfl⟩
+theorem decomp_380 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 380 := ⟨7, 373, prime_7, prime_373, rfl⟩
+theorem decomp_382 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 382 := ⟨3, 379, prime_3, prime_379, rfl⟩
+theorem decomp_384 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 384 := ⟨5, 379, prime_5, prime_379, rfl⟩
+theorem decomp_386 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 386 := ⟨3, 383, prime_3, prime_383, rfl⟩
+theorem decomp_388 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 388 := ⟨5, 383, prime_5, prime_383, rfl⟩
+theorem decomp_390 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 390 := ⟨7, 383, prime_7, prime_383, rfl⟩
+theorem decomp_392 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 392 := ⟨3, 389, prime_3, prime_389, rfl⟩
+theorem decomp_394 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 394 := ⟨5, 389, prime_5, prime_389, rfl⟩
+theorem decomp_396 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 396 := ⟨7, 389, prime_7, prime_389, rfl⟩
+theorem decomp_398 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 398 := ⟨19, 379, prime_19, prime_379, rfl⟩
+theorem decomp_400 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 400 := ⟨3, 397, prime_3, prime_397, rfl⟩
+theorem decomp_402 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 402 := ⟨5, 397, prime_5, prime_397, rfl⟩
+theorem decomp_404 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 404 := ⟨3, 401, prime_3, prime_401, rfl⟩
+theorem decomp_406 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 406 := ⟨5, 401, prime_5, prime_401, rfl⟩
+theorem decomp_408 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 408 := ⟨7, 401, prime_7, prime_401, rfl⟩
+theorem decomp_410 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 410 := ⟨13, 397, prime_13, prime_397, rfl⟩
+theorem decomp_412 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 412 := ⟨3, 409, prime_3, prime_409, rfl⟩
+theorem decomp_414 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 414 := ⟨5, 409, prime_5, prime_409, rfl⟩
+theorem decomp_416 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 416 := ⟨7, 409, prime_7, prime_409, rfl⟩
+theorem decomp_418 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 418 := ⟨17, 401, prime_17, prime_401, rfl⟩
+theorem decomp_420 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 420 := ⟨11, 409, prime_11, prime_409, rfl⟩
+theorem decomp_422 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 422 := ⟨3, 419, prime_3, prime_419, rfl⟩
+theorem decomp_424 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 424 := ⟨3, 421, prime_3, prime_421, rfl⟩
+theorem decomp_426 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 426 := ⟨5, 421, prime_5, prime_421, rfl⟩
+theorem decomp_428 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 428 := ⟨7, 421, prime_7, prime_421, rfl⟩
+theorem decomp_430 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 430 := ⟨11, 419, prime_11, prime_419, rfl⟩
+theorem decomp_432 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 432 := ⟨11, 421, prime_11, prime_421, rfl⟩
+theorem decomp_434 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 434 := ⟨3, 431, prime_3, prime_431, rfl⟩
+theorem decomp_436 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 436 := ⟨3, 433, prime_3, prime_433, rfl⟩
+theorem decomp_438 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 438 := ⟨5, 433, prime_5, prime_433, rfl⟩
+theorem decomp_440 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 440 := ⟨7, 433, prime_7, prime_433, rfl⟩
+theorem decomp_442 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 442 := ⟨3, 439, prime_3, prime_439, rfl⟩
+theorem decomp_444 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 444 := ⟨5, 439, prime_5, prime_439, rfl⟩
+theorem decomp_446 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 446 := ⟨3, 443, prime_3, prime_443, rfl⟩
+theorem decomp_448 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 448 := ⟨5, 443, prime_5, prime_443, rfl⟩
+theorem decomp_450 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 450 := ⟨7, 443, prime_7, prime_443, rfl⟩
+theorem decomp_452 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 452 := ⟨3, 449, prime_3, prime_449, rfl⟩
+theorem decomp_454 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 454 := ⟨5, 449, prime_5, prime_449, rfl⟩
+theorem decomp_456 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 456 := ⟨7, 449, prime_7, prime_449, rfl⟩
+theorem decomp_458 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 458 := ⟨19, 439, prime_19, prime_439, rfl⟩
+theorem decomp_460 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 460 := ⟨3, 457, prime_3, prime_457, rfl⟩
+theorem decomp_462 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 462 := ⟨5, 457, prime_5, prime_457, rfl⟩
+theorem decomp_464 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 464 := ⟨3, 461, prime_3, prime_461, rfl⟩
+theorem decomp_466 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 466 := ⟨3, 463, prime_3, prime_463, rfl⟩
+theorem decomp_468 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 468 := ⟨5, 463, prime_5, prime_463, rfl⟩
+theorem decomp_470 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 470 := ⟨3, 467, prime_3, prime_467, rfl⟩
+theorem decomp_472 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 472 := ⟨5, 467, prime_5, prime_467, rfl⟩
+theorem decomp_474 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 474 := ⟨7, 467, prime_7, prime_467, rfl⟩
+theorem decomp_476 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 476 := ⟨13, 463, prime_13, prime_463, rfl⟩
+theorem decomp_478 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 478 := ⟨11, 467, prime_11, prime_467, rfl⟩
+theorem decomp_480 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 480 := ⟨13, 467, prime_13, prime_467, rfl⟩
+theorem decomp_482 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 482 := ⟨3, 479, prime_3, prime_479, rfl⟩
+theorem decomp_484 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 484 := ⟨5, 479, prime_5, prime_479, rfl⟩
+theorem decomp_486 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 486 := ⟨7, 479, prime_7, prime_479, rfl⟩
+theorem decomp_488 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 488 := ⟨31, 457, prime_31, prime_457, rfl⟩
+theorem decomp_490 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 490 := ⟨3, 487, prime_3, prime_487, rfl⟩
+theorem decomp_492 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 492 := ⟨5, 487, prime_5, prime_487, rfl⟩
+theorem decomp_494 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 494 := ⟨3, 491, prime_3, prime_491, rfl⟩
+theorem decomp_496 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 496 := ⟨5, 491, prime_5, prime_491, rfl⟩
+theorem decomp_498 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 498 := ⟨7, 491, prime_7, prime_491, rfl⟩
+theorem decomp_500 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 500 := ⟨13, 487, prime_13, prime_487, rfl⟩
+
+
+/-! ## 偶数 502..620 -/
+
+theorem prime_499 : (499 : ℕ).Prime := by norm_num
+theorem prime_503 : (503 : ℕ).Prime := by norm_num
+theorem prime_509 : (509 : ℕ).Prime := by norm_num
+theorem prime_521 : (521 : ℕ).Prime := by norm_num
+theorem prime_523 : (523 : ℕ).Prime := by norm_num
+theorem prime_541 : (541 : ℕ).Prime := by norm_num
+theorem prime_547 : (547 : ℕ).Prime := by norm_num
+theorem prime_557 : (557 : ℕ).Prime := by norm_num
+theorem prime_563 : (563 : ℕ).Prime := by norm_num
+theorem prime_569 : (569 : ℕ).Prime := by norm_num
+theorem prime_571 : (571 : ℕ).Prime := by norm_num
+theorem prime_577 : (577 : ℕ).Prime := by norm_num
+theorem prime_587 : (587 : ℕ).Prime := by norm_num
+theorem prime_593 : (593 : ℕ).Prime := by norm_num
+theorem prime_599 : (599 : ℕ).Prime := by norm_num
+theorem prime_601 : (601 : ℕ).Prime := by norm_num
+theorem prime_607 : (607 : ℕ).Prime := by norm_num
+theorem prime_613 : (613 : ℕ).Prime := by norm_num
+theorem prime_617 : (617 : ℕ).Prime := by norm_num
+
+theorem decomp_502 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 502 := ⟨3, 499, prime_3, prime_499, rfl⟩
+theorem decomp_504 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 504 := ⟨5, 499, prime_5, prime_499, rfl⟩
+theorem decomp_506 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 506 := ⟨3, 503, prime_3, prime_503, rfl⟩
+theorem decomp_508 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 508 := ⟨5, 503, prime_5, prime_503, rfl⟩
+theorem decomp_510 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 510 := ⟨7, 503, prime_7, prime_503, rfl⟩
+theorem decomp_512 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 512 := ⟨3, 509, prime_3, prime_509, rfl⟩
+theorem decomp_514 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 514 := ⟨5, 509, prime_5, prime_509, rfl⟩
+theorem decomp_516 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 516 := ⟨7, 509, prime_7, prime_509, rfl⟩
+theorem decomp_518 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 518 := ⟨19, 499, prime_19, prime_499, rfl⟩
+theorem decomp_520 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 520 := ⟨11, 509, prime_11, prime_509, rfl⟩
+theorem decomp_522 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 522 := ⟨13, 509, prime_13, prime_509, rfl⟩
+theorem decomp_524 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 524 := ⟨3, 521, prime_3, prime_521, rfl⟩
+theorem decomp_526 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 526 := ⟨3, 523, prime_3, prime_523, rfl⟩
+theorem decomp_528 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 528 := ⟨5, 523, prime_5, prime_523, rfl⟩
+theorem decomp_530 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 530 := ⟨7, 523, prime_7, prime_523, rfl⟩
+theorem decomp_532 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 532 := ⟨11, 521, prime_11, prime_521, rfl⟩
+theorem decomp_534 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 534 := ⟨11, 523, prime_11, prime_523, rfl⟩
+theorem decomp_536 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 536 := ⟨13, 523, prime_13, prime_523, rfl⟩
+theorem decomp_538 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 538 := ⟨17, 521, prime_17, prime_521, rfl⟩
+theorem decomp_540 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 540 := ⟨17, 523, prime_17, prime_523, rfl⟩
+theorem decomp_542 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 542 := ⟨19, 523, prime_19, prime_523, rfl⟩
+theorem decomp_544 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 544 := ⟨3, 541, prime_3, prime_541, rfl⟩
+theorem decomp_546 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 546 := ⟨5, 541, prime_5, prime_541, rfl⟩
+theorem decomp_548 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 548 := ⟨7, 541, prime_7, prime_541, rfl⟩
+theorem decomp_550 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 550 := ⟨3, 547, prime_3, prime_547, rfl⟩
+theorem decomp_552 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 552 := ⟨5, 547, prime_5, prime_547, rfl⟩
+theorem decomp_554 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 554 := ⟨7, 547, prime_7, prime_547, rfl⟩
+theorem decomp_556 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 556 := ⟨47, 509, prime_47, prime_509, rfl⟩
+theorem decomp_558 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 558 := ⟨11, 547, prime_11, prime_547, rfl⟩
+theorem decomp_560 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 560 := ⟨3, 557, prime_3, prime_557, rfl⟩
+theorem decomp_562 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 562 := ⟨5, 557, prime_5, prime_557, rfl⟩
+theorem decomp_564 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 564 := ⟨7, 557, prime_7, prime_557, rfl⟩
+theorem decomp_566 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 566 := ⟨3, 563, prime_3, prime_563, rfl⟩
+theorem decomp_568 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 568 := ⟨5, 563, prime_5, prime_563, rfl⟩
+theorem decomp_570 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 570 := ⟨7, 563, prime_7, prime_563, rfl⟩
+theorem decomp_572 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 572 := ⟨3, 569, prime_3, prime_569, rfl⟩
+theorem decomp_574 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 574 := ⟨3, 571, prime_3, prime_571, rfl⟩
+theorem decomp_576 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 576 := ⟨5, 571, prime_5, prime_571, rfl⟩
+theorem decomp_578 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 578 := ⟨7, 571, prime_7, prime_571, rfl⟩
+theorem decomp_580 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 580 := ⟨3, 577, prime_3, prime_577, rfl⟩
+theorem decomp_582 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 582 := ⟨5, 577, prime_5, prime_577, rfl⟩
+theorem decomp_584 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 584 := ⟨7, 577, prime_7, prime_577, rfl⟩
+theorem decomp_586 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 586 := ⟨17, 569, prime_17, prime_569, rfl⟩
+theorem decomp_588 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 588 := ⟨11, 577, prime_11, prime_577, rfl⟩
+theorem decomp_590 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 590 := ⟨3, 587, prime_3, prime_587, rfl⟩
+theorem decomp_592 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 592 := ⟨5, 587, prime_5, prime_587, rfl⟩
+theorem decomp_594 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 594 := ⟨7, 587, prime_7, prime_587, rfl⟩
+theorem decomp_596 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 596 := ⟨3, 593, prime_3, prime_593, rfl⟩
+theorem decomp_598 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 598 := ⟨5, 593, prime_5, prime_593, rfl⟩
+theorem decomp_600 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 600 := ⟨7, 593, prime_7, prime_593, rfl⟩
+theorem decomp_602 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 602 := ⟨3, 599, prime_3, prime_599, rfl⟩
+theorem decomp_604 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 604 := ⟨3, 601, prime_3, prime_601, rfl⟩
+theorem decomp_606 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 606 := ⟨5, 601, prime_5, prime_601, rfl⟩
+theorem decomp_608 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 608 := ⟨7, 601, prime_7, prime_601, rfl⟩
+theorem decomp_610 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 610 := ⟨3, 607, prime_3, prime_607, rfl⟩
+theorem decomp_612 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 612 := ⟨5, 607, prime_5, prime_607, rfl⟩
+theorem decomp_614 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 614 := ⟨7, 607, prime_7, prime_607, rfl⟩
+theorem decomp_616 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 616 := ⟨3, 613, prime_3, prime_613, rfl⟩
+theorem decomp_618 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 618 := ⟨5, 613, prime_5, prime_613, rfl⟩
+theorem decomp_620 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 620 := ⟨3, 617, prime_3, prime_617, rfl⟩
+
 end Goldbach
