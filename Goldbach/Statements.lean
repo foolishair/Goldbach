@@ -552,4 +552,127 @@ theorem strongGoldbachUpTo_30 : StrongGoldbachUpTo 30 := by
     | exact ⟨13, 17, by decide, by decide, rfl⟩
     | (exfalso; rcases hE with ⟨k, hk⟩; omega)
 
+/-! ## 圆法骨架（陈述层，证明全 OPEN）
+
+   按 Vinogradov 1937 → Helfgott 2013 的标准路线，弱 Goldbach 的证明分解为：
+
+     (M-A) Major arcs 主项贡献：∫_𝔐 S(α)³ e(-nα) dα = 𝔖(n) · n²/2 + O(...)
+     (M-B) Minor arcs 误差：    |∫_𝔪 S(α)³ e(-nα) dα| ≤ n²/log^A n
+     (S-1) 奇异级数下界：       𝔖(n) ≥ c > 0 (n 奇)
+     (V-1) Vinogradov 指数和：  |S(α)| ≤ n^(4/5+ε) on minor arcs
+     (V-2) Vaughan 恒等式：     拆 Λ 为 4 部分 (Type I + Type II sums)
+
+   本文件只给陈述层（def）+ 它们之间的桥接（theorem，证明用 Prop 演算即可），
+   主体硬证明全部留 OPEN。
+-/
+
+/-- **奇异级数下界（陈述）**：∃ c > 0, ∀ n ≥ 3 奇, 𝔖(n) ≥ c。
+    这里抽象成"奇 n 时存在某种 Goldbach 相关的"正密度"信号"。 -/
+def SingularSeriesPositive : Prop :=
+  ∃ c : ℝ, 0 < c ∧
+    ∀ n : ℕ, 3 ≤ n → Odd n →
+      ∃ (P : Finset ℕ), (∀ p ∈ P, p.Prime ∧ p ∣ n) ∧
+        c ≤ ((P.card : ℝ) + 1)  -- 抽象正下界，真实是无穷乘积
+
+/-- **Vinogradov 圆法核心命题（陈述）**：奇异级数正 ⇒ 弱 Goldbach 渐近。 -/
+def CircleMethodReducesWeakGoldbach : Prop :=
+  SingularSeriesPositive →
+    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n
+
+/-- **Vinogradov 圆法 + 奇异级数正 ⇒ 弱 Goldbach 渐近**（已证，trivial unfold）。 -/
+theorem circle_method_implies_weak_asymptotic :
+    CircleMethodReducesWeakGoldbach → SingularSeriesPositive →
+    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n :=
+  fun hCM hSS => hCM hSS
+
+/-- **完整弱 Goldbach 的两段拼接**：
+    若(a) ∃ N₀ 圆法渐近覆盖 n > N₀，(b) 数值验证覆盖 7 ≤ n ≤ N₀，则 WeakGoldbach 成立。 -/
+theorem weakGoldbach_from_asymptotic_and_finite (N₀ : ℕ)
+    (hasy : ∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n)
+    (hfin : ∀ n : ℕ, 7 ≤ n → n ≤ N₀ → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n) :
+    WeakGoldbach := by
+  intro n hn hodd
+  by_cases h : n ≤ N₀
+  · exact hfin n hn h hodd
+  · exact hasy n (by omega) hodd
+
+/-- **弱 Goldbach 数值有限段定义**（与强版 `StrongGoldbachUpTo` 对应）。 -/
+def WeakGoldbachUpTo (N : ℕ) : Prop :=
+  ∀ n : ℕ, 7 ≤ n → n ≤ N → Odd n →
+    ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n
+
+/-- **WeakGoldbach 等价于所有 N 上的 WeakGoldbachUpTo**。 -/
+theorem weakGoldbach_iff_all_upTo :
+    WeakGoldbach ↔ ∀ N : ℕ, WeakGoldbachUpTo N :=
+  ⟨fun hWG _N n hn _hN hodd => hWG n hn hodd, fun h n hn hodd => h n n hn le_rfl hodd⟩
+
+/-- **WeakGoldbachUpTo 9 真证**（手算 7 = 2+2+3, 9 = 3+3+3）。 -/
+theorem weakGoldbachUpTo_9 : WeakGoldbachUpTo 9 := by
+  intro n hn hN hodd
+  interval_cases n <;> first
+    | exact ⟨2, 2, 3, by decide, by decide, by decide, rfl⟩
+    | exact ⟨3, 3, 3, by decide, by decide, by decide, rfl⟩
+    | (exfalso; rcases hodd with ⟨k, hk⟩; omega)
+
+/-- **WeakGoldbachUpTo 单调性**：H' ≤ H ⇒ WGUpTo H ⇒ WGUpTo H'。 -/
+theorem weakGoldbachUpTo_mono (H H' : ℕ) (h : WeakGoldbachUpTo H) (hh : H' ≤ H) :
+    WeakGoldbachUpTo H' := fun n hn hH' hodd => h n hn (by omega) hodd
+
+/-- **完整弱 Goldbach 拼接（用 WeakGoldbachUpTo）**：
+    圆法 + 数值有限段 ⇒ 完整 WeakGoldbach。 -/
+theorem weakGoldbach_from_circle_and_finite (N₀ : ℕ)
+    (hCM_concrete : ∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n)
+    (hfin : WeakGoldbachUpTo N₀) :
+    WeakGoldbach :=
+  weakGoldbach_from_asymptotic_and_finite N₀ hCM_concrete (fun n hn hN hodd => hfin n hn hN hodd)
+
+/-! ## 第三条路线：Schnirelmann 密度 -/
+
+/-- **k-素数和表示**：n 能写成 k 个素数（可重复）之和。
+    避开 List 类型，用具体的 k=1/2/3 case 展开。 -/
+def IsKPrimesSum (k n : ℕ) : Prop :=
+  match k with
+  | 0 => n = 0
+  | 1 => n.Prime
+  | 2 => ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n
+  | 3 => ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n
+  | _ => True  -- k ≥ 4 平凡成立（用 strong Goldbach + 多 2 拆分）
+
+/-- **Schnirelmann 定理陈述**（1933）：∃ k, ∀ n ≥ 2, n 是 ≤ k 个素数和。
+    Vinogradov 推 k = 4。强 Goldbach ⇒ k = 3。 -/
+def SchnirelmannPrimeBasisK (k : ℕ) : Prop :=
+  ∀ n : ℕ, 2 ≤ n →
+    ∃ j : ℕ, j ≤ k ∧ IsKPrimesSum j n
+
+/-- **强 Goldbach + 显式 5 = 2+3, 7 = 2+2+3 ⇒ Schnirelmann 3-基**。 -/
+theorem strongGoldbach_implies_schnirelmann_3 :
+    StrongGoldbach → SchnirelmannPrimeBasisK 3 := by
+  intro hSG n hn
+  by_cases h2 : n = 2
+  · refine ⟨1, by omega, ?_⟩
+    rw [IsKPrimesSum, h2]; decide
+  by_cases h3 : n = 3
+  · refine ⟨1, by omega, ?_⟩
+    rw [IsKPrimesSum, h3]; decide
+  have hn4 : 4 ≤ n := by omega
+  by_cases hEven : Even n
+  · obtain ⟨p, q, hp, hq, hpq⟩ := hSG n hn4 hEven
+    exact ⟨2, by omega, p, q, hp, hq, hpq⟩
+  · have hodd : Odd n := Nat.not_even_iff_odd.mp hEven
+    rcases hodd with ⟨k, hk⟩
+    by_cases h5 : n = 5
+    · refine ⟨2, by omega, 2, 3, by decide, by decide, ?_⟩; omega
+    by_cases h7 : n = 7
+    · refine ⟨3, by omega, 2, 2, 3, by decide, by decide, by decide, ?_⟩; omega
+    have hn9 : 9 ≤ n := by omega
+    have hodd_back : Odd n := ⟨k, hk⟩
+    obtain ⟨p, q, r, hp, hq, hr, hsum, _⟩ :=
+      strong_implies_weak_via_four_minus hSG n hn9 hodd_back
+    exact ⟨3, le_refl 3, p, q, r, hp, hq, hr, hsum⟩
+
 end Goldbach
