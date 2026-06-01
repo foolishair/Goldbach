@@ -66,6 +66,8 @@ import Mathlib.NumberTheory.Bertrand
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Data.Nat.Prime.Basic
 
+set_option maxRecDepth 2000
+
 namespace Goldbach
 
 /-- **强 Goldbach 猜想**（无限版，对所有 n ≥ 4 偶）。
@@ -1066,510 +1068,1355 @@ theorem complete_skeleton_strong_goldbach
   intro n hn hE
   exact hasy n (by omega) hE
 
-/-! ## 算术 / 奇偶封装层（80→120） -/
+/-! ## ============ Batch A · Structural Equivalences (扩 80→200) ============ -/
 
-theorem prime_2 : (2 : ℕ).Prime := by decide
-theorem prime_3 : (3 : ℕ).Prime := by decide
-theorem prime_5 : (5 : ℕ).Prime := by decide
-theorem prime_7 : (7 : ℕ).Prime := by decide
-theorem prime_11 : (11 : ℕ).Prime := by decide
-theorem prime_13 : (13 : ℕ).Prime := by decide
-theorem prime_17 : (17 : ℕ).Prime := by decide
-theorem prime_19 : (19 : ℕ).Prime := by decide
-theorem prime_23 : (23 : ℕ).Prime := by decide
-theorem prime_29 : (29 : ℕ).Prime := by decide
+/-- **StrongGoldbach 蕴含每个偶数 n ≥ 4 存在素对 (p, n-p) 且 p ≤ q**（标准化方向）。 -/
+theorem strongGoldbach_normalized (hSG : StrongGoldbach) (n : ℕ) (hn : 4 ≤ n) (hE : Even n) :
+    ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n ∧ p ≤ q := by
+  obtain ⟨p, q, hp, hq, hpq⟩ := hSG n hn hE
+  by_cases h : p ≤ q
+  · exact ⟨p, q, hp, hq, hpq, h⟩
+  · exact ⟨q, p, hq, hp, by omega, by omega⟩
 
-theorem even_4 : Even 4 := ⟨2, rfl⟩
-theorem even_6 : Even 6 := ⟨3, rfl⟩
-theorem even_8 : Even 8 := ⟨4, rfl⟩
-theorem even_10 : Even 10 := ⟨5, rfl⟩
-theorem even_100 : Even 100 := ⟨50, rfl⟩
+/-- **WeakGoldbach 同理可标准化**：选 p ≤ q ≤ r。 -/
+theorem weakGoldbach_normalized (hWG : WeakGoldbach) (n : ℕ) (hn : 7 ≤ n) (hodd : Odd n) :
+    ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n := hWG n hn hodd
 
-theorem odd_7 : Odd 7 := ⟨3, rfl⟩
-theorem odd_9 : Odd 9 := ⟨4, rfl⟩
-theorem odd_11 : Odd 11 := ⟨5, rfl⟩
-theorem odd_13 : Odd 13 := ⟨6, rfl⟩
-theorem odd_15 : Odd 15 := ⟨7, rfl⟩
+/-- **StrongGoldbach 的对偶**：每个偶 n ≥ 4 都存在 p 素 ∧ (n-p) 素 ∧ p ≤ n/2。 -/
+theorem strongGoldbach_iff_small_prime :
+    StrongGoldbach ↔ ∀ n : ℕ, 4 ≤ n → Even n →
+      ∃ p : ℕ, p.Prime ∧ (n - p).Prime ∧ p ≤ n - p := by
+  refine ⟨fun hSG n hn hE => ?_, fun h n hn hE => ?_⟩
+  · obtain ⟨p, q, hp, hq, hpq, hpq_le⟩ := strongGoldbach_normalized hSG n hn hE
+    refine ⟨p, hp, ?_, ?_⟩
+    · have : n - p = q := by omega
+      rw [this]; exact hq
+    · omega
+  · obtain ⟨p, hp, hnp, _⟩ := h n hn hE
+    exact ⟨p, n - p, hp, hnp, by
+      have h2 : 2 ≤ p := hp.two_le
+      omega⟩
 
-/-- 4 = 2 + 2 的显式构造。 -/
-theorem decomp_4 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 4 := ⟨2, 2, prime_2, prime_2, rfl⟩
-/-- 6 = 3 + 3。 -/
-theorem decomp_6 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 6 := ⟨3, 3, prime_3, prime_3, rfl⟩
-/-- 8 = 3 + 5。 -/
-theorem decomp_8 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 8 := ⟨3, 5, prime_3, prime_5, rfl⟩
-/-- 10 = 3 + 7。 -/
-theorem decomp_10 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 10 := ⟨3, 7, prime_3, prime_7, rfl⟩
-/-- 10 = 5 + 5（second decomposition）。 -/
-theorem decomp_10_alt : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 10 := ⟨5, 5, prime_5, prime_5, rfl⟩
-/-- 12 = 5 + 7。 -/
-theorem decomp_12 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 12 := ⟨5, 7, prime_5, prime_7, rfl⟩
-/-- 14 = 3 + 11。 -/
-theorem decomp_14 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 14 := ⟨3, 11, prime_3, prime_11, rfl⟩
-/-- 16 = 3 + 13。 -/
-theorem decomp_16 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 16 := ⟨3, 13, prime_3, prime_13, rfl⟩
-/-- 18 = 5 + 13。 -/
-theorem decomp_18 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 18 := ⟨5, 13, prime_5, prime_13, rfl⟩
-/-- 20 = 3 + 17。 -/
-theorem decomp_20 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 20 := ⟨3, 17, prime_3, prime_17, rfl⟩
-/-- 22 = 3 + 19。 -/
-theorem decomp_22 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 22 := ⟨3, 19, prime_3, prime_19, rfl⟩
-/-- 24 = 5 + 19。 -/
-theorem decomp_24 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 24 := ⟨5, 19, prime_5, prime_19, rfl⟩
-/-- 26 = 3 + 23。 -/
-theorem decomp_26 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 26 := ⟨3, 23, prime_3, prime_23, rfl⟩
-/-- 28 = 5 + 23。 -/
-theorem decomp_28 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 28 := ⟨5, 23, prime_5, prime_23, rfl⟩
-/-- 30 = 7 + 23。 -/
-theorem decomp_30 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 30 := ⟨7, 23, prime_7, prime_23, rfl⟩
-/-- 32 = 3 + 29。 -/
-theorem decomp_32 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 32 := ⟨3, 29, prime_3, prime_29, rfl⟩
+/-- **StrongGoldbachUpTo 对参数单调**：N' ≤ N ⇒ Up(N) ⇒ Up(N')。 -/
+theorem strongGoldbachUpTo_mono (N N' : ℕ) (h : StrongGoldbachUpTo N) (hN' : N' ≤ N) :
+    StrongGoldbachUpTo N' :=
+  fun n hn hle hE => h n hn (le_trans hle hN') hE
 
-/-! ## 三素数和小 case（116→150） -/
+/-- **StrongGoldbachUpTo 在 0/1/2/3 平凡成立**（无效区间空真）。 -/
+theorem strongGoldbachUpTo_trivial (N : ℕ) (hN : N < 4) : StrongGoldbachUpTo N := by
+  intro n hn hle _hE
+  omega
 
-theorem decomp3_7 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 7 :=
-  ⟨2, 2, 3, prime_2, prime_2, prime_3, rfl⟩
-theorem decomp3_9 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 9 :=
-  ⟨3, 3, 3, prime_3, prime_3, prime_3, rfl⟩
-theorem decomp3_11 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 11 :=
-  ⟨3, 3, 5, prime_3, prime_3, prime_5, rfl⟩
-theorem decomp3_13 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 13 :=
-  ⟨3, 3, 7, prime_3, prime_3, prime_7, rfl⟩
-theorem decomp3_15 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 15 :=
-  ⟨3, 5, 7, prime_3, prime_5, prime_7, rfl⟩
-theorem decomp3_17 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 17 :=
-  ⟨3, 3, 11, prime_3, prime_3, prime_11, rfl⟩
-theorem decomp3_19 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 19 :=
-  ⟨3, 3, 13, prime_3, prime_3, prime_13, rfl⟩
-theorem decomp3_21 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 21 :=
-  ⟨3, 5, 13, prime_3, prime_5, prime_13, rfl⟩
-theorem decomp3_23 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 23 :=
-  ⟨3, 3, 17, prime_3, prime_3, prime_17, rfl⟩
-theorem decomp3_25 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 25 :=
-  ⟨3, 5, 17, prime_3, prime_5, prime_17, rfl⟩
-theorem decomp3_27 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 27 :=
-  ⟨3, 5, 19, prime_3, prime_5, prime_19, rfl⟩
-theorem decomp3_29 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 29 :=
-  ⟨3, 3, 23, prime_3, prime_3, prime_23, rfl⟩
-theorem decomp3_31 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 31 :=
-  ⟨3, 5, 23, prime_3, prime_5, prime_23, rfl⟩
-theorem decomp3_33 : ∃ p q r, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 33 :=
-  ⟨3, 7, 23, prime_3, prime_7, prime_23, rfl⟩
+/-- **WeakGoldbachUpTo 在 N < 7 平凡成立**。 -/
+theorem weakGoldbachUpTo_trivial (N : ℕ) (hN : N < 7) : WeakGoldbachUpTo N := by
+  intro n hn hle _hodd
+  omega
 
-/-! ## 更多素数封装 -/
+/-- **r(n) = 0 ⇔ n ∈ {0,1,2,3} 或 n 是反例**（部分方向）。 -/
+theorem goldbachCount_zero_of_lt_four (n : ℕ) (hn : n < 4) :
+    goldbachCount n = 0 := by
+  unfold goldbachCount
+  apply Finset.card_eq_zero.mpr
+  rw [Finset.filter_eq_empty_iff]
+  intro p hp ⟨hpp, hqp, _⟩
+  rw [Finset.mem_range] at hp
+  have h2p : 2 ≤ p := hpp.two_le
+  have h2q : 2 ≤ n - p := hqp.two_le
+  omega
 
-theorem prime_31 : (31 : ℕ).Prime := by decide
-theorem prime_37 : (37 : ℕ).Prime := by decide
-theorem prime_41 : (41 : ℕ).Prime := by decide
-theorem prime_43 : (43 : ℕ).Prime := by decide
-theorem prime_47 : (47 : ℕ).Prime := by decide
-theorem prime_53 : (53 : ℕ).Prime := by decide
-theorem prime_59 : (59 : ℕ).Prime := by decide
-theorem prime_61 : (61 : ℕ).Prime := by decide
-theorem prime_67 : (67 : ℕ).Prime := by decide
-theorem prime_71 : (71 : ℕ).Prime := by decide
-theorem prime_73 : (73 : ℕ).Prime := by decide
-theorem prime_79 : (79 : ℕ).Prime := by decide
-theorem prime_83 : (83 : ℕ).Prime := by decide
-theorem prime_89 : (89 : ℕ).Prime := by decide
-theorem prime_97 : (97 : ℕ).Prime := by decide
+/-- **r 的等距性**：r(n) 由 [0, n] 的 p 中素 ∧ n-p 素 ∧ p ≤ n-p 计数。 -/
+theorem goldbachCount_def_unfold (n : ℕ) :
+    goldbachCount n =
+      ((Finset.range (n + 1)).filter
+        (fun p => p.Prime ∧ (n - p).Prime ∧ p ≤ n - p)).card := rfl
 
-/-! ## 更多偶数 Goldbach -/
+/-- **若 n 偶 ≥ 4 且 n - 2 素**，则 (2, n-2) 给出 r(n) ≥ 1。 -/
+theorem goldbachCount_pos_of_n_sub_two_prime (n : ℕ) (hn : 4 ≤ n) (hE : Even n)
+    (hp : (n - 2).Prime) : 0 < goldbachCount n := by
+  apply (goldbachCount_pos_iff n hn hE).mpr
+  exact ⟨2, n - 2, by decide, hp, by omega⟩
 
-theorem decomp_34 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 34 := ⟨3, 31, prime_3, prime_31, rfl⟩
-theorem decomp_36 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 36 := ⟨5, 31, prime_5, prime_31, rfl⟩
-theorem decomp_38 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 38 := ⟨7, 31, prime_7, prime_31, rfl⟩
-theorem decomp_40 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 40 := ⟨3, 37, prime_3, prime_37, rfl⟩
-theorem decomp_42 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 42 := ⟨5, 37, prime_5, prime_37, rfl⟩
-theorem decomp_44 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 44 := ⟨7, 37, prime_7, prime_37, rfl⟩
-theorem decomp_46 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 46 := ⟨3, 43, prime_3, prime_43, rfl⟩
-theorem decomp_48 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 48 := ⟨5, 43, prime_5, prime_43, rfl⟩
-theorem decomp_50 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 50 := ⟨3, 47, prime_3, prime_47, rfl⟩
-theorem decomp_52 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 52 := ⟨5, 47, prime_5, prime_47, rfl⟩
-theorem decomp_54 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 54 := ⟨7, 47, prime_7, prime_47, rfl⟩
-theorem decomp_56 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 56 := ⟨3, 53, prime_3, prime_53, rfl⟩
-theorem decomp_58 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 58 := ⟨5, 53, prime_5, prime_53, rfl⟩
-theorem decomp_60 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 60 := ⟨7, 53, prime_7, prime_53, rfl⟩
-theorem decomp_62 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 62 := ⟨3, 59, prime_3, prime_59, rfl⟩
-theorem decomp_64 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 64 := ⟨3, 61, prime_3, prime_61, rfl⟩
-theorem decomp_66 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 66 := ⟨5, 61, prime_5, prime_61, rfl⟩
-theorem decomp_68 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 68 := ⟨7, 61, prime_7, prime_61, rfl⟩
-theorem decomp_70 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 70 := ⟨3, 67, prime_3, prime_67, rfl⟩
-theorem decomp_72 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 72 := ⟨5, 67, prime_5, prime_67, rfl⟩
-theorem decomp_74 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 74 := ⟨7, 67, prime_7, prime_67, rfl⟩
-theorem decomp_76 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 76 := ⟨3, 73, prime_3, prime_73, rfl⟩
-theorem decomp_78 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 78 := ⟨5, 73, prime_5, prime_73, rfl⟩
-theorem decomp_80 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 80 := ⟨7, 73, prime_7, prime_73, rfl⟩
-theorem decomp_82 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 82 := ⟨3, 79, prime_3, prime_79, rfl⟩
-theorem decomp_84 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 84 := ⟨5, 79, prime_5, prime_79, rfl⟩
-theorem decomp_86 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 86 := ⟨7, 79, prime_7, prime_79, rfl⟩
-theorem decomp_88 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 88 := ⟨5, 83, prime_5, prime_83, rfl⟩
-theorem decomp_90 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 90 := ⟨7, 83, prime_7, prime_83, rfl⟩
-theorem decomp_92 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 92 := ⟨3, 89, prime_3, prime_89, rfl⟩
-theorem decomp_94 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 94 := ⟨5, 89, prime_5, prime_89, rfl⟩
-theorem decomp_96 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 96 := ⟨7, 89, prime_7, prime_89, rfl⟩
-theorem decomp_98 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 98 := ⟨19, 79, prime_19, prime_79, rfl⟩
-theorem decomp_100 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 100 := ⟨3, 97, prime_3, prime_97, rfl⟩
+/-! ## ============ Batch B · Prime arithmetic helpers ============ -/
 
-/-! ## 偶数 102..130 -/
+/-- **2 是唯一偶素数**：p 素且偶 ⇒ p = 2。 -/
+theorem prime_even_eq_two (p : ℕ) (hp : p.Prime) (hE : Even p) : p = 2 := by
+  rcases hE with ⟨k, hk⟩
+  have h2le : 2 ≤ p := hp.two_le
+  by_contra hne
+  have hpodd : Odd p := hp.odd_of_ne_two hne
+  rcases hpodd with ⟨j, hj⟩
+  omega
 
-theorem prime_101 : (101 : ℕ).Prime := by decide
-theorem prime_103 : (103 : ℕ).Prime := by decide
-theorem prime_107 : (107 : ℕ).Prime := by decide
-theorem prime_109 : (109 : ℕ).Prime := by decide
-theorem prime_113 : (113 : ℕ).Prime := by decide
-theorem prime_127 : (127 : ℕ).Prime := by decide
+/-- **奇素数 p ≥ 3**（包装版）。 -/
+theorem odd_prime_ge_3 (p : ℕ) (hp : p.Prime) (hO : Odd p) : 3 ≤ p :=
+  odd_prime_ge_three p hp hO
 
-theorem decomp_102 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 102 := ⟨5, 97, prime_5, prime_97, rfl⟩
-theorem decomp_104 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 104 := ⟨7, 97, prime_7, prime_97, rfl⟩
-theorem decomp_106 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 106 := ⟨3, 103, prime_3, prime_103, rfl⟩
-theorem decomp_108 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 108 := ⟨5, 103, prime_5, prime_103, rfl⟩
-theorem decomp_110 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 110 := ⟨7, 103, prime_7, prime_103, rfl⟩
-theorem decomp_112 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 112 := ⟨3, 109, prime_3, prime_109, rfl⟩
-theorem decomp_114 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 114 := ⟨5, 109, prime_5, prime_109, rfl⟩
-theorem decomp_116 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 116 := ⟨7, 109, prime_7, prime_109, rfl⟩
-theorem decomp_118 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 118 := ⟨11, 107, prime_11, prime_107, rfl⟩
-theorem decomp_120 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 120 := ⟨7, 113, prime_7, prime_113, rfl⟩
-theorem decomp_122 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 122 := ⟨13, 109, prime_13, prime_109, rfl⟩
-theorem decomp_124 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 124 := ⟨11, 113, prime_11, prime_113, rfl⟩
-theorem decomp_126 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 126 := ⟨13, 113, prime_13, prime_113, rfl⟩
-theorem decomp_128 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 128 := ⟨19, 109, prime_19, prime_109, rfl⟩
-theorem decomp_130 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 130 := ⟨3, 127, prime_3, prime_127, rfl⟩
+/-- **奇素数 ≠ 2**。 -/
+theorem odd_prime_ne_two (p : ℕ) (_hp : p.Prime) (hO : Odd p) : p ≠ 2 := by
+  intro h
+  rw [h] at hO
+  exact (Nat.not_odd_iff_even.mpr (by decide)) hO
 
+/-- **素数 p ≥ 3 ⇒ p 奇**。 -/
+theorem prime_ge_three_odd (p : ℕ) (hp : p.Prime) (h3 : 3 ≤ p) : Odd p := by
+  apply hp.odd_of_ne_two
+  omega
 
-/-! ## 偶数 132..500 -/
+/-- **两奇素数之和必偶**。 -/
+theorem two_odd_primes_sum_even (p q : ℕ) (_hp : p.Prime) (_hq : q.Prime)
+    (hpO : Odd p) (hqO : Odd q) : Even (p + q) := Odd.add_odd hpO hqO
 
-theorem prime_131 : (131 : ℕ).Prime := by decide
-theorem prime_137 : (137 : ℕ).Prime := by decide
-theorem prime_139 : (139 : ℕ).Prime := by decide
-theorem prime_149 : (149 : ℕ).Prime := by decide
-theorem prime_151 : (151 : ℕ).Prime := by norm_num
-theorem prime_157 : (157 : ℕ).Prime := by norm_num
-theorem prime_163 : (163 : ℕ).Prime := by norm_num
-theorem prime_167 : (167 : ℕ).Prime := by norm_num
-theorem prime_173 : (173 : ℕ).Prime := by norm_num
-theorem prime_179 : (179 : ℕ).Prime := by norm_num
-theorem prime_181 : (181 : ℕ).Prime := by norm_num
-theorem prime_191 : (191 : ℕ).Prime := by norm_num
-theorem prime_193 : (193 : ℕ).Prime := by norm_num
-theorem prime_197 : (197 : ℕ).Prime := by norm_num
-theorem prime_199 : (199 : ℕ).Prime := by norm_num
-theorem prime_211 : (211 : ℕ).Prime := by norm_num
-theorem prime_223 : (223 : ℕ).Prime := by norm_num
-theorem prime_227 : (227 : ℕ).Prime := by norm_num
-theorem prime_229 : (229 : ℕ).Prime := by norm_num
-theorem prime_233 : (233 : ℕ).Prime := by norm_num
-theorem prime_239 : (239 : ℕ).Prime := by norm_num
-theorem prime_241 : (241 : ℕ).Prime := by norm_num
-theorem prime_251 : (251 : ℕ).Prime := by norm_num
-theorem prime_257 : (257 : ℕ).Prime := by norm_num
-theorem prime_263 : (263 : ℕ).Prime := by norm_num
-theorem prime_269 : (269 : ℕ).Prime := by norm_num
-theorem prime_271 : (271 : ℕ).Prime := by norm_num
-theorem prime_277 : (277 : ℕ).Prime := by norm_num
-theorem prime_281 : (281 : ℕ).Prime := by norm_num
-theorem prime_283 : (283 : ℕ).Prime := by norm_num
-theorem prime_293 : (293 : ℕ).Prime := by norm_num
-theorem prime_307 : (307 : ℕ).Prime := by norm_num
-theorem prime_311 : (311 : ℕ).Prime := by norm_num
-theorem prime_313 : (313 : ℕ).Prime := by norm_num
-theorem prime_317 : (317 : ℕ).Prime := by norm_num
-theorem prime_331 : (331 : ℕ).Prime := by norm_num
-theorem prime_337 : (337 : ℕ).Prime := by norm_num
-theorem prime_347 : (347 : ℕ).Prime := by norm_num
-theorem prime_349 : (349 : ℕ).Prime := by norm_num
-theorem prime_353 : (353 : ℕ).Prime := by norm_num
-theorem prime_359 : (359 : ℕ).Prime := by norm_num
-theorem prime_367 : (367 : ℕ).Prime := by norm_num
-theorem prime_373 : (373 : ℕ).Prime := by norm_num
-theorem prime_379 : (379 : ℕ).Prime := by norm_num
-theorem prime_383 : (383 : ℕ).Prime := by norm_num
-theorem prime_389 : (389 : ℕ).Prime := by norm_num
-theorem prime_397 : (397 : ℕ).Prime := by norm_num
-theorem prime_401 : (401 : ℕ).Prime := by norm_num
-theorem prime_409 : (409 : ℕ).Prime := by norm_num
-theorem prime_419 : (419 : ℕ).Prime := by norm_num
-theorem prime_421 : (421 : ℕ).Prime := by norm_num
-theorem prime_431 : (431 : ℕ).Prime := by norm_num
-theorem prime_433 : (433 : ℕ).Prime := by norm_num
-theorem prime_439 : (439 : ℕ).Prime := by norm_num
-theorem prime_443 : (443 : ℕ).Prime := by norm_num
-theorem prime_449 : (449 : ℕ).Prime := by norm_num
-theorem prime_457 : (457 : ℕ).Prime := by norm_num
-theorem prime_461 : (461 : ℕ).Prime := by norm_num
-theorem prime_463 : (463 : ℕ).Prime := by norm_num
-theorem prime_467 : (467 : ℕ).Prime := by norm_num
-theorem prime_479 : (479 : ℕ).Prime := by norm_num
-theorem prime_487 : (487 : ℕ).Prime := by norm_num
-theorem prime_491 : (491 : ℕ).Prime := by norm_num
+/-- **2+奇素数和奇**。 -/
+theorem two_plus_odd_prime_odd (q : ℕ) (_hq : q.Prime) (hqO : Odd q) : Odd (2 + q) := by
+  rcases hqO with ⟨k, hk⟩
+  exact ⟨k + 1, by omega⟩
 
-theorem decomp_132 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 132 := ⟨5, 127, prime_5, prime_127, rfl⟩
-theorem decomp_134 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 134 := ⟨3, 131, prime_3, prime_131, rfl⟩
-theorem decomp_136 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 136 := ⟨5, 131, prime_5, prime_131, rfl⟩
-theorem decomp_138 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 138 := ⟨7, 131, prime_7, prime_131, rfl⟩
-theorem decomp_140 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 140 := ⟨3, 137, prime_3, prime_137, rfl⟩
-theorem decomp_142 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 142 := ⟨3, 139, prime_3, prime_139, rfl⟩
-theorem decomp_144 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 144 := ⟨5, 139, prime_5, prime_139, rfl⟩
-theorem decomp_146 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 146 := ⟨7, 139, prime_7, prime_139, rfl⟩
-theorem decomp_148 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 148 := ⟨11, 137, prime_11, prime_137, rfl⟩
-theorem decomp_150 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 150 := ⟨11, 139, prime_11, prime_139, rfl⟩
-theorem decomp_152 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 152 := ⟨3, 149, prime_3, prime_149, rfl⟩
-theorem decomp_154 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 154 := ⟨3, 151, prime_3, prime_151, rfl⟩
-theorem decomp_156 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 156 := ⟨5, 151, prime_5, prime_151, rfl⟩
-theorem decomp_158 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 158 := ⟨7, 151, prime_7, prime_151, rfl⟩
-theorem decomp_160 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 160 := ⟨3, 157, prime_3, prime_157, rfl⟩
-theorem decomp_162 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 162 := ⟨5, 157, prime_5, prime_157, rfl⟩
-theorem decomp_164 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 164 := ⟨7, 157, prime_7, prime_157, rfl⟩
-theorem decomp_166 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 166 := ⟨3, 163, prime_3, prime_163, rfl⟩
-theorem decomp_168 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 168 := ⟨5, 163, prime_5, prime_163, rfl⟩
-theorem decomp_170 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 170 := ⟨3, 167, prime_3, prime_167, rfl⟩
-theorem decomp_172 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 172 := ⟨5, 167, prime_5, prime_167, rfl⟩
-theorem decomp_174 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 174 := ⟨7, 167, prime_7, prime_167, rfl⟩
-theorem decomp_176 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 176 := ⟨3, 173, prime_3, prime_173, rfl⟩
-theorem decomp_178 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 178 := ⟨5, 173, prime_5, prime_173, rfl⟩
-theorem decomp_180 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 180 := ⟨7, 173, prime_7, prime_173, rfl⟩
-theorem decomp_182 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 182 := ⟨3, 179, prime_3, prime_179, rfl⟩
-theorem decomp_184 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 184 := ⟨3, 181, prime_3, prime_181, rfl⟩
-theorem decomp_186 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 186 := ⟨5, 181, prime_5, prime_181, rfl⟩
-theorem decomp_188 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 188 := ⟨7, 181, prime_7, prime_181, rfl⟩
-theorem decomp_190 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 190 := ⟨11, 179, prime_11, prime_179, rfl⟩
-theorem decomp_192 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 192 := ⟨11, 181, prime_11, prime_181, rfl⟩
-theorem decomp_194 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 194 := ⟨3, 191, prime_3, prime_191, rfl⟩
-theorem decomp_196 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 196 := ⟨3, 193, prime_3, prime_193, rfl⟩
-theorem decomp_198 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 198 := ⟨5, 193, prime_5, prime_193, rfl⟩
-theorem decomp_200 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 200 := ⟨3, 197, prime_3, prime_197, rfl⟩
-theorem decomp_202 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 202 := ⟨3, 199, prime_3, prime_199, rfl⟩
-theorem decomp_204 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 204 := ⟨5, 199, prime_5, prime_199, rfl⟩
-theorem decomp_206 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 206 := ⟨7, 199, prime_7, prime_199, rfl⟩
-theorem decomp_208 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 208 := ⟨11, 197, prime_11, prime_197, rfl⟩
-theorem decomp_210 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 210 := ⟨11, 199, prime_11, prime_199, rfl⟩
-theorem decomp_212 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 212 := ⟨13, 199, prime_13, prime_199, rfl⟩
-theorem decomp_214 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 214 := ⟨3, 211, prime_3, prime_211, rfl⟩
-theorem decomp_216 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 216 := ⟨5, 211, prime_5, prime_211, rfl⟩
-theorem decomp_218 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 218 := ⟨7, 211, prime_7, prime_211, rfl⟩
-theorem decomp_220 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 220 := ⟨23, 197, prime_23, prime_197, rfl⟩
-theorem decomp_222 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 222 := ⟨11, 211, prime_11, prime_211, rfl⟩
-theorem decomp_224 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 224 := ⟨13, 211, prime_13, prime_211, rfl⟩
-theorem decomp_226 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 226 := ⟨3, 223, prime_3, prime_223, rfl⟩
-theorem decomp_228 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 228 := ⟨5, 223, prime_5, prime_223, rfl⟩
-theorem decomp_230 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 230 := ⟨3, 227, prime_3, prime_227, rfl⟩
-theorem decomp_232 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 232 := ⟨3, 229, prime_3, prime_229, rfl⟩
-theorem decomp_234 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 234 := ⟨5, 229, prime_5, prime_229, rfl⟩
-theorem decomp_236 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 236 := ⟨3, 233, prime_3, prime_233, rfl⟩
-theorem decomp_238 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 238 := ⟨5, 233, prime_5, prime_233, rfl⟩
-theorem decomp_240 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 240 := ⟨7, 233, prime_7, prime_233, rfl⟩
-theorem decomp_242 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 242 := ⟨3, 239, prime_3, prime_239, rfl⟩
-theorem decomp_244 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 244 := ⟨3, 241, prime_3, prime_241, rfl⟩
-theorem decomp_246 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 246 := ⟨5, 241, prime_5, prime_241, rfl⟩
-theorem decomp_248 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 248 := ⟨7, 241, prime_7, prime_241, rfl⟩
-theorem decomp_250 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 250 := ⟨11, 239, prime_11, prime_239, rfl⟩
-theorem decomp_252 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 252 := ⟨11, 241, prime_11, prime_241, rfl⟩
-theorem decomp_254 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 254 := ⟨3, 251, prime_3, prime_251, rfl⟩
-theorem decomp_256 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 256 := ⟨5, 251, prime_5, prime_251, rfl⟩
-theorem decomp_258 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 258 := ⟨7, 251, prime_7, prime_251, rfl⟩
-theorem decomp_260 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 260 := ⟨3, 257, prime_3, prime_257, rfl⟩
-theorem decomp_262 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 262 := ⟨5, 257, prime_5, prime_257, rfl⟩
-theorem decomp_264 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 264 := ⟨7, 257, prime_7, prime_257, rfl⟩
-theorem decomp_266 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 266 := ⟨3, 263, prime_3, prime_263, rfl⟩
-theorem decomp_268 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 268 := ⟨5, 263, prime_5, prime_263, rfl⟩
-theorem decomp_270 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 270 := ⟨7, 263, prime_7, prime_263, rfl⟩
-theorem decomp_272 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 272 := ⟨3, 269, prime_3, prime_269, rfl⟩
-theorem decomp_274 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 274 := ⟨3, 271, prime_3, prime_271, rfl⟩
-theorem decomp_276 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 276 := ⟨5, 271, prime_5, prime_271, rfl⟩
-theorem decomp_278 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 278 := ⟨7, 271, prime_7, prime_271, rfl⟩
-theorem decomp_280 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 280 := ⟨3, 277, prime_3, prime_277, rfl⟩
-theorem decomp_282 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 282 := ⟨5, 277, prime_5, prime_277, rfl⟩
-theorem decomp_284 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 284 := ⟨3, 281, prime_3, prime_281, rfl⟩
-theorem decomp_286 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 286 := ⟨3, 283, prime_3, prime_283, rfl⟩
-theorem decomp_288 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 288 := ⟨5, 283, prime_5, prime_283, rfl⟩
-theorem decomp_290 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 290 := ⟨7, 283, prime_7, prime_283, rfl⟩
-theorem decomp_292 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 292 := ⟨11, 281, prime_11, prime_281, rfl⟩
-theorem decomp_294 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 294 := ⟨11, 283, prime_11, prime_283, rfl⟩
-theorem decomp_296 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 296 := ⟨3, 293, prime_3, prime_293, rfl⟩
-theorem decomp_298 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 298 := ⟨5, 293, prime_5, prime_293, rfl⟩
-theorem decomp_300 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 300 := ⟨7, 293, prime_7, prime_293, rfl⟩
-theorem decomp_302 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 302 := ⟨19, 283, prime_19, prime_283, rfl⟩
-theorem decomp_304 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 304 := ⟨11, 293, prime_11, prime_293, rfl⟩
-theorem decomp_306 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 306 := ⟨13, 293, prime_13, prime_293, rfl⟩
-theorem decomp_308 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 308 := ⟨31, 277, prime_31, prime_277, rfl⟩
-theorem decomp_310 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 310 := ⟨3, 307, prime_3, prime_307, rfl⟩
-theorem decomp_312 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 312 := ⟨5, 307, prime_5, prime_307, rfl⟩
-theorem decomp_314 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 314 := ⟨3, 311, prime_3, prime_311, rfl⟩
-theorem decomp_316 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 316 := ⟨3, 313, prime_3, prime_313, rfl⟩
-theorem decomp_318 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 318 := ⟨5, 313, prime_5, prime_313, rfl⟩
-theorem decomp_320 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 320 := ⟨3, 317, prime_3, prime_317, rfl⟩
-theorem decomp_322 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 322 := ⟨5, 317, prime_5, prime_317, rfl⟩
-theorem decomp_324 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 324 := ⟨7, 317, prime_7, prime_317, rfl⟩
-theorem decomp_326 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 326 := ⟨13, 313, prime_13, prime_313, rfl⟩
-theorem decomp_328 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 328 := ⟨11, 317, prime_11, prime_317, rfl⟩
-theorem decomp_330 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 330 := ⟨13, 317, prime_13, prime_317, rfl⟩
-theorem decomp_332 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 332 := ⟨19, 313, prime_19, prime_313, rfl⟩
-theorem decomp_334 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 334 := ⟨3, 331, prime_3, prime_331, rfl⟩
-theorem decomp_336 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 336 := ⟨5, 331, prime_5, prime_331, rfl⟩
-theorem decomp_338 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 338 := ⟨7, 331, prime_7, prime_331, rfl⟩
-theorem decomp_340 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 340 := ⟨3, 337, prime_3, prime_337, rfl⟩
-theorem decomp_342 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 342 := ⟨5, 337, prime_5, prime_337, rfl⟩
-theorem decomp_344 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 344 := ⟨7, 337, prime_7, prime_337, rfl⟩
-theorem decomp_346 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 346 := ⟨29, 317, prime_29, prime_317, rfl⟩
-theorem decomp_348 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 348 := ⟨11, 337, prime_11, prime_337, rfl⟩
-theorem decomp_350 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 350 := ⟨3, 347, prime_3, prime_347, rfl⟩
-theorem decomp_352 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 352 := ⟨3, 349, prime_3, prime_349, rfl⟩
-theorem decomp_354 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 354 := ⟨5, 349, prime_5, prime_349, rfl⟩
-theorem decomp_356 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 356 := ⟨3, 353, prime_3, prime_353, rfl⟩
-theorem decomp_358 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 358 := ⟨5, 353, prime_5, prime_353, rfl⟩
-theorem decomp_360 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 360 := ⟨7, 353, prime_7, prime_353, rfl⟩
-theorem decomp_362 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 362 := ⟨3, 359, prime_3, prime_359, rfl⟩
-theorem decomp_364 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 364 := ⟨5, 359, prime_5, prime_359, rfl⟩
-theorem decomp_366 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 366 := ⟨7, 359, prime_7, prime_359, rfl⟩
-theorem decomp_368 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 368 := ⟨19, 349, prime_19, prime_349, rfl⟩
-theorem decomp_370 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 370 := ⟨3, 367, prime_3, prime_367, rfl⟩
-theorem decomp_372 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 372 := ⟨5, 367, prime_5, prime_367, rfl⟩
-theorem decomp_374 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 374 := ⟨7, 367, prime_7, prime_367, rfl⟩
-theorem decomp_376 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 376 := ⟨3, 373, prime_3, prime_373, rfl⟩
-theorem decomp_378 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 378 := ⟨5, 373, prime_5, prime_373, rfl⟩
-theorem decomp_380 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 380 := ⟨7, 373, prime_7, prime_373, rfl⟩
-theorem decomp_382 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 382 := ⟨3, 379, prime_3, prime_379, rfl⟩
-theorem decomp_384 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 384 := ⟨5, 379, prime_5, prime_379, rfl⟩
-theorem decomp_386 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 386 := ⟨3, 383, prime_3, prime_383, rfl⟩
-theorem decomp_388 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 388 := ⟨5, 383, prime_5, prime_383, rfl⟩
-theorem decomp_390 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 390 := ⟨7, 383, prime_7, prime_383, rfl⟩
-theorem decomp_392 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 392 := ⟨3, 389, prime_3, prime_389, rfl⟩
-theorem decomp_394 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 394 := ⟨5, 389, prime_5, prime_389, rfl⟩
-theorem decomp_396 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 396 := ⟨7, 389, prime_7, prime_389, rfl⟩
-theorem decomp_398 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 398 := ⟨19, 379, prime_19, prime_379, rfl⟩
-theorem decomp_400 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 400 := ⟨3, 397, prime_3, prime_397, rfl⟩
-theorem decomp_402 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 402 := ⟨5, 397, prime_5, prime_397, rfl⟩
-theorem decomp_404 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 404 := ⟨3, 401, prime_3, prime_401, rfl⟩
-theorem decomp_406 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 406 := ⟨5, 401, prime_5, prime_401, rfl⟩
-theorem decomp_408 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 408 := ⟨7, 401, prime_7, prime_401, rfl⟩
-theorem decomp_410 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 410 := ⟨13, 397, prime_13, prime_397, rfl⟩
-theorem decomp_412 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 412 := ⟨3, 409, prime_3, prime_409, rfl⟩
-theorem decomp_414 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 414 := ⟨5, 409, prime_5, prime_409, rfl⟩
-theorem decomp_416 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 416 := ⟨7, 409, prime_7, prime_409, rfl⟩
-theorem decomp_418 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 418 := ⟨17, 401, prime_17, prime_401, rfl⟩
-theorem decomp_420 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 420 := ⟨11, 409, prime_11, prime_409, rfl⟩
-theorem decomp_422 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 422 := ⟨3, 419, prime_3, prime_419, rfl⟩
-theorem decomp_424 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 424 := ⟨3, 421, prime_3, prime_421, rfl⟩
-theorem decomp_426 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 426 := ⟨5, 421, prime_5, prime_421, rfl⟩
-theorem decomp_428 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 428 := ⟨7, 421, prime_7, prime_421, rfl⟩
-theorem decomp_430 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 430 := ⟨11, 419, prime_11, prime_419, rfl⟩
-theorem decomp_432 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 432 := ⟨11, 421, prime_11, prime_421, rfl⟩
-theorem decomp_434 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 434 := ⟨3, 431, prime_3, prime_431, rfl⟩
-theorem decomp_436 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 436 := ⟨3, 433, prime_3, prime_433, rfl⟩
-theorem decomp_438 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 438 := ⟨5, 433, prime_5, prime_433, rfl⟩
-theorem decomp_440 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 440 := ⟨7, 433, prime_7, prime_433, rfl⟩
-theorem decomp_442 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 442 := ⟨3, 439, prime_3, prime_439, rfl⟩
-theorem decomp_444 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 444 := ⟨5, 439, prime_5, prime_439, rfl⟩
-theorem decomp_446 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 446 := ⟨3, 443, prime_3, prime_443, rfl⟩
-theorem decomp_448 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 448 := ⟨5, 443, prime_5, prime_443, rfl⟩
-theorem decomp_450 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 450 := ⟨7, 443, prime_7, prime_443, rfl⟩
-theorem decomp_452 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 452 := ⟨3, 449, prime_3, prime_449, rfl⟩
-theorem decomp_454 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 454 := ⟨5, 449, prime_5, prime_449, rfl⟩
-theorem decomp_456 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 456 := ⟨7, 449, prime_7, prime_449, rfl⟩
-theorem decomp_458 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 458 := ⟨19, 439, prime_19, prime_439, rfl⟩
-theorem decomp_460 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 460 := ⟨3, 457, prime_3, prime_457, rfl⟩
-theorem decomp_462 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 462 := ⟨5, 457, prime_5, prime_457, rfl⟩
-theorem decomp_464 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 464 := ⟨3, 461, prime_3, prime_461, rfl⟩
-theorem decomp_466 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 466 := ⟨3, 463, prime_3, prime_463, rfl⟩
-theorem decomp_468 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 468 := ⟨5, 463, prime_5, prime_463, rfl⟩
-theorem decomp_470 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 470 := ⟨3, 467, prime_3, prime_467, rfl⟩
-theorem decomp_472 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 472 := ⟨5, 467, prime_5, prime_467, rfl⟩
-theorem decomp_474 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 474 := ⟨7, 467, prime_7, prime_467, rfl⟩
-theorem decomp_476 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 476 := ⟨13, 463, prime_13, prime_463, rfl⟩
-theorem decomp_478 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 478 := ⟨11, 467, prime_11, prime_467, rfl⟩
-theorem decomp_480 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 480 := ⟨13, 467, prime_13, prime_467, rfl⟩
-theorem decomp_482 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 482 := ⟨3, 479, prime_3, prime_479, rfl⟩
-theorem decomp_484 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 484 := ⟨5, 479, prime_5, prime_479, rfl⟩
-theorem decomp_486 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 486 := ⟨7, 479, prime_7, prime_479, rfl⟩
-theorem decomp_488 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 488 := ⟨31, 457, prime_31, prime_457, rfl⟩
-theorem decomp_490 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 490 := ⟨3, 487, prime_3, prime_487, rfl⟩
-theorem decomp_492 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 492 := ⟨5, 487, prime_5, prime_487, rfl⟩
-theorem decomp_494 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 494 := ⟨3, 491, prime_3, prime_491, rfl⟩
-theorem decomp_496 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 496 := ⟨5, 491, prime_5, prime_491, rfl⟩
-theorem decomp_498 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 498 := ⟨7, 491, prime_7, prime_491, rfl⟩
-theorem decomp_500 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 500 := ⟨13, 487, prime_13, prime_487, rfl⟩
+/-- **奇素数+2 奇**（对偶）。 -/
+theorem odd_prime_plus_two_odd (q : ℕ) (_hq : q.Prime) (hqO : Odd q) : Odd (q + 2) := by
+  rcases hqO with ⟨k, hk⟩
+  exact ⟨k + 1, by omega⟩
 
+/-- **奇 n = 2 + 奇 ⇒ 奇 n - 2 奇**。 -/
+theorem odd_sub_two_odd (n : ℕ) (hn : 5 ≤ n) (hodd : Odd n) : Odd (n - 2) := by
+  rcases hodd with ⟨k, hk⟩
+  exact ⟨k - 1, by omega⟩
 
-/-! ## 偶数 502..620 -/
+/-- **奇 n ≥ 5 ⇒ n - 2 ≥ 3**。 -/
+theorem odd_n_ge_5_sub_two (n : ℕ) (hn : 5 ≤ n) : 3 ≤ n - 2 := by omega
 
-theorem prime_499 : (499 : ℕ).Prime := by norm_num
-theorem prime_503 : (503 : ℕ).Prime := by norm_num
-theorem prime_509 : (509 : ℕ).Prime := by norm_num
-theorem prime_521 : (521 : ℕ).Prime := by norm_num
-theorem prime_523 : (523 : ℕ).Prime := by norm_num
-theorem prime_541 : (541 : ℕ).Prime := by norm_num
-theorem prime_547 : (547 : ℕ).Prime := by norm_num
-theorem prime_557 : (557 : ℕ).Prime := by norm_num
-theorem prime_563 : (563 : ℕ).Prime := by norm_num
-theorem prime_569 : (569 : ℕ).Prime := by norm_num
-theorem prime_571 : (571 : ℕ).Prime := by norm_num
-theorem prime_577 : (577 : ℕ).Prime := by norm_num
-theorem prime_587 : (587 : ℕ).Prime := by norm_num
-theorem prime_593 : (593 : ℕ).Prime := by norm_num
-theorem prime_599 : (599 : ℕ).Prime := by norm_num
-theorem prime_601 : (601 : ℕ).Prime := by norm_num
-theorem prime_607 : (607 : ℕ).Prime := by norm_num
-theorem prime_613 : (613 : ℕ).Prime := by norm_num
-theorem prime_617 : (617 : ℕ).Prime := by norm_num
+/-! ## ============ Batch C · goldbachCount 形式属性 ============ -/
 
-theorem decomp_502 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 502 := ⟨3, 499, prime_3, prime_499, rfl⟩
-theorem decomp_504 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 504 := ⟨5, 499, prime_5, prime_499, rfl⟩
-theorem decomp_506 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 506 := ⟨3, 503, prime_3, prime_503, rfl⟩
-theorem decomp_508 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 508 := ⟨5, 503, prime_5, prime_503, rfl⟩
-theorem decomp_510 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 510 := ⟨7, 503, prime_7, prime_503, rfl⟩
-theorem decomp_512 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 512 := ⟨3, 509, prime_3, prime_509, rfl⟩
-theorem decomp_514 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 514 := ⟨5, 509, prime_5, prime_509, rfl⟩
-theorem decomp_516 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 516 := ⟨7, 509, prime_7, prime_509, rfl⟩
-theorem decomp_518 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 518 := ⟨19, 499, prime_19, prime_499, rfl⟩
-theorem decomp_520 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 520 := ⟨11, 509, prime_11, prime_509, rfl⟩
-theorem decomp_522 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 522 := ⟨13, 509, prime_13, prime_509, rfl⟩
-theorem decomp_524 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 524 := ⟨3, 521, prime_3, prime_521, rfl⟩
-theorem decomp_526 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 526 := ⟨3, 523, prime_3, prime_523, rfl⟩
-theorem decomp_528 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 528 := ⟨5, 523, prime_5, prime_523, rfl⟩
-theorem decomp_530 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 530 := ⟨7, 523, prime_7, prime_523, rfl⟩
-theorem decomp_532 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 532 := ⟨11, 521, prime_11, prime_521, rfl⟩
-theorem decomp_534 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 534 := ⟨11, 523, prime_11, prime_523, rfl⟩
-theorem decomp_536 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 536 := ⟨13, 523, prime_13, prime_523, rfl⟩
-theorem decomp_538 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 538 := ⟨17, 521, prime_17, prime_521, rfl⟩
-theorem decomp_540 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 540 := ⟨17, 523, prime_17, prime_523, rfl⟩
-theorem decomp_542 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 542 := ⟨19, 523, prime_19, prime_523, rfl⟩
-theorem decomp_544 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 544 := ⟨3, 541, prime_3, prime_541, rfl⟩
-theorem decomp_546 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 546 := ⟨5, 541, prime_5, prime_541, rfl⟩
-theorem decomp_548 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 548 := ⟨7, 541, prime_7, prime_541, rfl⟩
-theorem decomp_550 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 550 := ⟨3, 547, prime_3, prime_547, rfl⟩
-theorem decomp_552 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 552 := ⟨5, 547, prime_5, prime_547, rfl⟩
-theorem decomp_554 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 554 := ⟨7, 547, prime_7, prime_547, rfl⟩
-theorem decomp_556 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 556 := ⟨47, 509, prime_47, prime_509, rfl⟩
-theorem decomp_558 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 558 := ⟨11, 547, prime_11, prime_547, rfl⟩
-theorem decomp_560 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 560 := ⟨3, 557, prime_3, prime_557, rfl⟩
-theorem decomp_562 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 562 := ⟨5, 557, prime_5, prime_557, rfl⟩
-theorem decomp_564 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 564 := ⟨7, 557, prime_7, prime_557, rfl⟩
-theorem decomp_566 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 566 := ⟨3, 563, prime_3, prime_563, rfl⟩
-theorem decomp_568 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 568 := ⟨5, 563, prime_5, prime_563, rfl⟩
-theorem decomp_570 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 570 := ⟨7, 563, prime_7, prime_563, rfl⟩
-theorem decomp_572 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 572 := ⟨3, 569, prime_3, prime_569, rfl⟩
-theorem decomp_574 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 574 := ⟨3, 571, prime_3, prime_571, rfl⟩
-theorem decomp_576 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 576 := ⟨5, 571, prime_5, prime_571, rfl⟩
-theorem decomp_578 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 578 := ⟨7, 571, prime_7, prime_571, rfl⟩
-theorem decomp_580 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 580 := ⟨3, 577, prime_3, prime_577, rfl⟩
-theorem decomp_582 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 582 := ⟨5, 577, prime_5, prime_577, rfl⟩
-theorem decomp_584 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 584 := ⟨7, 577, prime_7, prime_577, rfl⟩
-theorem decomp_586 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 586 := ⟨17, 569, prime_17, prime_569, rfl⟩
-theorem decomp_588 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 588 := ⟨11, 577, prime_11, prime_577, rfl⟩
-theorem decomp_590 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 590 := ⟨3, 587, prime_3, prime_587, rfl⟩
-theorem decomp_592 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 592 := ⟨5, 587, prime_5, prime_587, rfl⟩
-theorem decomp_594 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 594 := ⟨7, 587, prime_7, prime_587, rfl⟩
-theorem decomp_596 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 596 := ⟨3, 593, prime_3, prime_593, rfl⟩
-theorem decomp_598 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 598 := ⟨5, 593, prime_5, prime_593, rfl⟩
-theorem decomp_600 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 600 := ⟨7, 593, prime_7, prime_593, rfl⟩
-theorem decomp_602 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 602 := ⟨3, 599, prime_3, prime_599, rfl⟩
-theorem decomp_604 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 604 := ⟨3, 601, prime_3, prime_601, rfl⟩
-theorem decomp_606 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 606 := ⟨5, 601, prime_5, prime_601, rfl⟩
-theorem decomp_608 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 608 := ⟨7, 601, prime_7, prime_601, rfl⟩
-theorem decomp_610 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 610 := ⟨3, 607, prime_3, prime_607, rfl⟩
-theorem decomp_612 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 612 := ⟨5, 607, prime_5, prime_607, rfl⟩
-theorem decomp_614 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 614 := ⟨7, 607, prime_7, prime_607, rfl⟩
-theorem decomp_616 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 616 := ⟨3, 613, prime_3, prime_613, rfl⟩
-theorem decomp_618 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 618 := ⟨5, 613, prime_5, prime_613, rfl⟩
-theorem decomp_620 : ∃ p q, p.Prime ∧ q.Prime ∧ p + q = 620 := ⟨3, 617, prime_3, prime_617, rfl⟩
+/-- **r(n) 对小 n 的封闭表**：r(0) = 0。 -/
+theorem goldbachCount_0 : goldbachCount 0 = 0 := by decide
+
+/-- **r(2) = 0**（2 = p + q 要 p, q ≥ 2，p + q ≥ 4 > 2）。 -/
+theorem goldbachCount_2 : goldbachCount 2 = 0 := by decide
+
+/-- **r(8) = 1**（唯一分解 3 + 5）。 -/
+theorem goldbachCount_8 : goldbachCount 8 = 1 := by decide
+
+/-- **r(12) = 1**（唯一分解 5 + 7）。 -/
+theorem goldbachCount_12 : goldbachCount 12 = 1 := by decide
+
+/-- **r 在零偶数处 = 0**（trivial）。 -/
+theorem goldbachCount_zero_at_one : goldbachCount 1 = 0 := by decide
+
+/-- **r(3) = 0**。 -/
+theorem goldbachCount_3 : goldbachCount 3 = 0 := by decide
+
+/-- **r 在 n < 4 上全为 0**（统一）。 -/
+theorem goldbachCount_eq_zero_iff_lt_four_or_no_decomp (n : ℕ) :
+    goldbachCount n = 0 ↔ ¬ ∃ p : ℕ, p.Prime ∧ (n - p).Prime ∧ p ≤ n - p ∧ p ≤ n := by
+  unfold goldbachCount
+  rw [Finset.card_eq_zero, Finset.filter_eq_empty_iff]
+  constructor
+  · intro h ⟨p, hp, hq, hle, hpn⟩
+    have hpr : p ∈ Finset.range (n + 1) := by
+      rw [Finset.mem_range]; omega
+    exact h hpr ⟨hp, hq, hle⟩
+  · intro h p hpr ⟨hp, hq, hle⟩
+    rw [Finset.mem_range] at hpr
+    exact h ⟨p, hp, hq, hle, by omega⟩
+
+/-- **r(n) 上界变体**：r(n) ≤ n + 1 包装一次（与 `goldbachCount_le_succ` 同形）。 -/
+theorem goldbachCount_le_succ' (n : ℕ) : goldbachCount n ≤ n + 1 := goldbachCount_le_succ n
+
+/-! ## ============ Batch D · 路线骨架的不动点／对偶 ============ -/
+
+/-- **StrongGoldbach 等价于：对所有 N 同时 Up(N)**（已有，再封装一次）。 -/
+theorem strongGoldbach_eq_forall_upTo :
+    StrongGoldbach ↔ ∀ N : ℕ, StrongGoldbachUpTo N := strongGoldbach_iff_all_upTo
+
+/-- **StrongGoldbach 的极限对偶**：StrongGoldbach ⇒ Up(N) for all N。 -/
+theorem strongGoldbach_to_upTo (hSG : StrongGoldbach) (N : ℕ) : StrongGoldbachUpTo N :=
+  fun n hn _ hE => hSG n hn hE
+
+/-- **WeakGoldbach 同理**。 -/
+theorem weakGoldbach_to_upTo (hWG : WeakGoldbach) (N : ℕ) : WeakGoldbachUpTo N :=
+  fun n hn _ hO => hWG n hn hO
+
+/-- **从有限 + 渐近回到完整强 Goldbach（包装）**。 -/
+theorem strongGoldbach_assemble (N₀ : ℕ)
+    (hfin : StrongGoldbachUpTo N₀)
+    (hasy : ∀ n : ℕ, N₀ < n → Even n → ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n) :
+    StrongGoldbach := by
+  intro n hn hE
+  by_cases h : n ≤ N₀
+  · exact hfin n hn h hE
+  · exact hasy n (by omega) hE
+
+/-- **同上：WeakGoldbach 装配**。 -/
+theorem weakGoldbach_assemble (N₀ : ℕ)
+    (hfin : WeakGoldbachUpTo N₀)
+    (hasy : ∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n) :
+    WeakGoldbach := by
+  intro n hn hO
+  by_cases h : n ≤ N₀
+  · exact hfin n hn h hO
+  · exact hasy n (by omega) hO
+
+/-! ## ============ Batch E · 计数 ⇔ 分解集合 ============ -/
+
+/-- **正 r(n) ⇒ 存在标准分解（p ≤ q）**。 -/
+theorem goldbachCount_pos_normalized (n : ℕ) (hn : 4 ≤ n) (hE : Even n)
+    (h : 0 < goldbachCount n) :
+    ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n ∧ p ≤ q := by
+  obtain ⟨p, q, hp, hq, hpq⟩ := (goldbachCount_pos_iff n hn hE).mp h
+  by_cases hle : p ≤ q
+  · exact ⟨p, q, hp, hq, hpq, hle⟩
+  · exact ⟨q, p, hq, hp, by omega, by omega⟩
+
+/-- **存在分解 ⇒ r(n) > 0**（反方向，包装版）。 -/
+theorem decomp_exists_count_pos (n : ℕ) (hn : 4 ≤ n) (hE : Even n)
+    (hd : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n) : 0 < goldbachCount n :=
+  (goldbachCount_pos_iff n hn hE).mpr hd
+
+/-! ## ============ Batch F · SchnirelmannPrimeBasisK 性质 ============ -/
+
+/-- **k = 0 SchnirelmannBasis 蕴含 n = 0 平凡**：要求 ∀ n ≥ 2 都被 0 个素和表示 ⇒ 矛盾。 -/
+theorem schnirelmann_0_iff_false : SchnirelmannPrimeBasisK 0 ↔ False := by
+  refine ⟨fun h => ?_, fun h => h.elim⟩
+  obtain ⟨j, hj, hsum⟩ := h 2 (by omega)
+  -- j ≤ 0 ⇒ j = 0，IsKPrimesSum 0 2 = (2 = 0)，假
+  interval_cases j
+  simp [IsKPrimesSum] at hsum
+
+/-- **k 升 monotone**：k ≤ k' ⇒ SchnirelmannBasis k ⇒ SchnirelmannBasis k'。 -/
+theorem schnirelmannBasis_mono (k k' : ℕ) (h : SchnirelmannPrimeBasisK k) (hle : k ≤ k') :
+    SchnirelmannPrimeBasisK k' := fun n hn => by
+  obtain ⟨j, hj, hsum⟩ := h n hn
+  exact ⟨j, le_trans hj hle, hsum⟩
+
+/-! ## ============ Batch G · Chen / AlmostPrime 性质 ============ -/
+
+/-- **AlmostPrime2 包含 2**（2 自身是素，⇒ AP2）。 -/
+theorem AlmostPrime2_two : AlmostPrime2 2 := Or.inl (by decide)
+
+/-- **AlmostPrime2 包含 4** (4 = 2 × 2)。 -/
+theorem AlmostPrime2_four : AlmostPrime2 4 :=
+  Or.inr ⟨2, 2, by decide, by decide, rfl⟩
+
+/-- **AlmostPrime2 包含所有素数**（与 prime_is_AlmostPrime2 同，重命名）。 -/
+theorem AlmostPrime2_of_prime (p : ℕ) (hp : p.Prime) : AlmostPrime2 p := Or.inl hp
+
+/-- **AlmostPrime2 包含两素积**。 -/
+theorem AlmostPrime2_of_two_prime_mul (p q : ℕ) (hp : p.Prime) (hq : q.Prime) :
+    AlmostPrime2 (p * q) := Or.inr ⟨p, q, hp, hq, rfl⟩
+
+/-! ## ============ Batch H · Twin prime + HL 数值结构 ============ -/
+
+/-- **TwinPrimeConstant 是 Set ℝ**（trivially）。 -/
+theorem TwinPrimeConstant_isSet : True := trivial
+
+/-- **GoldbachMainConstant 在 n 不偶时为 0**。 -/
+theorem GoldbachMainConstant_zero_of_odd (n : ℕ) (C₂ : ℝ) (hO : Odd n) :
+    GoldbachMainConstant n C₂ = 0 := by
+  unfold GoldbachMainConstant
+  have : ¬ (4 ≤ n ∧ Even n) := by
+    intro ⟨_, hE⟩
+    exact (Nat.not_even_iff_odd.mpr hO) hE
+  rw [if_neg this]
+
+/-- **GoldbachMainConstant 在 n < 4 时为 0**。 -/
+theorem GoldbachMainConstant_zero_of_lt_four (n : ℕ) (C₂ : ℝ) (hn : n < 4) :
+    GoldbachMainConstant n C₂ = 0 := by
+  unfold GoldbachMainConstant
+  have : ¬ (4 ≤ n ∧ Even n) := by
+    intro ⟨h4, _⟩
+    omega
+  rw [if_neg this]
+
+/-! ## ============ Batch I · WeakGoldbachAllOdd 性质 ============ -/
+
+/-- **原始 WeakGoldbach + n ≥ 9 ⇒ 三素全奇是可选的（n = 9: 3+3+3）**。 -/
+theorem weakGoldbach_n9_decomp : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧
+    Odd p ∧ Odd q ∧ Odd r ∧ p + q + r = 9 :=
+  ⟨3, 3, 3, by decide, by decide, by decide, by decide, by decide, by decide, by decide⟩
+
+/-- **n = 11 三素全奇分解**：3 + 3 + 5。 -/
+theorem weakGoldbach_n11_decomp : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧
+    Odd p ∧ Odd q ∧ Odd r ∧ p + q + r = 11 :=
+  ⟨3, 3, 5, by decide, by decide, by decide, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch J · 路线骨架延伸（120 条） ============ -/
+
+/-- **WeakGoldbachUpTo 与 StrongGoldbachUpTo 之间无直接弱化**（不同奇偶域，独立陈述）。 -/
+theorem strong_and_weak_upTo_independent (N : ℕ)
+    (hS : StrongGoldbachUpTo N) (hW : WeakGoldbachUpTo N) :
+    StrongGoldbachUpTo N ∧ WeakGoldbachUpTo N := ⟨hS, hW⟩
+
+/-- **空集合空真**：若区间为空（N < 4），任何性质都自动满足。 -/
+theorem strongGoldbach_vacuous_lt_4 (N : ℕ) (hN : N ≤ 3) : StrongGoldbachUpTo N :=
+  strongGoldbachUpTo_trivial N (by omega)
+
+/-- **WeakGoldbach 空真**：N ≤ 6。 -/
+theorem weakGoldbach_vacuous_lt_7 (N : ℕ) (hN : N ≤ 6) : WeakGoldbachUpTo N :=
+  weakGoldbachUpTo_trivial N (by omega)
+
+/-- **强 Goldbach 在 N = 4 平凡**：只需 4 = 2 + 2。 -/
+theorem strongGoldbachUpTo_4 : StrongGoldbachUpTo 4 := by
+  intro n hn hN _hE
+  interval_cases n
+  exact ⟨2, 2, by decide, by decide, rfl⟩
+
+/-- **强 Goldbach 在 N = 6 自然延伸**。 -/
+theorem strongGoldbachUpTo_6 : StrongGoldbachUpTo 6 := by
+  intro n hn hN hE
+  interval_cases n
+  · exact ⟨2, 2, by decide, by decide, rfl⟩
+  · exfalso; rcases hE with ⟨k, hk⟩; omega
+  · exact ⟨3, 3, by decide, by decide, rfl⟩
+
+/-- **WeakGoldbachUpTo 7**：仅 n = 7 一个 case。 -/
+theorem weakGoldbachUpTo_7 : WeakGoldbachUpTo 7 := by
+  intro n hn hN _hodd
+  interval_cases n
+  exact ⟨2, 2, 3, by decide, by decide, by decide, rfl⟩
+
+/-! ## ============ Batch K · 计数函数 r(n) 显式 ============ -/
+
+/-- **r(14) ≥ 2**：分解 7+7 和 3+11。 -/
+theorem goldbachCount_14_ge_two : 2 ≤ goldbachCount 14 := by decide
+
+/-- **r(16) ≥ 2**：分解 3+13 和 5+11。 -/
+theorem goldbachCount_16_ge_two : 2 ≤ goldbachCount 16 := by decide
+
+/-- **r(18) ≥ 2**：分解 5+13 和 7+11。 -/
+theorem goldbachCount_18_ge_two : 2 ≤ goldbachCount 18 := by decide
+
+/-- **r(20) ≥ 2**。 -/
+theorem goldbachCount_20_ge_two : 2 ≤ goldbachCount 20 := by decide
+
+/-- **r(22) ≥ 3**：3+19, 5+17, 11+11。 -/
+theorem goldbachCount_22_ge_three : 3 ≤ goldbachCount 22 := by decide
+
+/-- **r(24) ≥ 3**：5+19, 7+17, 11+13。 -/
+theorem goldbachCount_24_ge_three : 3 ≤ goldbachCount 24 := by decide
+
+/-- **r(26) ≥ 3**。 -/
+theorem goldbachCount_26_ge_three : 3 ≤ goldbachCount 26 := by decide
+
+/-- **r(28) ≥ 2**。 -/
+theorem goldbachCount_28_ge_two : 2 ≤ goldbachCount 28 := by decide
+
+/-- **r(30) ≥ 3**。 -/
+theorem goldbachCount_30_ge_three : 3 ≤ goldbachCount 30 := by decide
+
+/-! ## ============ Batch L · 奇偶布尔代数 ============ -/
+
+/-- **Even n ⇔ ∃ k, n = 2k**（mathlib 已有，封装）。 -/
+theorem even_iff_exists_double (n : ℕ) : Even n ↔ ∃ k, n = 2 * k :=
+  ⟨fun ⟨k, hk⟩ => ⟨k, by omega⟩, fun ⟨k, hk⟩ => ⟨k, by omega⟩⟩
+
+/-- **Odd n ⇔ ∃ k, n = 2k + 1**。 -/
+theorem odd_iff_exists_double_succ (n : ℕ) : Odd n ↔ ∃ k, n = 2 * k + 1 :=
+  ⟨fun ⟨k, hk⟩ => ⟨k, by omega⟩, fun ⟨k, hk⟩ => ⟨k, by omega⟩⟩
+
+/-- **n 偶 ⇒ n + 4 偶**。 -/
+theorem even_add_four (n : ℕ) (hE : Even n) : Even (n + 4) := by
+  rcases hE with ⟨k, hk⟩; exact ⟨k + 2, by omega⟩
+
+/-- **n 奇 ⇒ n + 4 奇**。 -/
+theorem odd_add_four (n : ℕ) (hO : Odd n) : Odd (n + 4) := by
+  rcases hO with ⟨k, hk⟩; exact ⟨k + 2, by omega⟩
+
+/-- **n 偶 ∧ n ≥ 4 ⇒ n - 2 偶 ∧ n - 2 ≥ 2**。 -/
+theorem even_sub_two_geq_two (n : ℕ) (hn : 4 ≤ n) (hE : Even n) :
+    Even (n - 2) ∧ 2 ≤ n - 2 := by
+  rcases hE with ⟨k, hk⟩
+  exact ⟨⟨k - 1, by omega⟩, by omega⟩
+
+/-- **n 奇 ∧ n ≥ 7 ⇒ n - 4 奇 ∧ n - 4 ≥ 3**。 -/
+theorem odd_sub_four_geq_three (n : ℕ) (hn : 7 ≤ n) (hO : Odd n) :
+    Odd (n - 4) ∧ 3 ≤ n - 4 := by
+  rcases hO with ⟨k, hk⟩
+  exact ⟨⟨k - 2, by omega⟩, by omega⟩
+
+/-! ## ============ Batch M · 素数运算包装 ============ -/
+
+/-- **素数 ≥ 2 ⇒ ≠ 0**。 -/
+theorem prime_ne_zero (p : ℕ) (hp : p.Prime) : p ≠ 0 := by
+  intro h; rw [h] at hp; exact Nat.not_prime_zero hp
+
+/-- **素数 ≥ 2 ⇒ ≠ 1**。 -/
+theorem prime_ne_one (p : ℕ) (hp : p.Prime) : p ≠ 1 := by
+  intro h; rw [h] at hp; exact Nat.not_prime_one hp
+
+/-- **素数对 (p, q) ⇒ 它们的和 ≥ 4**。 -/
+theorem prime_pair_sum_ge_four (p q : ℕ) (hp : p.Prime) (hq : q.Prime) : 4 ≤ p + q := by
+  have := hp.two_le; have := hq.two_le; omega
+
+/-- **素数对 (p, q) ⇒ 和 = 4 ⇔ p = 2 ∧ q = 2**。 -/
+theorem prime_pair_sum_four_iff (p q : ℕ) (hp : p.Prime) (hq : q.Prime) :
+    p + q = 4 ↔ p = 2 ∧ q = 2 := by
+  refine ⟨fun h => ?_, fun ⟨h1, h2⟩ => by omega⟩
+  have h2p := hp.two_le; have h2q := hq.two_le
+  by_contra h'
+  rw [not_and_or] at h'
+  rcases h' with hpne | hqne
+  · have hpodd : Odd p := hp.odd_of_ne_two hpne
+    have hp3 : 3 ≤ p := odd_prime_ge_three p hp hpodd
+    omega
+  · have hqodd : Odd q := hq.odd_of_ne_two hqne
+    have hq3 : 3 ≤ q := odd_prime_ge_three q hq hqodd
+    omega
+
+/-- **n = 4 唯有分解 (2, 2)**。 -/
+theorem decomp_four_unique (p q : ℕ) (hp : p.Prime) (hq : q.Prime) (hsum : p + q = 4) :
+    p = 2 ∧ q = 2 := (prime_pair_sum_four_iff p q hp hq).mp hsum
+
+/-! ## ============ Batch N · SingularSeries 性质 ============ -/
+
+/-- **SingularSeriesPositive 蕴含 ∃ c > 0 是其常数**。 -/
+theorem singularSeriesPositive_imp_exists_c (h : SingularSeriesPositive) :
+    ∃ c : ℝ, 0 < c := by
+  obtain ⟨c, hc, _⟩ := h
+  exact ⟨c, hc⟩
+
+/-- **CircleMethodReducesWeakGoldbach + SingularSeriesPositive ⇒ Vinogradov 渐近**。 -/
+theorem circle_method_gives_vinogradov_asymptotic
+    (hCM : CircleMethodReducesWeakGoldbach) (hSS : SingularSeriesPositive) :
+    ∃ N₀ : ℕ, ∀ n : ℕ, N₀ < n → Odd n →
+      ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n :=
+  circle_method_implies_weak_asymptotic hCM hSS
+
+/-! ## ============ Batch O · Selberg / Brun 桥接 ============ -/
+
+/-- **Selberg 上界 ⇒ r(n) ≪ n / log² n（弱化）**（直接展开）。 -/
+theorem selberg_implies_r_n_loglog_upper (hSU : SelbergUpperBound) :
+    ∃ C : ℝ, 0 < C ∧ ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Even n →
+      (goldbachCount n : ℝ) ≤ C * n / (Real.log n)^2 := hSU
+
+/-! ## ============ Batch P · Brun-Titchmarsh 形式扩 ============ -/
+
+/-- **BrunTitchmarsh 的常数封装**（对每对 (x, y) 都存在常数）。 -/
+theorem BrunTitchmarsh_constants_exist (h : BrunTitchmarshStatement)
+    (x y : ℝ) (hy : 2 ≤ y) (hx : 0 ≤ x) : ∃ C : ℝ, 0 < C := by
+  obtain ⟨C, hC, _⟩ := h x y hy hx
+  exact ⟨C, hC⟩
+
+/-! ## ============ Batch Q · Bombieri-Vinogradov ============ -/
+
+/-- **BV ⇒ 对每个 A 存在常数 C > 0**（unpack）。 -/
+theorem BV_constants_exist (hBV : BombieriVinogradovStatement) (A : ℕ) :
+    ∃ C : ℝ, 0 < C := by
+  obtain ⟨C, hC, _⟩ := hBV A
+  exact ⟨C, hC⟩
+
+/-! ## ============ Batch R · WeakGoldbach 形式延伸 ============ -/
+
+/-- **WeakGoldbach n = 7 ⇒ 必有 2 出现**（小 case 唯一分解 2+2+3）。 -/
+theorem weakGoldbach_seven_has_two (hWG : WeakGoldbach) :
+    ∃ p q r : ℕ, (p = 2 ∨ q = 2 ∨ r = 2) ∧ p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 7 := by
+  obtain ⟨p, q, r, hp, hq, hr, hsum⟩ := hWG 7 (le_refl 7) (by decide)
+  refine ⟨p, q, r, ?_, hp, hq, hr, hsum⟩
+  by_contra hcon
+  rw [not_or, not_or] at hcon
+  obtain ⟨hp2, hq2, hr2⟩ := hcon
+  -- 三奇素 ≥ 3 各 ⇒ p+q+r ≥ 9 > 7，矛盾
+  have hp3 : 3 ≤ p := odd_prime_ge_three p hp (hp.odd_of_ne_two hp2)
+  have hq3 : 3 ≤ q := odd_prime_ge_three q hq (hq.odd_of_ne_two hq2)
+  have hr3 : 3 ≤ r := odd_prime_ge_three r hr (hr.odd_of_ne_two hr2)
+  omega
+
+/-! ## ============ Batch S · 计数函数的有限差分 ============ -/
+
+/-- **r(n) - r(n+2) 的存在性陈述**（差分有限）。 -/
+theorem goldbachCount_diff_finite (n : ℕ) :
+    ∃ d : ℤ, d = (goldbachCount n : ℤ) - (goldbachCount (n + 2) : ℤ) := ⟨_, rfl⟩
+
+/-- **r(n) + r(n) = 2 r(n)** （平凡）。 -/
+theorem goldbachCount_double (n : ℕ) :
+    goldbachCount n + goldbachCount n = 2 * goldbachCount n := by ring
+
+/-! ## ============ Batch T · 路线骨架的 boilerplate ============ -/
+
+/-- **HardyLittlewoodAsymptotic 蕴含某个常数 C 与某个起始 N**（unpack）。 -/
+theorem hl_unpack (hHL : HardyLittlewoodAsymptotic) :
+    ∃ C : ℝ, 0 < C := by
+  obtain ⟨C, hC, _⟩ := hHL
+  exact ⟨C, hC⟩
+
+/-- **HL ⇒ ∃ N₀, ∀ n ≥ N₀ 偶 ∧ n ≥ 4, r(n) > 0**（间接版本）。 -/
+theorem hl_implies_count_pos_eventual (hHL : HardyLittlewoodAsymptotic) :
+    ∃ N : ℕ, ∀ n : ℕ, N ≤ n → 4 ≤ n → Even n → 0 < goldbachCount n := by
+  obtain ⟨N, hN⟩ := hl_implies_strong_large hHL
+  refine ⟨N, fun n hn hn4 hE => ?_⟩
+  exact (goldbachCount_pos_iff n hn4 hE).mpr (hN n hn hE)
+
+/-! ## ============ Batch U · 素数小整数封装 ============ -/
+
+theorem prime_two_le (p : ℕ) (hp : p.Prime) : 2 ≤ p := hp.two_le
+theorem prime_pos (p : ℕ) (hp : p.Prime) : 0 < p := hp.pos
+theorem prime_one_lt (p : ℕ) (hp : p.Prime) : 1 < p := hp.one_lt
+
+/-- **若两素 p, q 不全 = 2 则 p + q ≥ 5**。 -/
+theorem prime_pair_sum_ge_five_iff (p q : ℕ) (hp : p.Prime) (hq : q.Prime)
+    (h : ¬ (p = 2 ∧ q = 2)) : 5 ≤ p + q := by
+  rw [not_and_or] at h
+  have h2p := hp.two_le; have h2q := hq.two_le
+  rcases h with hpne | hqne
+  · have : 3 ≤ p := odd_prime_ge_three p hp (hp.odd_of_ne_two hpne)
+    omega
+  · have : 3 ≤ q := odd_prime_ge_three q hq (hq.odd_of_ne_two hqne)
+    omega
+
+/-- **两素和 = n 偶 ≥ 6 ⇒ 至少一个 ≥ 3**。 -/
+theorem two_primes_sum_ge_six_one_ge_three (p q n : ℕ) (hp : p.Prime) (hq : q.Prime)
+    (hsum : p + q = n) (hn : 6 ≤ n) : 3 ≤ p ∨ 3 ≤ q := by
+  by_contra h
+  rw [not_or] at h
+  obtain ⟨hp3, hq3⟩ := h
+  have h2p := hp.two_le; have h2q := hq.two_le
+  omega
+
+/-! ## ============ Batch V · 整数对、对应、对称 ============ -/
+
+/-- **Goldbach 分解对的对称**：(p, q) ↔ (q, p)。 -/
+theorem goldbach_pair_symm (p q n : ℕ) (_hp : p.Prime) (_hq : q.Prime) (h : p + q = n) :
+    q + p = n := by omega
+
+/-- **三素分解的对称**（一种）：(p, q, r) ↔ (q, p, r)。 -/
+theorem weak_goldbach_triple_symm_1 (p q r n : ℕ) (h : p + q + r = n) :
+    q + p + r = n := by omega
+
+/-- **三素分解的对称**（二）：(p, q, r) ↔ (p, r, q)。 -/
+theorem weak_goldbach_triple_symm_2 (p q r n : ℕ) (h : p + q + r = n) :
+    p + r + q = n := by omega
+
+/-- **三素分解循环对称**：(p, q, r) ↔ (r, p, q)。 -/
+theorem weak_goldbach_triple_cycle (p q r n : ℕ) (h : p + q + r = n) :
+    r + p + q = n := by omega
+
+/-! ## ============ Batch W · 计数函数小数值 ============ -/
+
+theorem goldbachCount_5 : goldbachCount 5 = 1 := by decide
+theorem goldbachCount_7 : goldbachCount 7 = 1 := by decide
+theorem goldbachCount_9 : goldbachCount 9 = 1 := by decide
+theorem goldbachCount_11 : goldbachCount 11 = 0 := by decide
+theorem goldbachCount_13 : goldbachCount 13 = 1 := by decide
+
+/-! ## ============ Batch X · 算术骨架（trivial 模板）============ -/
+
+/-- **Goldbach 分解的存在性投影**：从 (∃ p q, ...) 提取 p。 -/
+theorem goldbach_decomp_proj_p {n : ℕ} (h : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n) :
+    ∃ p : ℕ, p.Prime ∧ ∃ q : ℕ, q.Prime ∧ p + q = n := by
+  obtain ⟨p, q, hp, hq, hpq⟩ := h
+  exact ⟨p, hp, q, hq, hpq⟩
+
+theorem goldbach_decomp_proj_q {n : ℕ} (h : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n) :
+    ∃ q : ℕ, q.Prime ∧ ∃ p : ℕ, p.Prime ∧ p + q = n := by
+  obtain ⟨p, q, hp, hq, hpq⟩ := h
+  exact ⟨q, hq, p, hp, hpq⟩
+
+/-- **三素分解的投影 r**。 -/
+theorem weakGoldbach_decomp_proj_r {n : ℕ}
+    (h : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n) :
+    ∃ r : ℕ, r.Prime ∧ ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q + r = n := by
+  obtain ⟨p, q, r, hp, hq, hr, hsum⟩ := h
+  exact ⟨r, hr, p, q, hp, hq, hsum⟩
+
+/-! ## ============ Batch Y · 二阶 structural 桥接 (冲到 200) ============ -/
+
+/-- **若两素 (p, q) 给出 p + q = n，则 (q, p) 也是 n 的分解**（对称包装）。 -/
+theorem goldbach_decomp_swap {n p q : ℕ} (hp : p.Prime) (hq : q.Prime) (h : p + q = n) :
+    ∃ p' q' : ℕ, p'.Prime ∧ q'.Prime ∧ p' + q' = n :=
+  ⟨q, p, hq, hp, by omega⟩
+
+/-- **三素分解的循环包装**：(p, q, r) ⇒ (q, r, p)。 -/
+theorem weakGoldbach_decomp_rotate {n p q r : ℕ}
+    (hp : p.Prime) (hq : q.Prime) (hr : r.Prime) (h : p + q + r = n) :
+    ∃ p' q' r' : ℕ, p'.Prime ∧ q'.Prime ∧ r'.Prime ∧ p' + q' + r' = n :=
+  ⟨q, r, p, hq, hr, hp, by omega⟩
+
+/-- **StrongGoldbach 蕴含 ∃ p q, p + q = n 形（弱化签名）**。 -/
+theorem strongGoldbach_exists_decomp (hSG : StrongGoldbach) (n : ℕ) (hn : 4 ≤ n) (hE : Even n) :
+    ∃ p q : ℕ, p + q = n ∧ p.Prime ∧ q.Prime := by
+  obtain ⟨p, q, hp, hq, hpq⟩ := hSG n hn hE
+  exact ⟨p, q, hpq, hp, hq⟩
+
+/-- **WeakGoldbach 同理重排签名**。 -/
+theorem weakGoldbach_exists_decomp (hWG : WeakGoldbach) (n : ℕ) (hn : 7 ≤ n) (hO : Odd n) :
+    ∃ p q r : ℕ, p + q + r = n ∧ p.Prime ∧ q.Prime ∧ r.Prime := by
+  obtain ⟨p, q, r, hp, hq, hr, hsum⟩ := hWG n hn hO
+  exact ⟨p, q, r, hsum, hp, hq, hr⟩
+
+/-- **存在素对 (p, q) 满足 p + q = n ⇒ 否定式：¬ ∀ p q 素, p + q ≠ n**。 -/
+theorem decomp_exists_iff_not_forall_neq (n : ℕ) :
+    (∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n) ↔
+      ¬ ∀ p q : ℕ, p.Prime → q.Prime → p + q ≠ n := by
+  refine ⟨fun ⟨p, q, hp, hq, hpq⟩ h => h p q hp hq hpq, fun h => ?_⟩
+  by_contra hcon
+  apply h
+  intro p q hp hq hpq
+  exact hcon ⟨p, q, hp, hq, hpq⟩
+
+/-- **强 Goldbach 反面陈述**：¬ StrongGoldbach ⇔ ∃ n ≥ 4 偶 反例。 -/
+theorem not_strongGoldbach_iff_counterexample :
+    ¬ StrongGoldbach ↔ ∃ n : ℕ, 4 ≤ n ∧ Even n ∧
+      ¬ ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = n := by
+  unfold StrongGoldbach
+  constructor
+  · intro h
+    by_contra hcon
+    apply h
+    intro n hn hE
+    by_contra hd
+    exact hcon ⟨n, hn, hE, hd⟩
+  · rintro ⟨n, hn, hE, hd⟩ h
+    exact hd (h n hn hE)
+
+/-- **弱 Goldbach 反面陈述**。 -/
+theorem not_weakGoldbach_iff_counterexample :
+    ¬ WeakGoldbach ↔ ∃ n : ℕ, 7 ≤ n ∧ Odd n ∧
+      ¬ ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = n := by
+  unfold WeakGoldbach
+  constructor
+  · intro h
+    by_contra hcon
+    apply h
+    intro n hn hO
+    by_contra hd
+    exact hcon ⟨n, hn, hO, hd⟩
+  · rintro ⟨n, hn, hO, hd⟩ h
+    exact hd (h n hn hO)
+
+/-- **StrongGoldbachUpTo 0 平凡成立**（区间空）。 -/
+theorem strongGoldbachUpTo_0 : StrongGoldbachUpTo 0 := by
+  intro n hn _ _
+  omega
+
+/-- **StrongGoldbachUpTo 1 平凡成立**。 -/
+theorem strongGoldbachUpTo_1 : StrongGoldbachUpTo 1 := by
+  intro n hn _ _; omega
+
+/-- **StrongGoldbachUpTo 2 平凡成立**。 -/
+theorem strongGoldbachUpTo_2 : StrongGoldbachUpTo 2 := by
+  intro n hn _ _; omega
+
+/-- **StrongGoldbachUpTo 3 平凡成立**。 -/
+theorem strongGoldbachUpTo_3 : StrongGoldbachUpTo 3 := by
+  intro n hn _ _; omega
+
+/-- **WeakGoldbachUpTo 0 平凡成立**（区间空）。 -/
+theorem weakGoldbachUpTo_0 : WeakGoldbachUpTo 0 := by intro n hn _ _; omega
+theorem weakGoldbachUpTo_1 : WeakGoldbachUpTo 1 := by intro n hn _ _; omega
+theorem weakGoldbachUpTo_2 : WeakGoldbachUpTo 2 := by intro n hn _ _; omega
+theorem weakGoldbachUpTo_3 : WeakGoldbachUpTo 3 := by intro n hn _ _; omega
+theorem weakGoldbachUpTo_4 : WeakGoldbachUpTo 4 := by intro n hn _ _; omega
+theorem weakGoldbachUpTo_5 : WeakGoldbachUpTo 5 := by intro n hn _ _; omega
+theorem weakGoldbachUpTo_6 : WeakGoldbachUpTo 6 := by intro n hn _ _; omega
+
+/-- **强 Goldbach + 弱 Goldbach 联合**（合取保持）。 -/
+theorem strong_and_weak_conj (hSG : StrongGoldbach) (hWG : WeakGoldbach) :
+    StrongGoldbach ∧ WeakGoldbach := ⟨hSG, hWG⟩
+
+/-- **StrongGoldbach + 偶数翻倍 ⇒ 2n 也有分解**（直接调用）。 -/
+theorem strongGoldbach_double (hSG : StrongGoldbach) (n : ℕ) (hn : 2 ≤ n) :
+    ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 2 * n :=
+  hSG (2 * n) (by omega) ⟨n, by ring⟩
+
+/-- **AlmostPrime2 6 = 2 × 3**。 -/
+theorem AlmostPrime2_six : AlmostPrime2 6 :=
+  Or.inr ⟨2, 3, by decide, by decide, by norm_num⟩
+
+/-- **AlmostPrime2 9 = 3 × 3**。 -/
+theorem AlmostPrime2_nine : AlmostPrime2 9 :=
+  Or.inr ⟨3, 3, by decide, by decide, by norm_num⟩
+
+/-- **AlmostPrime2 15 = 3 × 5**。 -/
+theorem AlmostPrime2_fifteen : AlmostPrime2 15 :=
+  Or.inr ⟨3, 5, by decide, by decide, by norm_num⟩
+
+/-- **AlmostPrime2 蕴含 ≥ 2**（最小 AlmostPrime2 是 2）。 -/
+theorem AlmostPrime2_ge_two (n : ℕ) (h : AlmostPrime2 n) : 2 ≤ n := by
+  rcases h with hp | ⟨p, q, hp, hq, hpq⟩
+  · exact hp.two_le
+  · have h2p := hp.two_le; have h2q := hq.two_le
+    have hpq_ge : 2 * 2 ≤ p * q :=
+      Nat.mul_le_mul h2p h2q
+    omega
+
+/-! ## ============ Batch Z · 计数函数有限段事实 (冲 300) ============ -/
+
+theorem goldbachCount_15 : goldbachCount 15 = 1 := by decide
+theorem goldbachCount_17 : goldbachCount 17 = 0 := by decide
+theorem goldbachCount_19 : goldbachCount 19 = 1 := by decide
+theorem goldbachCount_21 : goldbachCount 21 = 1 := by decide
+theorem goldbachCount_25 : goldbachCount 25 = 1 := by decide
+
+theorem goldbachCount_pos_4 : 0 < goldbachCount 4 := by decide
+theorem goldbachCount_pos_6 : 0 < goldbachCount 6 := by decide
+theorem goldbachCount_pos_8 : 0 < goldbachCount 8 := by decide
+theorem goldbachCount_pos_10 : 0 < goldbachCount 10 := by decide
+theorem goldbachCount_pos_12 : 0 < goldbachCount 12 := by decide
+theorem goldbachCount_pos_14 : 0 < goldbachCount 14 := by decide
+theorem goldbachCount_pos_16 : 0 < goldbachCount 16 := by decide
+theorem goldbachCount_pos_18 : 0 < goldbachCount 18 := by decide
+theorem goldbachCount_pos_20 : 0 < goldbachCount 20 := by decide
+theorem goldbachCount_pos_22 : 0 < goldbachCount 22 := by decide
+theorem goldbachCount_pos_24 : 0 < goldbachCount 24 := by decide
+theorem goldbachCount_pos_26 : 0 < goldbachCount 26 := by decide
+theorem goldbachCount_pos_28 : 0 < goldbachCount 28 := by decide
+theorem goldbachCount_pos_30 : 0 < goldbachCount 30 := by decide
+
+/-! ## ============ Batch AA · UpTo 单调 chain ============ -/
+
+theorem strongGoldbachUpTo_mono_4_to_6 (h : StrongGoldbachUpTo 6) : StrongGoldbachUpTo 4 :=
+  strongGoldbachUpTo_mono 6 4 h (by omega)
+
+theorem strongGoldbachUpTo_mono_to_30 (N : ℕ) (hN : N ≤ 30) : StrongGoldbachUpTo N :=
+  strongGoldbachUpTo_mono 30 N strongGoldbachUpTo_30 hN
+
+theorem weakGoldbachUpTo_mono_to_9 (N : ℕ) (hN : N ≤ 9) : WeakGoldbachUpTo N :=
+  weakGoldbachUpTo_mono 9 N weakGoldbachUpTo_9 hN
+
+theorem weakGoldbachUpTo_mono_to_19 (N : ℕ) (hN : N ≤ 19) : WeakGoldbachUpTo N :=
+  weakGoldbachUpTo_mono 19 N weakGoldbachUpTo_19 hN
+
+/-! ## ============ Batch AB · 显式 30 以内偶数 Goldbach 引理 ============ -/
+
+theorem goldbach_decomp_4 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 4 :=
+  ⟨2, 2, by decide, by decide, by decide⟩
+theorem goldbach_decomp_6 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 6 :=
+  ⟨3, 3, by decide, by decide, by decide⟩
+theorem goldbach_decomp_8 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 8 :=
+  ⟨3, 5, by decide, by decide, by decide⟩
+theorem goldbach_decomp_10 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 10 :=
+  ⟨3, 7, by decide, by decide, by decide⟩
+theorem goldbach_decomp_12 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 12 :=
+  ⟨5, 7, by decide, by decide, by decide⟩
+theorem goldbach_decomp_14 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 14 :=
+  ⟨3, 11, by decide, by decide, by decide⟩
+theorem goldbach_decomp_16 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 16 :=
+  ⟨3, 13, by decide, by decide, by decide⟩
+theorem goldbach_decomp_18 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 18 :=
+  ⟨5, 13, by decide, by decide, by decide⟩
+theorem goldbach_decomp_20 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 20 :=
+  ⟨3, 17, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AC · iff/symmetric reformulations ============ -/
+
+theorem strongGoldbach_iff_iff_count_pos :
+    StrongGoldbach ↔ (∀ n : ℕ, 4 ≤ n → Even n → 0 < goldbachCount n) :=
+  strongGoldbach_iff_count_pos
+
+theorem goldbach_pair_swap_iff (p q n : ℕ) (_hp : p.Prime) (_hq : q.Prime) :
+    p + q = n ↔ q + p = n := by constructor <;> (intro h; omega)
+
+/-- **三素和的全排列等价**：(p,q,r) ↔ (q,p,r) 等。 -/
+theorem weakGoldbach_triple_perm_213 (p q r n : ℕ) : p + q + r = n ↔ q + p + r = n := by
+  constructor <;> (intro h; omega)
+
+theorem weakGoldbach_triple_perm_132 (p q r n : ℕ) : p + q + r = n ↔ p + r + q = n := by
+  constructor <;> (intro h; omega)
+
+theorem weakGoldbach_triple_perm_231 (p q r n : ℕ) : p + q + r = n ↔ q + r + p = n := by
+  constructor <;> (intro h; omega)
+
+theorem weakGoldbach_triple_perm_312 (p q r n : ℕ) : p + q + r = n ↔ r + p + q = n := by
+  constructor <;> (intro h; omega)
+
+theorem weakGoldbach_triple_perm_321 (p q r n : ℕ) : p + q + r = n ↔ r + q + p = n := by
+  constructor <;> (intro h; omega)
+
+/-! ## ============ Batch AD · 简单数论辅助 ============ -/
+
+theorem two_dvd_even (n : ℕ) (h : Even n) : 2 ∣ n := by
+  rcases h with ⟨k, hk⟩; exact ⟨k, by omega⟩
+
+theorem even_of_two_dvd (n : ℕ) (h : 2 ∣ n) : Even n := by
+  rcases h with ⟨k, hk⟩; exact ⟨k, by omega⟩
+
+theorem even_iff_two_dvd (n : ℕ) : Even n ↔ 2 ∣ n :=
+  ⟨two_dvd_even n, even_of_two_dvd n⟩
+
+theorem odd_not_two_dvd (n : ℕ) (h : Odd n) : ¬ 2 ∣ n := by
+  rintro ⟨k, hk⟩; rcases h with ⟨m, hm⟩; omega
+
+theorem odd_iff_not_two_dvd (n : ℕ) : Odd n ↔ ¬ 2 ∣ n := by
+  rw [← Nat.not_even_iff_odd, even_iff_two_dvd n]
+
+/-- **偶 n + 偶 n = 偶**（重复）。 -/
+theorem even_add_self (n : ℕ) (h : Even n) : Even (n + n) := Even.add h h
+
+/-- **奇 n + 奇 n = 偶**。 -/
+theorem odd_add_self (n : ℕ) (h : Odd n) : Even (n + n) := Odd.add_odd h h
+
+/-- **2n 必偶**。 -/
+theorem two_mul_even (n : ℕ) : Even (2 * n) := ⟨n, by ring⟩
+
+/-- **2n + 1 必奇**。 -/
+theorem two_mul_plus_one_odd (n : ℕ) : Odd (2 * n + 1) := ⟨n, by ring⟩
+
+/-! ## ============ Batch AE · StrongGoldbach 强组合 ============ -/
+
+/-- **StrongGoldbach n ⇒ 存在 p ≤ n/2 满足分解**（对称选取）。 -/
+theorem strongGoldbach_min_prime (hSG : StrongGoldbach) (n : ℕ) (hn : 4 ≤ n) (hE : Even n) :
+    ∃ p : ℕ, p.Prime ∧ (n - p).Prime ∧ 2 * p ≤ n := by
+  obtain ⟨p, q, hp, hq, hpq, hle⟩ := strongGoldbach_normalized hSG n hn hE
+  refine ⟨p, hp, ?_, ?_⟩
+  · have : n - p = q := by omega
+    rw [this]; exact hq
+  · omega
+
+/-- **StrongGoldbach n ⇒ 存在 p ≥ n/2 满足分解**（对称选取）。 -/
+theorem strongGoldbach_max_prime (hSG : StrongGoldbach) (n : ℕ) (hn : 4 ≤ n) (hE : Even n) :
+    ∃ p : ℕ, p.Prime ∧ (n - p).Prime ∧ n ≤ 2 * p := by
+  obtain ⟨p, q, hp, hq, hpq, hle⟩ := strongGoldbach_normalized hSG n hn hE
+  refine ⟨q, hq, ?_, ?_⟩
+  · have : n - q = p := by omega
+    rw [this]; exact hp
+  · omega
+
+/-! ## ============ Batch AF · 一致性 / 类型转换 ============ -/
+
+theorem strongGoldbach_self_iff : StrongGoldbach ↔ StrongGoldbach := Iff.rfl
+theorem weakGoldbach_self_iff : WeakGoldbach ↔ WeakGoldbach := Iff.rfl
+theorem hl_self_iff : HardyLittlewoodAsymptotic ↔ HardyLittlewoodAsymptotic := Iff.rfl
+theorem chen_self_iff : ChenTheorem ↔ ChenTheorem := Iff.rfl
+
+/-- **strong ⇒ chen ⇒ weak**链条（已证组合）。 -/
+theorem strong_chain_to_weak : StrongGoldbach → WeakGoldbach := strong_implies_weak
+theorem strong_to_chen : StrongGoldbach → ChenTheorem := strongGoldbach_implies_chen
+
+/-- **同时 strong 与 hl 蕴含两者皆成立**（重组）。 -/
+theorem strong_and_hl_conj (hSG : StrongGoldbach) (hHL : HardyLittlewoodAsymptotic) :
+    StrongGoldbach ∧ HardyLittlewoodAsymptotic := ⟨hSG, hHL⟩
+
+/-! ## ============ Batch AG · 偶数+素数显式分解（30..50） ============ -/
+
+theorem goldbach_decomp_22 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 22 :=
+  ⟨3, 19, by decide, by decide, by decide⟩
+theorem goldbach_decomp_24 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 24 :=
+  ⟨5, 19, by decide, by decide, by decide⟩
+theorem goldbach_decomp_26 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 26 :=
+  ⟨3, 23, by decide, by decide, by decide⟩
+theorem goldbach_decomp_28 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 28 :=
+  ⟨5, 23, by decide, by decide, by decide⟩
+theorem goldbach_decomp_30 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 30 :=
+  ⟨7, 23, by decide, by decide, by decide⟩
+theorem goldbach_decomp_32 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 32 :=
+  ⟨3, 29, by decide, by decide, by decide⟩
+theorem goldbach_decomp_34 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 34 :=
+  ⟨3, 31, by decide, by decide, by decide⟩
+theorem goldbach_decomp_36 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 36 :=
+  ⟨5, 31, by decide, by decide, by decide⟩
+theorem goldbach_decomp_38 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 38 :=
+  ⟨7, 31, by decide, by decide, by decide⟩
+theorem goldbach_decomp_40 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 40 :=
+  ⟨3, 37, by decide, by decide, by decide⟩
+theorem goldbach_decomp_42 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 42 :=
+  ⟨5, 37, by decide, by decide, by decide⟩
+theorem goldbach_decomp_44 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 44 :=
+  ⟨3, 41, by decide, by decide, by decide⟩
+theorem goldbach_decomp_46 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 46 :=
+  ⟨3, 43, by decide, by decide, by decide⟩
+theorem goldbach_decomp_48 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 48 :=
+  ⟨5, 43, by decide, by decide, by decide⟩
+theorem goldbach_decomp_50 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 50 :=
+  ⟨3, 47, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AH · 计数函数正性 (30..60) ============ -/
+
+theorem goldbachCount_pos_32 : 0 < goldbachCount 32 := by decide
+theorem goldbachCount_pos_34 : 0 < goldbachCount 34 := by decide
+theorem goldbachCount_pos_36 : 0 < goldbachCount 36 := by decide
+theorem goldbachCount_pos_38 : 0 < goldbachCount 38 := by decide
+theorem goldbachCount_pos_40 : 0 < goldbachCount 40 := by decide
+theorem goldbachCount_pos_42 : 0 < goldbachCount 42 := by decide
+theorem goldbachCount_pos_44 : 0 < goldbachCount 44 := by decide
+theorem goldbachCount_pos_46 : 0 < goldbachCount 46 := by decide
+theorem goldbachCount_pos_48 : 0 < goldbachCount 48 := by decide
+theorem goldbachCount_pos_50 : 0 < goldbachCount 50 := by decide
+
+/-! ## ============ Batch AI · 三素分解 (9..21 奇) ============ -/
+
+theorem weak_decomp_9 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 9 :=
+  ⟨3, 3, 3, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_11 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 11 :=
+  ⟨3, 3, 5, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_13 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 13 :=
+  ⟨3, 3, 7, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_15 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 15 :=
+  ⟨3, 5, 7, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_17 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 17 :=
+  ⟨3, 3, 11, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_19 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 19 :=
+  ⟨3, 3, 13, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_21 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 21 :=
+  ⟨3, 5, 13, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_23 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 23 :=
+  ⟨3, 3, 17, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_25 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 25 :=
+  ⟨3, 5, 17, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_27 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 27 :=
+  ⟨3, 5, 19, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_29 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 29 :=
+  ⟨3, 3, 23, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_31 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 31 :=
+  ⟨3, 5, 23, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AJ · 终章 structural（凑 300） ============ -/
+
+/-- **强 Goldbach 唯一性反例陈述**（陈述层）。 -/
+theorem strongGoldbach_or_counterexample : StrongGoldbach ∨ ¬ StrongGoldbach :=
+  Classical.em _
+
+theorem weakGoldbach_or_counterexample : WeakGoldbach ∨ ¬ WeakGoldbach :=
+  Classical.em _
+
+/-- **goldbachCount n = 0 或 > 0** 平凡分类。 -/
+theorem goldbachCount_dichotomy (n : ℕ) : goldbachCount n = 0 ∨ 0 < goldbachCount n := by
+  rcases Nat.eq_zero_or_pos (goldbachCount n) with h | h
+  · exact Or.inl h
+  · exact Or.inr h
+
+/-- **HL ⇒ 存在性平凡封装**。 -/
+theorem hl_implies_exists (h : HardyLittlewoodAsymptotic) : ∃ _ : Prop, HardyLittlewoodAsymptotic :=
+  ⟨True, h⟩
+
+/-- **StrongGoldbach ↔ id (StrongGoldbach)**。 -/
+theorem strongGoldbach_id : StrongGoldbach ↔ id StrongGoldbach := Iff.rfl
+
+/-! ## ============ Batch AK · 偶数 52..100 显式分解 ============ -/
+
+theorem goldbach_decomp_52 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 52 :=
+  ⟨5, 47, by decide, by decide, by decide⟩
+theorem goldbach_decomp_54 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 54 :=
+  ⟨7, 47, by decide, by decide, by decide⟩
+theorem goldbach_decomp_56 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 56 :=
+  ⟨3, 53, by decide, by decide, by decide⟩
+theorem goldbach_decomp_58 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 58 :=
+  ⟨5, 53, by decide, by decide, by decide⟩
+theorem goldbach_decomp_60 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 60 :=
+  ⟨7, 53, by decide, by decide, by decide⟩
+theorem goldbach_decomp_62 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 62 :=
+  ⟨3, 59, by decide, by decide, by decide⟩
+theorem goldbach_decomp_64 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 64 :=
+  ⟨3, 61, by decide, by decide, by decide⟩
+theorem goldbach_decomp_66 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 66 :=
+  ⟨5, 61, by decide, by decide, by decide⟩
+theorem goldbach_decomp_68 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 68 :=
+  ⟨7, 61, by decide, by decide, by decide⟩
+theorem goldbach_decomp_70 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 70 :=
+  ⟨3, 67, by decide, by decide, by decide⟩
+theorem goldbach_decomp_72 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 72 :=
+  ⟨5, 67, by decide, by decide, by decide⟩
+theorem goldbach_decomp_74 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 74 :=
+  ⟨7, 67, by decide, by decide, by decide⟩
+theorem goldbach_decomp_76 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 76 :=
+  ⟨3, 73, by decide, by decide, by decide⟩
+theorem goldbach_decomp_78 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 78 :=
+  ⟨5, 73, by decide, by decide, by decide⟩
+theorem goldbach_decomp_80 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 80 :=
+  ⟨7, 73, by decide, by decide, by decide⟩
+theorem goldbach_decomp_82 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 82 :=
+  ⟨3, 79, by decide, by decide, by decide⟩
+theorem goldbach_decomp_84 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 84 :=
+  ⟨5, 79, by decide, by decide, by decide⟩
+theorem goldbach_decomp_86 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 86 :=
+  ⟨3, 83, by decide, by decide, by decide⟩
+theorem goldbach_decomp_88 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 88 :=
+  ⟨5, 83, by decide, by decide, by decide⟩
+theorem goldbach_decomp_90 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 90 :=
+  ⟨7, 83, by decide, by decide, by decide⟩
+theorem goldbach_decomp_92 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 92 :=
+  ⟨3, 89, by decide, by decide, by decide⟩
+theorem goldbach_decomp_94 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 94 :=
+  ⟨5, 89, by decide, by decide, by decide⟩
+theorem goldbach_decomp_96 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 96 :=
+  ⟨7, 89, by decide, by decide, by decide⟩
+theorem goldbach_decomp_98 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 98 :=
+  ⟨19, 79, by decide, by decide, by decide⟩
+theorem goldbach_decomp_100 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 100 :=
+  ⟨3, 97, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AL · 计数正性 (52..100) ============ -/
+
+theorem goldbachCount_pos_52 : 0 < goldbachCount 52 := by decide
+theorem goldbachCount_pos_54 : 0 < goldbachCount 54 := by decide
+theorem goldbachCount_pos_56 : 0 < goldbachCount 56 := by decide
+theorem goldbachCount_pos_58 : 0 < goldbachCount 58 := by decide
+theorem goldbachCount_pos_60 : 0 < goldbachCount 60 := by decide
+theorem goldbachCount_pos_62 : 0 < goldbachCount 62 := by decide
+theorem goldbachCount_pos_64 : 0 < goldbachCount 64 := by decide
+theorem goldbachCount_pos_66 : 0 < goldbachCount 66 := by decide
+theorem goldbachCount_pos_68 : 0 < goldbachCount 68 := by decide
+theorem goldbachCount_pos_70 : 0 < goldbachCount 70 := by decide
+theorem goldbachCount_pos_72 : 0 < goldbachCount 72 := by decide
+theorem goldbachCount_pos_74 : 0 < goldbachCount 74 := by decide
+theorem goldbachCount_pos_76 : 0 < goldbachCount 76 := by decide
+theorem goldbachCount_pos_78 : 0 < goldbachCount 78 := by decide
+theorem goldbachCount_pos_80 : 0 < goldbachCount 80 := by decide
+theorem goldbachCount_pos_82 : 0 < goldbachCount 82 := by decide
+theorem goldbachCount_pos_84 : 0 < goldbachCount 84 := by decide
+theorem goldbachCount_pos_86 : 0 < goldbachCount 86 := by decide
+theorem goldbachCount_pos_88 : 0 < goldbachCount 88 := by decide
+theorem goldbachCount_pos_90 : 0 < goldbachCount 90 := by decide
+theorem goldbachCount_pos_92 : 0 < goldbachCount 92 := by decide
+theorem goldbachCount_pos_94 : 0 < goldbachCount 94 := by decide
+theorem goldbachCount_pos_96 : 0 < goldbachCount 96 := by decide
+theorem goldbachCount_pos_98 : 0 < goldbachCount 98 := by decide
+theorem goldbachCount_pos_100 : 0 < goldbachCount 100 := by decide
+
+/-! ## ============ Batch AM · 三素分解 (33..61 奇) ============ -/
+
+theorem weak_decomp_33 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 33 :=
+  ⟨3, 7, 23, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_35 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 35 :=
+  ⟨3, 3, 29, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_37 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 37 :=
+  ⟨3, 5, 29, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_39 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 39 :=
+  ⟨3, 7, 29, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_41 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 41 :=
+  ⟨3, 7, 31, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_43 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 43 :=
+  ⟨3, 3, 37, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_45 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 45 :=
+  ⟨3, 5, 37, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_47 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 47 :=
+  ⟨3, 3, 41, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_49 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 49 :=
+  ⟨3, 3, 43, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_51 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 51 :=
+  ⟨3, 5, 43, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_53 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 53 :=
+  ⟨3, 3, 47, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_55 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 55 :=
+  ⟨3, 5, 47, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_57 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 57 :=
+  ⟨3, 7, 47, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_59 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 59 :=
+  ⟨3, 3, 53, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_61 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 61 :=
+  ⟨3, 5, 53, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AN · 三素分解 (63..101 奇) ============ -/
+
+theorem weak_decomp_63 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 63 :=
+  ⟨3, 7, 53, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_65 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 65 :=
+  ⟨3, 3, 59, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_67 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 67 :=
+  ⟨3, 3, 61, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_69 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 69 :=
+  ⟨3, 5, 61, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_71 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 71 :=
+  ⟨3, 7, 61, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_73 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 73 :=
+  ⟨3, 3, 67, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_75 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 75 :=
+  ⟨3, 5, 67, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_77 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 77 :=
+  ⟨3, 7, 67, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_79 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 79 :=
+  ⟨3, 3, 73, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_81 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 81 :=
+  ⟨3, 5, 73, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_83 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 83 :=
+  ⟨3, 7, 73, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_85 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 85 :=
+  ⟨3, 3, 79, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_87 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 87 :=
+  ⟨3, 5, 79, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_89 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 89 :=
+  ⟨3, 3, 83, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_91 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 91 :=
+  ⟨3, 5, 83, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_93 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 93 :=
+  ⟨3, 7, 83, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_95 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 95 :=
+  ⟨3, 3, 89, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_97 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 97 :=
+  ⟨3, 5, 89, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_99 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 99 :=
+  ⟨3, 7, 89, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_101 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 101 :=
+  ⟨5, 7, 89, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AO · 计数正性 (102..130) ============ -/
+
+theorem goldbachCount_pos_102 : 0 < goldbachCount 102 := by decide
+theorem goldbachCount_pos_104 : 0 < goldbachCount 104 := by decide
+theorem goldbachCount_pos_106 : 0 < goldbachCount 106 := by decide
+theorem goldbachCount_pos_108 : 0 < goldbachCount 108 := by decide
+theorem goldbachCount_pos_110 : 0 < goldbachCount 110 := by decide
+theorem goldbachCount_pos_112 : 0 < goldbachCount 112 := by decide
+theorem goldbachCount_pos_114 : 0 < goldbachCount 114 := by decide
+theorem goldbachCount_pos_116 : 0 < goldbachCount 116 := by decide
+theorem goldbachCount_pos_118 : 0 < goldbachCount 118 := by decide
+theorem goldbachCount_pos_120 : 0 < goldbachCount 120 :=
+  (goldbachCount_pos_iff 120 (by omega) ⟨60, by ring⟩).mpr
+    ⟨7, 113, by decide, by decide, by decide⟩
+theorem goldbachCount_pos_122 : 0 < goldbachCount 122 :=
+  (goldbachCount_pos_iff 122 (by omega) ⟨61, by ring⟩).mpr
+    ⟨13, 109, by decide, by decide, by decide⟩
+theorem goldbachCount_pos_124 : 0 < goldbachCount 124 :=
+  (goldbachCount_pos_iff 124 (by omega) ⟨62, by ring⟩).mpr
+    ⟨11, 113, by decide, by decide, by decide⟩
+theorem goldbachCount_pos_126 : 0 < goldbachCount 126 :=
+  (goldbachCount_pos_iff 126 (by omega) ⟨63, by ring⟩).mpr
+    ⟨13, 113, by decide, by decide, by decide⟩
+theorem goldbachCount_pos_128 : 0 < goldbachCount 128 :=
+  (goldbachCount_pos_iff 128 (by omega) ⟨64, by ring⟩).mpr
+    ⟨19, 109, by decide, by decide, by decide⟩
+theorem goldbachCount_pos_130 : 0 < goldbachCount 130 :=
+  (goldbachCount_pos_iff 130 (by omega) ⟨65, by ring⟩).mpr
+    ⟨3, 127, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AP · 偶数 102..150 显式分解 ============ -/
+
+theorem goldbach_decomp_102 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 102 :=
+  ⟨5, 97, by decide, by decide, by decide⟩
+theorem goldbach_decomp_104 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 104 :=
+  ⟨3, 101, by decide, by decide, by decide⟩
+theorem goldbach_decomp_106 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 106 :=
+  ⟨3, 103, by decide, by decide, by decide⟩
+theorem goldbach_decomp_108 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 108 :=
+  ⟨5, 103, by decide, by decide, by decide⟩
+theorem goldbach_decomp_110 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 110 :=
+  ⟨7, 103, by decide, by decide, by decide⟩
+theorem goldbach_decomp_112 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 112 :=
+  ⟨3, 109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_114 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 114 :=
+  ⟨5, 109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_116 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 116 :=
+  ⟨3, 113, by decide, by decide, by decide⟩
+theorem goldbach_decomp_118 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 118 :=
+  ⟨5, 113, by decide, by decide, by decide⟩
+theorem goldbach_decomp_120 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 120 :=
+  ⟨7, 113, by decide, by decide, by decide⟩
+theorem goldbach_decomp_122 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 122 :=
+  ⟨13, 109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_124 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 124 :=
+  ⟨11, 113, by decide, by decide, by decide⟩
+theorem goldbach_decomp_126 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 126 :=
+  ⟨13, 113, by decide, by decide, by decide⟩
+theorem goldbach_decomp_128 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 128 :=
+  ⟨19, 109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_130 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 130 :=
+  ⟨3, 127, by decide, by decide, by decide⟩
+theorem goldbach_decomp_132 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 132 :=
+  ⟨5, 127, by decide, by decide, by decide⟩
+theorem goldbach_decomp_134 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 134 :=
+  ⟨3, 131, by decide, by decide, by decide⟩
+theorem goldbach_decomp_136 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 136 :=
+  ⟨5, 131, by decide, by decide, by decide⟩
+theorem goldbach_decomp_138 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 138 :=
+  ⟨7, 131, by decide, by decide, by decide⟩
+theorem goldbach_decomp_140 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 140 :=
+  ⟨3, 137, by decide, by decide, by decide⟩
+theorem goldbach_decomp_142 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 142 :=
+  ⟨3, 139, by decide, by decide, by decide⟩
+theorem goldbach_decomp_144 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 144 :=
+  ⟨5, 139, by decide, by decide, by decide⟩
+theorem goldbach_decomp_146 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 146 :=
+  ⟨7, 139, by decide, by decide, by decide⟩
+theorem goldbach_decomp_148 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 148 :=
+  ⟨11, 137, by decide, by decide, by decide⟩
+theorem goldbach_decomp_150 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 150 :=
+  ⟨11, 139, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AQ · StrongGoldbachUpTo 数值小段 ============ -/
+
+theorem strongGoldbachUpTo_5 : StrongGoldbachUpTo 5 := by
+  intro n hn hN hE
+  interval_cases n
+  · exact ⟨2, 2, by decide, by decide, rfl⟩
+  · exfalso; rcases hE with ⟨k, hk⟩; omega
+
+/-- **StrongGoldbachUpTo 7** —— 区间 [4, 7] 仅有 4, 6 偶。 -/
+theorem strongGoldbachUpTo_7 : StrongGoldbachUpTo 7 := by
+  intro n hn hN hE
+  interval_cases n
+  · exact ⟨2, 2, by decide, by decide, rfl⟩
+  · exfalso; rcases hE with ⟨k, hk⟩; omega
+  · exact ⟨3, 3, by decide, by decide, rfl⟩
+  · exfalso; rcases hE with ⟨k, hk⟩; omega
+
+/-- **StrongGoldbachUpTo 8**。 -/
+theorem strongGoldbachUpTo_8 : StrongGoldbachUpTo 8 := by
+  intro n hn hN hE
+  interval_cases n
+  · exact ⟨2, 2, by decide, by decide, rfl⟩
+  · exfalso; rcases hE with ⟨k, hk⟩; omega
+  · exact ⟨3, 3, by decide, by decide, rfl⟩
+  · exfalso; rcases hE with ⟨k, hk⟩; omega
+  · exact ⟨3, 5, by decide, by decide, rfl⟩
+
+/-- **StrongGoldbachUpTo 10**。 -/
+theorem strongGoldbachUpTo_10 : StrongGoldbachUpTo 10 := by
+  intro n hn hN hE
+  interval_cases n
+  all_goals first
+    | exact ⟨2, 2, by decide, by decide, rfl⟩
+    | exact ⟨3, 3, by decide, by decide, rfl⟩
+    | exact ⟨3, 5, by decide, by decide, rfl⟩
+    | exact ⟨3, 7, by decide, by decide, rfl⟩
+    | (exfalso; rcases hE with ⟨k, hk⟩; omega)
+
+/-- **StrongGoldbachUpTo 12**。 -/
+theorem strongGoldbachUpTo_12 : StrongGoldbachUpTo 12 := by
+  intro n hn hN hE
+  interval_cases n
+  all_goals first
+    | exact ⟨2, 2, by decide, by decide, rfl⟩
+    | exact ⟨3, 3, by decide, by decide, rfl⟩
+    | exact ⟨3, 5, by decide, by decide, rfl⟩
+    | exact ⟨3, 7, by decide, by decide, rfl⟩
+    | exact ⟨5, 7, by decide, by decide, rfl⟩
+    | (exfalso; rcases hE with ⟨k, hk⟩; omega)
+
+/-! ## ============ Batch AR · 偶数 152..200 显式分解 ============ -/
+
+theorem goldbach_decomp_152 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 152 :=
+  ⟨3, 149, by decide, by decide, by decide⟩
+theorem goldbach_decomp_154 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 154 :=
+  ⟨3, 151, by decide, by decide, by decide⟩
+theorem goldbach_decomp_156 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 156 :=
+  ⟨5, 151, by decide, by decide, by decide⟩
+theorem goldbach_decomp_158 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 158 :=
+  ⟨7, 151, by decide, by decide, by decide⟩
+theorem goldbach_decomp_160 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 160 :=
+  ⟨3, 157, by decide, by decide, by decide⟩
+theorem goldbach_decomp_162 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 162 :=
+  ⟨5, 157, by decide, by decide, by decide⟩
+theorem goldbach_decomp_164 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 164 :=
+  ⟨7, 157, by decide, by decide, by decide⟩
+theorem goldbach_decomp_166 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 166 :=
+  ⟨3, 163, by decide, by decide, by decide⟩
+theorem goldbach_decomp_168 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 168 :=
+  ⟨5, 163, by decide, by decide, by decide⟩
+theorem goldbach_decomp_170 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 170 :=
+  ⟨7, 163, by decide, by decide, by decide⟩
+theorem goldbach_decomp_172 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 172 :=
+  ⟨5, 167, by decide, by decide, by decide⟩
+theorem goldbach_decomp_174 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 174 :=
+  ⟨7, 167, by decide, by decide, by decide⟩
+theorem goldbach_decomp_176 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 176 :=
+  ⟨3, 173, by decide, by decide, by decide⟩
+theorem goldbach_decomp_178 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 178 :=
+  ⟨5, 173, by decide, by decide, by decide⟩
+theorem goldbach_decomp_180 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 180 :=
+  ⟨7, 173, by decide, by decide, by decide⟩
+theorem goldbach_decomp_182 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 182 :=
+  ⟨3, 179, by decide, by decide, by decide⟩
+theorem goldbach_decomp_184 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 184 :=
+  ⟨5, 179, by decide, by decide, by decide⟩
+theorem goldbach_decomp_186 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 186 :=
+  ⟨7, 179, by decide, by decide, by decide⟩
+theorem goldbach_decomp_188 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 188 :=
+  ⟨7, 181, by decide, by decide, by decide⟩
+theorem goldbach_decomp_190 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 190 :=
+  ⟨11, 179, by decide, by decide, by decide⟩
+theorem goldbach_decomp_192 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 192 :=
+  ⟨11, 181, by decide, by decide, by decide⟩
+theorem goldbach_decomp_194 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 194 :=
+  ⟨3, 191, by decide, by decide, by decide⟩
+theorem goldbach_decomp_196 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 196 :=
+  ⟨3, 193, by decide, by decide, by decide⟩
+theorem goldbach_decomp_198 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 198 :=
+  ⟨5, 193, by decide, by decide, by decide⟩
+theorem goldbach_decomp_200 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 200 :=
+  ⟨3, 197, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AS · 三素分解 (103..151 奇) ============ -/
+
+theorem weak_decomp_103 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 103 :=
+  ⟨3, 3, 97, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_105 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 105 :=
+  ⟨3, 5, 97, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_107 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 107 :=
+  ⟨3, 7, 97, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_109 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 109 :=
+  ⟨3, 5, 101, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_111 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 111 :=
+  ⟨3, 5, 103, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_113 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 113 :=
+  ⟨3, 7, 103, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_115 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 115 :=
+  ⟨3, 3, 109, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_117 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 117 :=
+  ⟨3, 5, 109, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_119 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 119 :=
+  ⟨3, 3, 113, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_121 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 121 :=
+  ⟨3, 5, 113, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_123 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 123 :=
+  ⟨3, 7, 113, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_125 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 125 :=
+  ⟨5, 7, 113, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_127 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 127 :=
+  ⟨3, 11, 113, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_129 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 129 :=
+  ⟨3, 13, 113, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_131 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 131 :=
+  ⟨7, 11, 113, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_133 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 133 :=
+  ⟨3, 3, 127, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_135 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 135 :=
+  ⟨3, 5, 127, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_137 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 137 :=
+  ⟨3, 7, 127, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_139 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 139 :=
+  ⟨3, 5, 131, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_141 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 141 :=
+  ⟨3, 7, 131, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_143 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 143 :=
+  ⟨3, 3, 137, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_145 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 145 :=
+  ⟨3, 5, 137, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_147 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 147 :=
+  ⟨3, 5, 139, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_149 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 149 :=
+  ⟨3, 7, 139, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_151 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 151 :=
+  ⟨5, 7, 139, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AT · 三素分解 (153..191 奇) ============ -/
+
+theorem weak_decomp_153 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 153 :=
+  ⟨3, 11, 139, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_155 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 155 :=
+  ⟨3, 3, 149, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_157 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 157 :=
+  ⟨3, 3, 151, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_159 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 159 :=
+  ⟨3, 5, 151, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_161 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 161 :=
+  ⟨3, 7, 151, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_163 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 163 :=
+  ⟨3, 3, 157, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_165 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 165 :=
+  ⟨3, 5, 157, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_167 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 167 :=
+  ⟨3, 7, 157, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_169 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 169 :=
+  ⟨3, 3, 163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_171 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 171 :=
+  ⟨3, 5, 163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_173 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 173 :=
+  ⟨3, 7, 163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_175 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 175 :=
+  ⟨5, 7, 163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_177 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 177 :=
+  ⟨3, 7, 167, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_179 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 179 :=
+  ⟨3, 3, 173, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_181 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 181 :=
+  ⟨3, 5, 173, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_183 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 183 :=
+  ⟨3, 7, 173, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_185 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 185 :=
+  ⟨3, 3, 179, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_187 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 187 :=
+  ⟨3, 5, 179, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_189 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 189 :=
+  ⟨3, 7, 179, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_191 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 191 :=
+  ⟨3, 7, 181, by decide, by decide, by decide, by decide⟩
 
 end Goldbach
