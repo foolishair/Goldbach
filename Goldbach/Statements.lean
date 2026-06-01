@@ -66,7 +66,7 @@ import Mathlib.NumberTheory.Bertrand
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 import Mathlib.Data.Nat.Prime.Basic
 
-set_option maxRecDepth 2000
+set_option maxRecDepth 4000
 
 namespace Goldbach
 
@@ -2418,5 +2418,1040 @@ theorem weak_decomp_189 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p
   ⟨3, 7, 179, by decide, by decide, by decide, by decide⟩
 theorem weak_decomp_191 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 191 :=
   ⟨3, 7, 181, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AU · 偶数 202..260 显式分解 ============ -/
+
+theorem goldbach_decomp_202 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 202 :=
+  ⟨3, 199, by decide, by decide, by decide⟩
+theorem goldbach_decomp_204 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 204 :=
+  ⟨5, 199, by decide, by decide, by decide⟩
+theorem goldbach_decomp_206 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 206 :=
+  ⟨7, 199, by decide, by decide, by decide⟩
+theorem goldbach_decomp_208 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 208 :=
+  ⟨11, 197, by decide, by decide, by decide⟩
+theorem goldbach_decomp_210 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 210 :=
+  ⟨11, 199, by decide, by decide, by decide⟩
+theorem goldbach_decomp_212 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 212 :=
+  ⟨13, 199, by decide, by decide, by decide⟩
+theorem goldbach_decomp_214 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 214 :=
+  ⟨3, 211, by decide, by decide, by decide⟩
+theorem goldbach_decomp_216 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 216 :=
+  ⟨5, 211, by decide, by decide, by decide⟩
+theorem goldbach_decomp_218 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 218 :=
+  ⟨7, 211, by decide, by decide, by decide⟩
+theorem goldbach_decomp_220 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 220 :=
+  ⟨23, 197, by decide, by decide, by decide⟩
+theorem goldbach_decomp_222 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 222 :=
+  ⟨11, 211, by decide, by decide, by decide⟩
+theorem goldbach_decomp_224 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 224 :=
+  ⟨13, 211, by decide, by decide, by decide⟩
+theorem goldbach_decomp_226 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 226 :=
+  ⟨3, 223, by decide, by decide, by decide⟩
+theorem goldbach_decomp_228 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 228 :=
+  ⟨5, 223, by decide, by decide, by decide⟩
+theorem goldbach_decomp_230 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 230 :=
+  ⟨7, 223, by decide, by decide, by decide⟩
+theorem goldbach_decomp_232 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 232 :=
+  ⟨3, 229, by decide, by decide, by decide⟩
+theorem goldbach_decomp_234 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 234 :=
+  ⟨5, 229, by decide, by decide, by decide⟩
+theorem goldbach_decomp_236 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 236 :=
+  ⟨7, 229, by decide, by decide, by decide⟩
+theorem goldbach_decomp_238 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 238 :=
+  ⟨11, 227, by decide, by decide, by decide⟩
+theorem goldbach_decomp_240 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 240 :=
+  ⟨11, 229, by decide, by decide, by decide⟩
+theorem goldbach_decomp_242 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 242 :=
+  ⟨3, 239, by decide, by decide, by decide⟩
+theorem goldbach_decomp_244 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 244 :=
+  ⟨3, 241, by decide, by decide, by decide⟩
+theorem goldbach_decomp_246 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 246 :=
+  ⟨5, 241, by decide, by decide, by decide⟩
+theorem goldbach_decomp_248 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 248 :=
+  ⟨7, 241, by decide, by decide, by decide⟩
+theorem goldbach_decomp_250 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 250 :=
+  ⟨11, 239, by decide, by decide, by decide⟩
+theorem goldbach_decomp_252 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 252 :=
+  ⟨11, 241, by decide, by decide, by decide⟩
+theorem goldbach_decomp_254 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 254 :=
+  ⟨3, 251, by decide, by decide, by decide⟩
+theorem goldbach_decomp_256 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 256 :=
+  ⟨5, 251, by decide, by decide, by decide⟩
+theorem goldbach_decomp_258 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 258 :=
+  ⟨7, 251, by decide, by decide, by decide⟩
+theorem goldbach_decomp_260 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 260 :=
+  ⟨3, 257, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AV · 偶数 262..320 显式分解 ============ -/
+
+theorem goldbach_decomp_262 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 262 :=
+  ⟨5, 257, by decide, by decide, by decide⟩
+theorem goldbach_decomp_264 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 264 :=
+  ⟨7, 257, by decide, by decide, by decide⟩
+theorem goldbach_decomp_266 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 266 :=
+  ⟨3, 263, by decide, by decide, by decide⟩
+theorem goldbach_decomp_268 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 268 :=
+  ⟨5, 263, by decide, by decide, by decide⟩
+theorem goldbach_decomp_270 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 270 :=
+  ⟨7, 263, by decide, by decide, by decide⟩
+theorem goldbach_decomp_272 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 272 :=
+  ⟨3, 269, by decide, by decide, by decide⟩
+theorem goldbach_decomp_274 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 274 :=
+  ⟨3, 271, by decide, by decide, by decide⟩
+theorem goldbach_decomp_276 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 276 :=
+  ⟨5, 271, by decide, by decide, by decide⟩
+theorem goldbach_decomp_278 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 278 :=
+  ⟨7, 271, by decide, by decide, by decide⟩
+theorem goldbach_decomp_280 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 280 :=
+  ⟨3, 277, by decide, by decide, by decide⟩
+theorem goldbach_decomp_282 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 282 :=
+  ⟨5, 277, by decide, by decide, by decide⟩
+theorem goldbach_decomp_284 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 284 :=
+  ⟨3, 281, by decide, by decide, by decide⟩
+theorem goldbach_decomp_286 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 286 :=
+  ⟨3, 283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_288 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 288 :=
+  ⟨5, 283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_290 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 290 :=
+  ⟨7, 283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_292 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 292 :=
+  ⟨11, 281, by decide, by decide, by decide⟩
+theorem goldbach_decomp_294 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 294 :=
+  ⟨11, 283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_296 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 296 :=
+  ⟨13, 283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_298 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 298 :=
+  ⟨17, 281, by decide, by decide, by decide⟩
+theorem goldbach_decomp_300 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 300 :=
+  ⟨7, 293, by decide, by decide, by decide⟩
+theorem goldbach_decomp_302 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 302 :=
+  ⟨31, 271, by decide, by decide, by decide⟩
+theorem goldbach_decomp_304 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 304 :=
+  ⟨11, 293, by decide, by decide, by decide⟩
+theorem goldbach_decomp_306 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 306 :=
+  ⟨13, 293, by decide, by decide, by decide⟩
+theorem goldbach_decomp_308 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 308 :=
+  ⟨31, 277, by decide, by decide, by decide⟩
+theorem goldbach_decomp_310 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 310 :=
+  ⟨3, 307, by decide, by decide, by decide⟩
+theorem goldbach_decomp_312 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 312 :=
+  ⟨5, 307, by decide, by decide, by decide⟩
+theorem goldbach_decomp_314 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 314 :=
+  ⟨3, 311, by decide, by decide, by decide⟩
+theorem goldbach_decomp_316 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 316 :=
+  ⟨3, 313, by decide, by decide, by decide⟩
+theorem goldbach_decomp_318 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 318 :=
+  ⟨5, 313, by decide, by decide, by decide⟩
+theorem goldbach_decomp_320 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 320 :=
+  ⟨7, 313, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AW · 三素分解 (193..271 奇) ============ -/
+
+theorem weak_decomp_193 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 193 :=
+  ⟨7, 13, 173, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_195 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 195 :=
+  ⟨3, 11, 181, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_197 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 197 :=
+  ⟨3, 3, 191, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_199 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 199 :=
+  ⟨3, 5, 191, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_201 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 201 :=
+  ⟨3, 5, 193, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_203 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 203 :=
+  ⟨3, 7, 193, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_205 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 205 :=
+  ⟨3, 5, 197, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_207 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 207 :=
+  ⟨3, 5, 199, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_209 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 209 :=
+  ⟨3, 7, 199, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_211 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 211 :=
+  ⟨5, 7, 199, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_213 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 213 :=
+  ⟨3, 11, 199, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_215 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 215 :=
+  ⟨5, 13, 197, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_217 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 217 :=
+  ⟨3, 3, 211, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_219 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 219 :=
+  ⟨3, 5, 211, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_221 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 221 :=
+  ⟨3, 7, 211, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_223 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 223 :=
+  ⟨5, 7, 211, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_225 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 225 :=
+  ⟨3, 11, 211, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_227 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 227 :=
+  ⟨3, 13, 211, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_229 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 229 :=
+  ⟨3, 3, 223, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_231 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 231 :=
+  ⟨3, 5, 223, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_233 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 233 :=
+  ⟨3, 7, 223, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_235 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 235 :=
+  ⟨3, 3, 229, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_237 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 237 :=
+  ⟨3, 5, 229, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_239 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 239 :=
+  ⟨3, 7, 229, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_241 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 241 :=
+  ⟨3, 5, 233, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AX · 三素分解 (243..271 奇) ============ -/
+
+theorem weak_decomp_243 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 243 :=
+  ⟨3, 7, 233, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_245 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 245 :=
+  ⟨3, 3, 239, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_247 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 247 :=
+  ⟨3, 5, 239, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_249 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 249 :=
+  ⟨3, 7, 239, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_251 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 251 :=
+  ⟨7, 11, 233, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_253 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 253 :=
+  ⟨7, 13, 233, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_255 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 255 :=
+  ⟨3, 13, 239, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_257 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 257 :=
+  ⟨3, 3, 251, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_259 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 259 :=
+  ⟨3, 5, 251, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_261 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 261 :=
+  ⟨3, 7, 251, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_263 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 263 :=
+  ⟨3, 3, 257, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_265 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 265 :=
+  ⟨3, 5, 257, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_267 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 267 :=
+  ⟨3, 7, 257, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_269 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 269 :=
+  ⟨3, 3, 263, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_271 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 271 :=
+  ⟨3, 5, 263, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AY · 偶数 322..400 显式分解 ============ -/
+
+theorem goldbach_decomp_322 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 322 :=
+  ⟨11, 311, by decide, by decide, by decide⟩
+theorem goldbach_decomp_324 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 324 :=
+  ⟨11, 313, by decide, by decide, by decide⟩
+theorem goldbach_decomp_326 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 326 :=
+  ⟨13, 313, by decide, by decide, by decide⟩
+theorem goldbach_decomp_328 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 328 :=
+  ⟨11, 317, by decide, by decide, by decide⟩
+theorem goldbach_decomp_330 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 330 :=
+  ⟨13, 317, by decide, by decide, by decide⟩
+theorem goldbach_decomp_332 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 332 :=
+  ⟨19, 313, by decide, by decide, by decide⟩
+theorem goldbach_decomp_334 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 334 :=
+  ⟨3, 331, by decide, by decide, by decide⟩
+theorem goldbach_decomp_336 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 336 :=
+  ⟨5, 331, by decide, by decide, by decide⟩
+theorem goldbach_decomp_338 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 338 :=
+  ⟨7, 331, by decide, by decide, by decide⟩
+theorem goldbach_decomp_340 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 340 :=
+  ⟨3, 337, by decide, by decide, by decide⟩
+theorem goldbach_decomp_342 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 342 :=
+  ⟨5, 337, by decide, by decide, by decide⟩
+theorem goldbach_decomp_344 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 344 :=
+  ⟨13, 331, by decide, by decide, by decide⟩
+theorem goldbach_decomp_346 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 346 :=
+  ⟨29, 317, by decide, by decide, by decide⟩
+theorem goldbach_decomp_348 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 348 :=
+  ⟨11, 337, by decide, by decide, by decide⟩
+theorem goldbach_decomp_350 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 350 :=
+  ⟨3, 347, by decide, by decide, by decide⟩
+theorem goldbach_decomp_352 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 352 :=
+  ⟨5, 347, by decide, by decide, by decide⟩
+theorem goldbach_decomp_354 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 354 :=
+  ⟨7, 347, by decide, by decide, by decide⟩
+theorem goldbach_decomp_356 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 356 :=
+  ⟨3, 353, by decide, by decide, by decide⟩
+theorem goldbach_decomp_358 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 358 :=
+  ⟨5, 353, by decide, by decide, by decide⟩
+theorem goldbach_decomp_360 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 360 :=
+  ⟨7, 353, by decide, by decide, by decide⟩
+theorem goldbach_decomp_362 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 362 :=
+  ⟨3, 359, by decide, by decide, by decide⟩
+theorem goldbach_decomp_364 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 364 :=
+  ⟨5, 359, by decide, by decide, by decide⟩
+theorem goldbach_decomp_366 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 366 :=
+  ⟨7, 359, by decide, by decide, by decide⟩
+theorem goldbach_decomp_368 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 368 :=
+  ⟨31, 337, by decide, by decide, by decide⟩
+theorem goldbach_decomp_370 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 370 :=
+  ⟨3, 367, by decide, by decide, by decide⟩
+theorem goldbach_decomp_372 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 372 :=
+  ⟨5, 367, by decide, by decide, by decide⟩
+theorem goldbach_decomp_374 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 374 :=
+  ⟨7, 367, by decide, by decide, by decide⟩
+theorem goldbach_decomp_376 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 376 :=
+  ⟨3, 373, by decide, by decide, by decide⟩
+theorem goldbach_decomp_378 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 378 :=
+  ⟨5, 373, by decide, by decide, by decide⟩
+theorem goldbach_decomp_380 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 380 :=
+  ⟨7, 373, by decide, by decide, by decide⟩
+theorem goldbach_decomp_382 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 382 :=
+  ⟨3, 379, by decide, by decide, by decide⟩
+theorem goldbach_decomp_384 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 384 :=
+  ⟨5, 379, by decide, by decide, by decide⟩
+theorem goldbach_decomp_386 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 386 :=
+  ⟨7, 379, by decide, by decide, by decide⟩
+theorem goldbach_decomp_388 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 388 :=
+  ⟨5, 383, by decide, by decide, by decide⟩
+theorem goldbach_decomp_390 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 390 :=
+  ⟨7, 383, by decide, by decide, by decide⟩
+theorem goldbach_decomp_392 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 392 :=
+  ⟨3, 389, by decide, by decide, by decide⟩
+theorem goldbach_decomp_394 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 394 :=
+  ⟨5, 389, by decide, by decide, by decide⟩
+theorem goldbach_decomp_396 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 396 :=
+  ⟨7, 389, by decide, by decide, by decide⟩
+theorem goldbach_decomp_398 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 398 :=
+  ⟨19, 379, by decide, by decide, by decide⟩
+theorem goldbach_decomp_400 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 400 :=
+  ⟨3, 397, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch AZ · 三素分解 (273..391 奇) ============ -/
+
+theorem weak_decomp_273 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 273 :=
+  ⟨3, 7, 263, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_275 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 275 :=
+  ⟨3, 3, 269, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_277 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 277 :=
+  ⟨3, 3, 271, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_279 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 279 :=
+  ⟨3, 5, 271, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_281 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 281 :=
+  ⟨3, 7, 271, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_283 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 283 :=
+  ⟨3, 3, 277, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_285 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 285 :=
+  ⟨3, 5, 277, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_287 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 287 :=
+  ⟨3, 3, 281, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_289 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 289 :=
+  ⟨3, 5, 281, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_291 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 291 :=
+  ⟨3, 5, 283, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_293 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 293 :=
+  ⟨3, 7, 283, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_295 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 295 :=
+  ⟨5, 7, 283, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_297 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 297 :=
+  ⟨5, 11, 281, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_299 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 299 :=
+  ⟨3, 3, 293, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_301 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 301 :=
+  ⟨3, 5, 293, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_303 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 303 :=
+  ⟨3, 7, 293, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_305 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 305 :=
+  ⟨5, 7, 293, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_307 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 307 :=
+  ⟨3, 11, 293, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_309 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 309 :=
+  ⟨3, 13, 293, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_311 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 311 :=
+  ⟨5, 13, 293, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_313 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 313 :=
+  ⟨3, 3, 307, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_315 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 315 :=
+  ⟨3, 5, 307, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_317 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 317 :=
+  ⟨3, 3, 311, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_319 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 319 :=
+  ⟨3, 5, 311, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_321 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 321 :=
+  ⟨3, 5, 313, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_323 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 323 :=
+  ⟨3, 7, 313, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_325 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 325 :=
+  ⟨5, 7, 313, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_327 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 327 :=
+  ⟨3, 7, 317, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_329 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 329 :=
+  ⟨3, 13, 313, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_331 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 331 :=
+  ⟨7, 11, 313, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_333 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 333 :=
+  ⟨3, 19, 311, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_335 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 335 :=
+  ⟨5, 19, 311, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_337 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 337 :=
+  ⟨3, 3, 331, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_339 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 339 :=
+  ⟨3, 5, 331, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_341 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 341 :=
+  ⟨3, 7, 331, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_343 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 343 :=
+  ⟨5, 7, 331, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_345 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 345 :=
+  ⟨3, 5, 337, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_347 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 347 :=
+  ⟨3, 7, 337, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_349 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 349 :=
+  ⟨5, 7, 337, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_351 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 351 :=
+  ⟨3, 17, 331, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_353 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 353 :=
+  ⟨3, 3, 347, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_355 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 355 :=
+  ⟨3, 5, 347, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_357 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 357 :=
+  ⟨3, 7, 347, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_359 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 359 :=
+  ⟨3, 3, 353, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_361 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 361 :=
+  ⟨3, 5, 353, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_363 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 363 :=
+  ⟨3, 7, 353, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_365 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 365 :=
+  ⟨5, 7, 353, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_367 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 367 :=
+  ⟨3, 5, 359, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_369 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 369 :=
+  ⟨3, 7, 359, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_371 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 371 :=
+  ⟨5, 7, 359, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_373 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 373 :=
+  ⟨3, 3, 367, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_375 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 375 :=
+  ⟨3, 5, 367, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_377 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 377 :=
+  ⟨3, 7, 367, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_379 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 379 :=
+  ⟨5, 7, 367, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_381 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 381 :=
+  ⟨3, 11, 367, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_383 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 383 :=
+  ⟨3, 7, 373, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_385 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 385 :=
+  ⟨5, 7, 373, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_387 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 387 :=
+  ⟨3, 5, 379, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_389 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 389 :=
+  ⟨3, 7, 379, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_391 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 391 :=
+  ⟨5, 7, 379, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BA · 偶数 402..500 显式分解 ============ -/
+
+theorem goldbach_decomp_402 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 402 :=
+  ⟨5, 397, by decide, by decide, by decide⟩
+theorem goldbach_decomp_404 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 404 :=
+  ⟨3, 401, by decide, by decide, by decide⟩
+theorem goldbach_decomp_406 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 406 :=
+  ⟨17, 389, by decide, by decide, by decide⟩
+theorem goldbach_decomp_408 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 408 :=
+  ⟨11, 397, by decide, by decide, by decide⟩
+theorem goldbach_decomp_410 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 410 :=
+  ⟨13, 397, by decide, by decide, by decide⟩
+theorem goldbach_decomp_412 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 412 :=
+  ⟨3, 409, by decide, by decide, by decide⟩
+theorem goldbach_decomp_414 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 414 :=
+  ⟨5, 409, by decide, by decide, by decide⟩
+theorem goldbach_decomp_416 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 416 :=
+  ⟨7, 409, by decide, by decide, by decide⟩
+theorem goldbach_decomp_418 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 418 :=
+  ⟨17, 401, by decide, by decide, by decide⟩
+theorem goldbach_decomp_420 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 420 :=
+  ⟨11, 409, by decide, by decide, by decide⟩
+theorem goldbach_decomp_422 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 422 :=
+  ⟨13, 409, by decide, by decide, by decide⟩
+theorem goldbach_decomp_424 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 424 :=
+  ⟨5, 419, by decide, by decide, by decide⟩
+theorem goldbach_decomp_426 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 426 :=
+  ⟨7, 419, by decide, by decide, by decide⟩
+theorem goldbach_decomp_428 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 428 :=
+  ⟨7, 421, by decide, by decide, by decide⟩
+theorem goldbach_decomp_430 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 430 :=
+  ⟨11, 419, by decide, by decide, by decide⟩
+theorem goldbach_decomp_432 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 432 :=
+  ⟨11, 421, by decide, by decide, by decide⟩
+theorem goldbach_decomp_434 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 434 :=
+  ⟨13, 421, by decide, by decide, by decide⟩
+theorem goldbach_decomp_436 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 436 :=
+  ⟨3, 433, by decide, by decide, by decide⟩
+theorem goldbach_decomp_438 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 438 :=
+  ⟨5, 433, by decide, by decide, by decide⟩
+theorem goldbach_decomp_440 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 440 :=
+  ⟨7, 433, by decide, by decide, by decide⟩
+theorem goldbach_decomp_442 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 442 :=
+  ⟨3, 439, by decide, by decide, by decide⟩
+theorem goldbach_decomp_444 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 444 :=
+  ⟨5, 439, by decide, by decide, by decide⟩
+theorem goldbach_decomp_446 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 446 :=
+  ⟨7, 439, by decide, by decide, by decide⟩
+theorem goldbach_decomp_448 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 448 :=
+  ⟨5, 443, by decide, by decide, by decide⟩
+theorem goldbach_decomp_450 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 450 :=
+  ⟨7, 443, by decide, by decide, by decide⟩
+theorem goldbach_decomp_452 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 452 :=
+  ⟨3, 449, by decide, by decide, by decide⟩
+theorem goldbach_decomp_454 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 454 :=
+  ⟨5, 449, by decide, by decide, by decide⟩
+theorem goldbach_decomp_456 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 456 :=
+  ⟨7, 449, by decide, by decide, by decide⟩
+theorem goldbach_decomp_458 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 458 :=
+  ⟨19, 439, by decide, by decide, by decide⟩
+theorem goldbach_decomp_460 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 460 :=
+  ⟨11, 449, by decide, by decide, by decide⟩
+theorem goldbach_decomp_462 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 462 :=
+  ⟨13, 449, by decide, by decide, by decide⟩
+theorem goldbach_decomp_464 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 464 :=
+  ⟨3, 461, by decide, by decide, by decide⟩
+theorem goldbach_decomp_466 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 466 :=
+  ⟨3, 463, by decide, by decide, by decide⟩
+theorem goldbach_decomp_468 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 468 :=
+  ⟨5, 463, by decide, by decide, by decide⟩
+theorem goldbach_decomp_470 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 470 :=
+  ⟨7, 463, by decide, by decide, by decide⟩
+theorem goldbach_decomp_472 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 472 :=
+  ⟨11, 461, by decide, by decide, by decide⟩
+theorem goldbach_decomp_474 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 474 :=
+  ⟨11, 463, by decide, by decide, by decide⟩
+theorem goldbach_decomp_476 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 476 :=
+  ⟨13, 463, by decide, by decide, by decide⟩
+theorem goldbach_decomp_478 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 478 :=
+  ⟨11, 467, by decide, by decide, by decide⟩
+theorem goldbach_decomp_480 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 480 :=
+  ⟨13, 467, by decide, by decide, by decide⟩
+theorem goldbach_decomp_482 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 482 :=
+  ⟨3, 479, by decide, by decide, by decide⟩
+theorem goldbach_decomp_484 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 484 :=
+  ⟨5, 479, by decide, by decide, by decide⟩
+theorem goldbach_decomp_486 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 486 :=
+  ⟨7, 479, by decide, by decide, by decide⟩
+theorem goldbach_decomp_488 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 488 :=
+  ⟨31, 457, by decide, by decide, by decide⟩
+theorem goldbach_decomp_490 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 490 :=
+  ⟨11, 479, by decide, by decide, by decide⟩
+theorem goldbach_decomp_492 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 492 :=
+  ⟨13, 479, by decide, by decide, by decide⟩
+theorem goldbach_decomp_494 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 494 :=
+  ⟨7, 487, by decide, by decide, by decide⟩
+theorem goldbach_decomp_496 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 496 :=
+  ⟨17, 479, by decide, by decide, by decide⟩
+theorem goldbach_decomp_498 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 498 :=
+  ⟨11, 487, by decide, by decide, by decide⟩
+theorem goldbach_decomp_500 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 500 :=
+  ⟨13, 487, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BB · 三素分解 (393..501 奇) ============ -/
+
+theorem weak_decomp_393 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 393 :=
+  ⟨3, 7, 383, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_395 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 395 :=
+  ⟨3, 3, 389, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_397 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 397 :=
+  ⟨3, 5, 389, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_399 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 399 :=
+  ⟨3, 7, 389, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_401 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 401 :=
+  ⟨5, 7, 389, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_403 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 403 :=
+  ⟨3, 3, 397, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_405 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 405 :=
+  ⟨3, 5, 397, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_407 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 407 :=
+  ⟨3, 7, 397, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_409 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 409 :=
+  ⟨5, 7, 397, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_411 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 411 :=
+  ⟨3, 7, 401, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_413 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 413 :=
+  ⟨3, 13, 397, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_415 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 415 :=
+  ⟨5, 13, 397, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_417 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 417 :=
+  ⟨3, 5, 409, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_419 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 419 :=
+  ⟨3, 7, 409, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_421 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 421 :=
+  ⟨5, 7, 409, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_423 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 423 :=
+  ⟨7, 19, 397, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_425 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 425 :=
+  ⟨3, 3, 419, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_427 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 427 :=
+  ⟨3, 5, 419, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_429 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 429 :=
+  ⟨3, 7, 419, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_431 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 431 :=
+  ⟨5, 7, 419, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_433 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 433 :=
+  ⟨3, 11, 419, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_435 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 435 :=
+  ⟨5, 11, 419, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_437 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 437 :=
+  ⟨7, 11, 419, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_439 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 439 :=
+  ⟨3, 5, 431, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_441 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 441 :=
+  ⟨3, 7, 431, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_443 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 443 :=
+  ⟨5, 7, 431, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_445 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 445 :=
+  ⟨3, 11, 431, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_447 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 447 :=
+  ⟨3, 13, 431, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_449 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 449 :=
+  ⟨3, 3, 443, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_451 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 451 :=
+  ⟨3, 5, 443, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_453 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 453 :=
+  ⟨3, 7, 443, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_455 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 455 :=
+  ⟨5, 7, 443, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_457 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 457 :=
+  ⟨5, 3, 449, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_459 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 459 :=
+  ⟨3, 7, 449, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_461 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 461 :=
+  ⟨5, 7, 449, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_463 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 463 :=
+  ⟨3, 3, 457, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_465 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 465 :=
+  ⟨3, 5, 457, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_467 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 467 :=
+  ⟨3, 7, 457, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_469 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 469 :=
+  ⟨5, 7, 457, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_471 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 471 :=
+  ⟨3, 7, 461, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_473 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 473 :=
+  ⟨5, 7, 461, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_475 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 475 :=
+  ⟨5, 7, 463, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_477 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 477 :=
+  ⟨3, 11, 463, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_479 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 479 :=
+  ⟨3, 13, 463, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_481 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 481 :=
+  ⟨11, 13, 457, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_483 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 483 :=
+  ⟨3, 13, 467, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_485 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 485 :=
+  ⟨3, 3, 479, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_487 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 487 :=
+  ⟨3, 5, 479, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_489 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 489 :=
+  ⟨3, 7, 479, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_491 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 491 :=
+  ⟨5, 7, 479, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_493 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 493 :=
+  ⟨3, 11, 479, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_495 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 495 :=
+  ⟨5, 11, 479, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_497 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 497 :=
+  ⟨7, 11, 479, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_499 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 499 :=
+  ⟨13, 19, 467, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_501 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 501 :=
+  ⟨3, 11, 487, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BC · 偶数 502..600 显式分解 ============ -/
+
+theorem goldbach_decomp_502 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 502 :=
+  ⟨3, 499, by decide, by decide, by decide⟩
+theorem goldbach_decomp_504 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 504 :=
+  ⟨5, 499, by decide, by decide, by decide⟩
+theorem goldbach_decomp_506 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 506 :=
+  ⟨7, 499, by decide, by decide, by decide⟩
+theorem goldbach_decomp_508 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 508 :=
+  ⟨41, 467, by decide, by decide, by decide⟩
+theorem goldbach_decomp_510 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 510 :=
+  ⟨11, 499, by decide, by decide, by decide⟩
+theorem goldbach_decomp_512 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 512 :=
+  ⟨13, 499, by decide, by decide, by decide⟩
+theorem goldbach_decomp_514 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 514 :=
+  ⟨11, 503, by decide, by decide, by decide⟩
+theorem goldbach_decomp_516 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 516 :=
+  ⟨13, 503, by decide, by decide, by decide⟩
+theorem goldbach_decomp_518 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 518 :=
+  ⟨19, 499, by decide, by decide, by decide⟩
+theorem goldbach_decomp_520 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 520 :=
+  ⟨11, 509, by decide, by decide, by decide⟩
+theorem goldbach_decomp_522 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 522 :=
+  ⟨13, 509, by decide, by decide, by decide⟩
+theorem goldbach_decomp_524 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 524 :=
+  ⟨3, 521, by decide, by decide, by decide⟩
+theorem goldbach_decomp_526 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 526 :=
+  ⟨3, 523, by decide, by decide, by decide⟩
+theorem goldbach_decomp_528 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 528 :=
+  ⟨5, 523, by decide, by decide, by decide⟩
+theorem goldbach_decomp_530 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 530 :=
+  ⟨7, 523, by decide, by decide, by decide⟩
+theorem goldbach_decomp_532 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 532 :=
+  ⟨11, 521, by decide, by decide, by decide⟩
+theorem goldbach_decomp_534 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 534 :=
+  ⟨11, 523, by decide, by decide, by decide⟩
+theorem goldbach_decomp_536 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 536 :=
+  ⟨13, 523, by decide, by decide, by decide⟩
+theorem goldbach_decomp_538 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 538 :=
+  ⟨17, 521, by decide, by decide, by decide⟩
+theorem goldbach_decomp_540 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 540 :=
+  ⟨17, 523, by decide, by decide, by decide⟩
+theorem goldbach_decomp_542 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 542 :=
+  ⟨19, 523, by decide, by decide, by decide⟩
+theorem goldbach_decomp_544 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 544 :=
+  ⟨3, 541, by decide, by decide, by decide⟩
+theorem goldbach_decomp_546 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 546 :=
+  ⟨5, 541, by decide, by decide, by decide⟩
+theorem goldbach_decomp_548 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 548 :=
+  ⟨7, 541, by decide, by decide, by decide⟩
+theorem goldbach_decomp_550 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 550 :=
+  ⟨47, 503, by decide, by decide, by decide⟩
+theorem goldbach_decomp_552 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 552 :=
+  ⟨11, 541, by decide, by decide, by decide⟩
+theorem goldbach_decomp_554 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 554 :=
+  ⟨13, 541, by decide, by decide, by decide⟩
+theorem goldbach_decomp_556 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 556 :=
+  ⟨53, 503, by decide, by decide, by decide⟩
+theorem goldbach_decomp_558 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 558 :=
+  ⟨17, 541, by decide, by decide, by decide⟩
+theorem goldbach_decomp_560 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 560 :=
+  ⟨3, 557, by decide, by decide, by decide⟩
+theorem goldbach_decomp_562 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 562 :=
+  ⟨5, 557, by decide, by decide, by decide⟩
+theorem goldbach_decomp_564 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 564 :=
+  ⟨7, 557, by decide, by decide, by decide⟩
+theorem goldbach_decomp_566 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 566 :=
+  ⟨3, 563, by decide, by decide, by decide⟩
+theorem goldbach_decomp_568 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 568 :=
+  ⟨5, 563, by decide, by decide, by decide⟩
+theorem goldbach_decomp_570 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 570 :=
+  ⟨7, 563, by decide, by decide, by decide⟩
+theorem goldbach_decomp_572 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 572 :=
+  ⟨31, 541, by decide, by decide, by decide⟩
+theorem goldbach_decomp_574 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 574 :=
+  ⟨11, 563, by decide, by decide, by decide⟩
+theorem goldbach_decomp_576 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 576 :=
+  ⟨13, 563, by decide, by decide, by decide⟩
+theorem goldbach_decomp_578 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 578 :=
+  ⟨7, 571, by decide, by decide, by decide⟩
+theorem goldbach_decomp_580 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 580 :=
+  ⟨11, 569, by decide, by decide, by decide⟩
+theorem goldbach_decomp_582 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 582 :=
+  ⟨13, 569, by decide, by decide, by decide⟩
+theorem goldbach_decomp_584 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 584 :=
+  ⟨13, 571, by decide, by decide, by decide⟩
+theorem goldbach_decomp_586 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 586 :=
+  ⟨23, 563, by decide, by decide, by decide⟩
+theorem goldbach_decomp_588 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 588 :=
+  ⟨11, 577, by decide, by decide, by decide⟩
+theorem goldbach_decomp_590 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 590 :=
+  ⟨13, 577, by decide, by decide, by decide⟩
+theorem goldbach_decomp_592 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 592 :=
+  ⟨23, 569, by decide, by decide, by decide⟩
+theorem goldbach_decomp_594 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 594 :=
+  ⟨7, 587, by decide, by decide, by decide⟩
+theorem goldbach_decomp_596 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 596 :=
+  ⟨3, 593, by decide, by decide, by decide⟩
+theorem goldbach_decomp_598 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 598 :=
+  ⟨5, 593, by decide, by decide, by decide⟩
+theorem goldbach_decomp_600 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 600 :=
+  ⟨7, 593, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BD · 三素分解 (503..643 奇) ============ -/
+
+theorem weak_decomp_503 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 503 :=
+  ⟨23, 37, 443, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_505 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 505 :=
+  ⟨7, 11, 487, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_507 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 507 :=
+  ⟨3, 5, 499, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_509 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 509 :=
+  ⟨3, 7, 499, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_511 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 511 :=
+  ⟨5, 7, 499, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_513 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 513 :=
+  ⟨3, 7, 503, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_515 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 515 :=
+  ⟨5, 7, 503, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_517 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 517 :=
+  ⟨3, 11, 503, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_519 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 519 :=
+  ⟨5, 11, 503, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_521 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 521 :=
+  ⟨7, 11, 503, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_523 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 523 :=
+  ⟨3, 11, 509, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_525 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 525 :=
+  ⟨5, 11, 509, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_527 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 527 :=
+  ⟨11, 13, 503, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_529 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 529 :=
+  ⟨3, 5, 521, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_531 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 531 :=
+  ⟨3, 5, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_533 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 533 :=
+  ⟨3, 7, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_535 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 535 :=
+  ⟨5, 7, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_537 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 537 :=
+  ⟨3, 11, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_539 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 539 :=
+  ⟨3, 13, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_541 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 541 :=
+  ⟨3, 17, 521, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_543 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 543 :=
+  ⟨3, 17, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_545 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 545 :=
+  ⟨3, 19, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_547 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 547 :=
+  ⟨3, 3, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_549 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 549 :=
+  ⟨3, 5, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_551 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 551 :=
+  ⟨3, 7, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_553 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 553 :=
+  ⟨5, 7, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_555 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 555 :=
+  ⟨3, 11, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_557 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 557 :=
+  ⟨3, 13, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_559 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 559 :=
+  ⟨5, 13, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_561 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 561 :=
+  ⟨7, 13, 541, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_563 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 563 :=
+  ⟨3, 13, 547, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_565 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 565 :=
+  ⟨5, 13, 547, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_567 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 567 :=
+  ⟨7, 13, 547, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_569 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 569 :=
+  ⟨3, 3, 563, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_571 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 571 :=
+  ⟨3, 5, 563, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_573 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 573 :=
+  ⟨3, 7, 563, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_575 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 575 :=
+  ⟨5, 7, 563, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_577 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 577 :=
+  ⟨3, 11, 563, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_579 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 579 :=
+  ⟨5, 11, 563, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_581 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 581 :=
+  ⟨7, 11, 563, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_583 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 583 :=
+  ⟨13, 47, 523, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_585 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 585 :=
+  ⟨5, 11, 569, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_587 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 587 :=
+  ⟨7, 11, 569, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_589 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 589 :=
+  ⟨19, 23, 547, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_591 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 591 :=
+  ⟨3, 17, 571, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_593 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 593 :=
+  ⟨5, 17, 571, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_595 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 595 :=
+  ⟨5, 13, 577, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_597 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 597 :=
+  ⟨3, 17, 577, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_599 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 599 :=
+  ⟨5, 17, 577, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_601 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 601 :=
+  ⟨11, 13, 577, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_603 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 603 :=
+  ⟨5, 11, 587, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_605 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 605 :=
+  ⟨5, 13, 587, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_607 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 607 :=
+  ⟨3, 11, 593, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_609 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 609 :=
+  ⟨5, 11, 593, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_611 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 611 :=
+  ⟨7, 11, 593, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_613 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 613 :=
+  ⟨3, 23, 587, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_615 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 615 :=
+  ⟨3, 13, 599, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_617 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 617 :=
+  ⟨5, 13, 599, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_619 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 619 :=
+  ⟨7, 13, 599, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_621 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 621 :=
+  ⟨3, 17, 601, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_623 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 623 :=
+  ⟨3, 19, 601, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_625 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 625 :=
+  ⟨11, 13, 601, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_627 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 627 :=
+  ⟨3, 17, 607, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_629 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 629 :=
+  ⟨5, 17, 607, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_631 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 631 :=
+  ⟨7, 17, 607, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_633 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 633 :=
+  ⟨3, 17, 613, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_635 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 635 :=
+  ⟨5, 17, 613, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_637 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 637 :=
+  ⟨7, 17, 613, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_639 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 639 :=
+  ⟨11, 11, 617, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_641 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 641 :=
+  ⟨13, 11, 617, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_643 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 643 :=
+  ⟨13, 13, 617, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BE · 三素分解 (645..793 奇) ============ -/
+
+theorem weak_decomp_645 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 645 :=
+  ⟨13, 13, 619, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_647 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 647 :=
+  ⟨11, 17, 619, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_649 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 649 :=
+  ⟨11, 19, 619, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_651 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 651 :=
+  ⟨13, 19, 619, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_653 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 653 :=
+  ⟨13, 23, 617, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_655 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 655 :=
+  ⟨13, 23, 619, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_657 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 657 :=
+  ⟨3, 13, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_659 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 659 :=
+  ⟨5, 13, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_661 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 661 :=
+  ⟨3, 17, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_663 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 663 :=
+  ⟨5, 17, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_665 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 665 :=
+  ⟨7, 17, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_667 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 667 :=
+  ⟨3, 23, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_669 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 669 :=
+  ⟨5, 23, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_671 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 671 :=
+  ⟨7, 23, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_673 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 673 :=
+  ⟨3, 29, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_675 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 675 :=
+  ⟨5, 29, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_677 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 677 :=
+  ⟨7, 29, 641, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_679 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 679 :=
+  ⟨5, 31, 643, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_681 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 681 :=
+  ⟨7, 31, 643, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_683 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 683 :=
+  ⟨11, 13, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_685 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 685 :=
+  ⟨3, 29, 653, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_687 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 687 :=
+  ⟨5, 29, 653, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_689 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 689 :=
+  ⟨7, 29, 653, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_691 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 691 :=
+  ⟨11, 19, 661, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_693 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 693 :=
+  ⟨3, 31, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_695 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 695 :=
+  ⟨5, 31, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_697 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 697 :=
+  ⟨7, 31, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_699 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 699 :=
+  ⟨3, 37, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_701 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 701 :=
+  ⟨5, 37, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_703 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 703 :=
+  ⟨7, 37, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_705 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 705 :=
+  ⟨3, 41, 661, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_707 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 707 :=
+  ⟨5, 41, 661, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_709 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 709 :=
+  ⟨7, 41, 661, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_711 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 711 :=
+  ⟨11, 41, 659, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_713 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 713 :=
+  ⟨3, 37, 673, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_715 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 715 :=
+  ⟨5, 37, 673, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_717 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 717 :=
+  ⟨7, 37, 673, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_719 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 719 :=
+  ⟨11, 31, 677, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_721 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 721 :=
+  ⟨13, 31, 677, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_723 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 723 :=
+  ⟨3, 37, 683, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_725 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 725 :=
+  ⟨5, 37, 683, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_727 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 727 :=
+  ⟨7, 37, 683, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_729 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 729 :=
+  ⟨19, 37, 673, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_731 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 731 :=
+  ⟨3, 37, 691, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_733 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 733 :=
+  ⟨5, 37, 691, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_735 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 735 :=
+  ⟨7, 37, 691, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_737 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 737 :=
+  ⟨17, 37, 683, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_739 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 739 :=
+  ⟨19, 37, 683, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_741 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 741 :=
+  ⟨3, 37, 701, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_743 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 743 :=
+  ⟨5, 37, 701, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_745 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 745 :=
+  ⟨7, 37, 701, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_747 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 747 :=
+  ⟨7, 31, 709, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_749 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 749 :=
+  ⟨3, 37, 709, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_751 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 751 :=
+  ⟨5, 37, 709, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_753 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 753 :=
+  ⟨7, 37, 709, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_755 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 755 :=
+  ⟨5, 41, 709, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_757 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 757 :=
+  ⟨11, 37, 709, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_759 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 759 :=
+  ⟨3, 37, 719, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_761 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 761 :=
+  ⟨5, 37, 719, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_763 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 763 :=
+  ⟨7, 37, 719, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_765 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 765 :=
+  ⟨23, 41, 701, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_767 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 767 :=
+  ⟨3, 37, 727, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_769 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 769 :=
+  ⟨5, 37, 727, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_771 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 771 :=
+  ⟨7, 37, 727, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_773 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 773 :=
+  ⟨13, 41, 719, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_775 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 775 :=
+  ⟨5, 37, 733, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_777 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 777 :=
+  ⟨11, 47, 719, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_779 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 779 :=
+  ⟨3, 37, 739, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_781 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 781 :=
+  ⟨5, 37, 739, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_783 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 783 :=
+  ⟨3, 37, 743, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_785 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 785 :=
+  ⟨5, 37, 743, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_787 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 787 :=
+  ⟨7, 37, 743, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_789 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 789 :=
+  ⟨13, 37, 739, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_791 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 791 :=
+  ⟨3, 37, 751, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_793 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 793 :=
+  ⟨13, 37, 743, by decide, by decide, by decide, by decide⟩
 
 end Goldbach
