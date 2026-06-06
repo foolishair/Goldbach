@@ -4592,4 +4592,514 @@ theorem goldbach_decomp_1498 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 14
 theorem goldbach_decomp_1500 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1500 :=
   ⟨7, 1493, by native_decide, by native_decide, by native_decide⟩
 
+
+/-! ## ============ Batch BQ · 奇数 995..1193 (Vinogradov 3-素分解) ============ -/
+
+theorem weak_decomp_995 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 995 :=
+  ⟨3, 73, 919, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_997 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 997 :=
+  ⟨3, 3, 991, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_999 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 999 :=
+  ⟨3, 5, 991, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1001 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1001 :=
+  ⟨3, 7, 991, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1003 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1003 :=
+  ⟨3, 3, 997, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1005 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1005 :=
+  ⟨3, 5, 997, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1007 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1007 :=
+  ⟨3, 7, 997, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1009 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1009 :=
+  ⟨3, 23, 983, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1011 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1011 :=
+  ⟨3, 11, 997, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1013 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1013 :=
+  ⟨3, 13, 997, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1015 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1015 :=
+  ⟨3, 3, 1009, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1017 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1017 :=
+  ⟨3, 5, 1009, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1019 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1019 :=
+  ⟨3, 3, 1013, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1021 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1021 :=
+  ⟨3, 5, 1013, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1023 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1023 :=
+  ⟨3, 7, 1013, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1025 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1025 :=
+  ⟨3, 3, 1019, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1027 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1027 :=
+  ⟨3, 3, 1021, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1029 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1029 :=
+  ⟨3, 5, 1021, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1031 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1031 :=
+  ⟨3, 7, 1021, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1033 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1033 :=
+  ⟨3, 11, 1019, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1035 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1035 :=
+  ⟨3, 11, 1021, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1037 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1037 :=
+  ⟨3, 3, 1031, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1039 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1039 :=
+  ⟨3, 3, 1033, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1041 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1041 :=
+  ⟨3, 5, 1033, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1043 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1043 :=
+  ⟨3, 7, 1033, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1045 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1045 :=
+  ⟨3, 3, 1039, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1047 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1047 :=
+  ⟨3, 5, 1039, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1049 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1049 :=
+  ⟨3, 7, 1039, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1051 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1051 :=
+  ⟨3, 17, 1031, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1053 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1053 :=
+  ⟨3, 11, 1039, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1055 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1055 :=
+  ⟨3, 3, 1049, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1057 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1057 :=
+  ⟨3, 3, 1051, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1059 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1059 :=
+  ⟨3, 5, 1051, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1061 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1061 :=
+  ⟨3, 7, 1051, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1063 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1063 :=
+  ⟨3, 11, 1049, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1065 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1065 :=
+  ⟨3, 11, 1051, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1067 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1067 :=
+  ⟨3, 3, 1061, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1069 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1069 :=
+  ⟨3, 3, 1063, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1071 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1071 :=
+  ⟨3, 5, 1063, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1073 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1073 :=
+  ⟨3, 7, 1063, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1075 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1075 :=
+  ⟨3, 3, 1069, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1077 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1077 :=
+  ⟨3, 5, 1069, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1079 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1079 :=
+  ⟨3, 7, 1069, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1081 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1081 :=
+  ⟨3, 17, 1061, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1083 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1083 :=
+  ⟨3, 11, 1069, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1085 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1085 :=
+  ⟨3, 13, 1069, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1087 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1087 :=
+  ⟨3, 23, 1061, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1089 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1089 :=
+  ⟨3, 17, 1069, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1091 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1091 :=
+  ⟨3, 19, 1069, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1093 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1093 :=
+  ⟨3, 3, 1087, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1095 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1095 :=
+  ⟨3, 5, 1087, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1097 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1097 :=
+  ⟨3, 3, 1091, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1099 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1099 :=
+  ⟨3, 3, 1093, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1101 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1101 :=
+  ⟨3, 5, 1093, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1103 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1103 :=
+  ⟨3, 3, 1097, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1105 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1105 :=
+  ⟨3, 5, 1097, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1107 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1107 :=
+  ⟨3, 7, 1097, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1109 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1109 :=
+  ⟨3, 3, 1103, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1111 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1111 :=
+  ⟨3, 5, 1103, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1113 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1113 :=
+  ⟨3, 7, 1103, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1115 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1115 :=
+  ⟨3, 3, 1109, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1117 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1117 :=
+  ⟨3, 5, 1109, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1119 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1119 :=
+  ⟨3, 7, 1109, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1121 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1121 :=
+  ⟨3, 31, 1087, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1123 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1123 :=
+  ⟨3, 3, 1117, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1125 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1125 :=
+  ⟨3, 5, 1117, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1127 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1127 :=
+  ⟨3, 7, 1117, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1129 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1129 :=
+  ⟨3, 3, 1123, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1131 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1131 :=
+  ⟨3, 5, 1123, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1133 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1133 :=
+  ⟨3, 7, 1123, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1135 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1135 :=
+  ⟨3, 3, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1137 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1137 :=
+  ⟨3, 5, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1139 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1139 :=
+  ⟨3, 7, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1141 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1141 :=
+  ⟨3, 29, 1109, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1143 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1143 :=
+  ⟨3, 11, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1145 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1145 :=
+  ⟨3, 13, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1147 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1147 :=
+  ⟨3, 41, 1103, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1149 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1149 :=
+  ⟨3, 17, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1151 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1151 :=
+  ⟨3, 19, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1153 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1153 :=
+  ⟨3, 41, 1109, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1155 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1155 :=
+  ⟨3, 23, 1129, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1157 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1157 :=
+  ⟨3, 3, 1151, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1159 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1159 :=
+  ⟨3, 3, 1153, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1161 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1161 :=
+  ⟨3, 5, 1153, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1163 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1163 :=
+  ⟨3, 7, 1153, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1165 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1165 :=
+  ⟨3, 11, 1151, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1167 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1167 :=
+  ⟨3, 11, 1153, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1169 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1169 :=
+  ⟨3, 3, 1163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1171 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1171 :=
+  ⟨3, 5, 1163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1173 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1173 :=
+  ⟨3, 7, 1163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1175 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1175 :=
+  ⟨3, 19, 1153, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1177 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1177 :=
+  ⟨3, 3, 1171, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1179 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1179 :=
+  ⟨3, 5, 1171, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1181 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1181 :=
+  ⟨3, 7, 1171, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1183 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1183 :=
+  ⟨3, 17, 1163, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1185 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1185 :=
+  ⟨3, 11, 1171, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1187 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1187 :=
+  ⟨3, 3, 1181, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1189 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1189 :=
+  ⟨3, 5, 1181, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1191 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1191 :=
+  ⟨3, 7, 1181, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_1193 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1193 :=
+  ⟨3, 3, 1187, by decide, by decide, by decide, by decide⟩
+
+
+/-! ## ============ Batch BR · 奇数 1195..1495 (Vinogradov 3-素分解, native) ============ -/
+
+theorem weak_decomp_1195 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1195 :=
+  ⟨3, 5, 1187, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1197 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1197 :=
+  ⟨3, 7, 1187, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1199 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1199 :=
+  ⟨3, 3, 1193, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1201 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1201 :=
+  ⟨3, 5, 1193, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1203 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1203 :=
+  ⟨3, 7, 1193, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1205 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1205 :=
+  ⟨3, 31, 1171, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1207 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1207 :=
+  ⟨3, 3, 1201, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1209 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1209 :=
+  ⟨3, 5, 1201, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1211 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1211 :=
+  ⟨3, 7, 1201, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1213 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1213 :=
+  ⟨3, 17, 1193, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1215 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1215 :=
+  ⟨3, 11, 1201, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1217 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1217 :=
+  ⟨3, 13, 1201, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1219 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1219 :=
+  ⟨3, 3, 1213, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1221 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1221 :=
+  ⟨3, 5, 1213, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1223 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1223 :=
+  ⟨3, 3, 1217, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1225 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1225 :=
+  ⟨3, 5, 1217, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1227 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1227 :=
+  ⟨3, 7, 1217, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1229 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1229 :=
+  ⟨3, 3, 1223, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1231 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1231 :=
+  ⟨3, 5, 1223, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1233 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1233 :=
+  ⟨3, 7, 1223, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1235 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1235 :=
+  ⟨3, 3, 1229, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1237 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1237 :=
+  ⟨3, 3, 1231, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1239 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1239 :=
+  ⟨3, 5, 1231, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1241 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1241 :=
+  ⟨3, 7, 1231, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1243 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1243 :=
+  ⟨3, 3, 1237, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1245 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1245 :=
+  ⟨3, 5, 1237, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1247 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1247 :=
+  ⟨3, 7, 1237, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1249 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1249 :=
+  ⟨3, 17, 1229, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1251 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1251 :=
+  ⟨3, 11, 1237, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1253 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1253 :=
+  ⟨3, 13, 1237, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1255 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1255 :=
+  ⟨3, 3, 1249, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1257 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1257 :=
+  ⟨3, 5, 1249, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1259 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1259 :=
+  ⟨3, 7, 1249, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1261 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1261 :=
+  ⟨3, 29, 1229, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1263 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1263 :=
+  ⟨3, 11, 1249, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1265 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1265 :=
+  ⟨3, 3, 1259, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1267 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1267 :=
+  ⟨3, 5, 1259, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1269 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1269 :=
+  ⟨3, 7, 1259, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1271 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1271 :=
+  ⟨3, 19, 1249, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1273 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1273 :=
+  ⟨3, 11, 1259, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1275 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1275 :=
+  ⟨3, 13, 1259, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1277 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1277 :=
+  ⟨3, 37, 1237, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1279 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1279 :=
+  ⟨3, 17, 1259, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1281 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1281 :=
+  ⟨3, 19, 1259, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1283 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1283 :=
+  ⟨3, 3, 1277, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1285 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1285 :=
+  ⟨3, 3, 1279, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1287 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1287 :=
+  ⟨3, 5, 1279, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1289 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1289 :=
+  ⟨3, 3, 1283, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1291 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1291 :=
+  ⟨3, 5, 1283, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1293 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1293 :=
+  ⟨3, 7, 1283, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1295 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1295 :=
+  ⟨3, 3, 1289, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1297 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1297 :=
+  ⟨3, 3, 1291, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1299 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1299 :=
+  ⟨3, 5, 1291, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1301 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1301 :=
+  ⟨3, 7, 1291, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1303 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1303 :=
+  ⟨3, 3, 1297, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1305 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1305 :=
+  ⟨3, 5, 1297, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1307 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1307 :=
+  ⟨3, 3, 1301, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1309 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1309 :=
+  ⟨3, 3, 1303, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1311 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1311 :=
+  ⟨3, 5, 1303, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1313 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1313 :=
+  ⟨3, 3, 1307, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1315 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1315 :=
+  ⟨3, 5, 1307, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1317 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1317 :=
+  ⟨3, 7, 1307, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1319 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1319 :=
+  ⟨3, 13, 1303, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1321 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1321 :=
+  ⟨3, 11, 1307, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1323 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1323 :=
+  ⟨3, 13, 1307, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1325 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1325 :=
+  ⟨3, 3, 1319, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1327 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1327 :=
+  ⟨3, 3, 1321, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1329 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1329 :=
+  ⟨3, 5, 1321, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1331 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1331 :=
+  ⟨3, 7, 1321, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1333 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1333 :=
+  ⟨3, 3, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1335 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1335 :=
+  ⟨3, 5, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1337 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1337 :=
+  ⟨3, 7, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1339 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1339 :=
+  ⟨3, 17, 1319, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1341 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1341 :=
+  ⟨3, 11, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1343 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1343 :=
+  ⟨3, 13, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1345 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1345 :=
+  ⟨3, 23, 1319, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1347 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1347 :=
+  ⟨3, 17, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1349 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1349 :=
+  ⟨3, 19, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1351 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1351 :=
+  ⟨3, 29, 1319, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1353 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1353 :=
+  ⟨3, 23, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1355 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1355 :=
+  ⟨3, 31, 1321, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1357 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1357 :=
+  ⟨3, 47, 1307, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1359 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1359 :=
+  ⟨3, 29, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1361 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1361 :=
+  ⟨3, 31, 1327, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1363 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1363 :=
+  ⟨3, 41, 1319, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1365 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1365 :=
+  ⟨3, 41, 1321, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1367 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1367 :=
+  ⟨3, 3, 1361, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1369 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1369 :=
+  ⟨3, 5, 1361, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1371 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1371 :=
+  ⟨3, 7, 1361, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1373 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1373 :=
+  ⟨3, 3, 1367, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1375 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1375 :=
+  ⟨3, 5, 1367, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1377 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1377 :=
+  ⟨3, 7, 1367, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1379 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1379 :=
+  ⟨3, 3, 1373, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1381 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1381 :=
+  ⟨3, 5, 1373, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1383 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1383 :=
+  ⟨3, 7, 1373, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1385 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1385 :=
+  ⟨3, 61, 1321, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1387 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1387 :=
+  ⟨3, 3, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1389 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1389 :=
+  ⟨3, 5, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1391 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1391 :=
+  ⟨3, 7, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1393 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1393 :=
+  ⟨3, 17, 1373, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1395 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1395 :=
+  ⟨3, 11, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1397 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1397 :=
+  ⟨3, 13, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1399 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1399 :=
+  ⟨3, 23, 1373, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1401 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1401 :=
+  ⟨3, 17, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1403 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1403 :=
+  ⟨3, 19, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1405 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1405 :=
+  ⟨3, 3, 1399, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1407 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1407 :=
+  ⟨3, 5, 1399, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1409 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1409 :=
+  ⟨3, 7, 1399, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1411 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1411 :=
+  ⟨3, 41, 1367, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1413 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1413 :=
+  ⟨3, 11, 1399, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1415 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1415 :=
+  ⟨3, 3, 1409, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1417 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1417 :=
+  ⟨3, 5, 1409, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1419 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1419 :=
+  ⟨3, 7, 1409, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1421 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1421 :=
+  ⟨3, 19, 1399, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1423 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1423 :=
+  ⟨3, 11, 1409, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1425 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1425 :=
+  ⟨3, 13, 1409, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1427 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1427 :=
+  ⟨3, 43, 1381, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1429 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1429 :=
+  ⟨3, 3, 1423, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1431 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1431 :=
+  ⟨3, 5, 1423, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1433 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1433 :=
+  ⟨3, 3, 1427, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1435 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1435 :=
+  ⟨3, 3, 1429, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1437 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1437 :=
+  ⟨3, 5, 1429, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1439 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1439 :=
+  ⟨3, 3, 1433, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1441 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1441 :=
+  ⟨3, 5, 1433, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1443 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1443 :=
+  ⟨3, 7, 1433, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1445 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1445 :=
+  ⟨3, 3, 1439, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1447 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1447 :=
+  ⟨3, 5, 1439, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1449 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1449 :=
+  ⟨3, 7, 1439, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1451 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1451 :=
+  ⟨3, 19, 1429, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1453 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1453 :=
+  ⟨3, 3, 1447, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1455 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1455 :=
+  ⟨3, 5, 1447, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1457 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1457 :=
+  ⟨3, 3, 1451, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1459 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1459 :=
+  ⟨3, 3, 1453, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1461 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1461 :=
+  ⟨3, 5, 1453, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1463 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1463 :=
+  ⟨3, 7, 1453, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1465 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1465 :=
+  ⟨3, 3, 1459, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1467 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1467 :=
+  ⟨3, 5, 1459, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1469 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1469 :=
+  ⟨3, 7, 1459, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1471 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1471 :=
+  ⟨3, 17, 1451, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1473 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1473 :=
+  ⟨3, 11, 1459, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1475 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1475 :=
+  ⟨3, 13, 1459, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1477 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1477 :=
+  ⟨3, 3, 1471, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1479 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1479 :=
+  ⟨3, 5, 1471, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1481 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1481 :=
+  ⟨3, 7, 1471, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1483 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1483 :=
+  ⟨3, 29, 1451, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1485 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1485 :=
+  ⟨3, 11, 1471, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1487 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1487 :=
+  ⟨3, 3, 1481, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1489 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1489 :=
+  ⟨3, 3, 1483, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1491 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1491 :=
+  ⟨3, 5, 1483, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1493 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1493 :=
+  ⟨3, 3, 1487, by native_decide, by native_decide, by native_decide, by native_decide⟩
+theorem weak_decomp_1495 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 1495 :=
+  ⟨3, 3, 1489, by native_decide, by native_decide, by native_decide, by native_decide⟩
+
 end Goldbach
