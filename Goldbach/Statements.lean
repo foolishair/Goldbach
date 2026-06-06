@@ -3454,4 +3454,1142 @@ theorem weak_decomp_791 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p
 theorem weak_decomp_793 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 793 :=
   ⟨13, 37, 743, by decide, by decide, by decide, by decide⟩
 
+/-! ## ============ Batch BF · 偶数 602..700 显式分解 ============ -/
+
+theorem goldbach_decomp_602 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 602 :=
+  ⟨3, 599, by decide, by decide, by decide⟩
+theorem goldbach_decomp_604 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 604 :=
+  ⟨5, 599, by decide, by decide, by decide⟩
+theorem goldbach_decomp_606 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 606 :=
+  ⟨7, 599, by decide, by decide, by decide⟩
+theorem goldbach_decomp_608 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 608 :=
+  ⟨7, 601, by decide, by decide, by decide⟩
+theorem goldbach_decomp_610 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 610 :=
+  ⟨3, 607, by decide, by decide, by decide⟩
+theorem goldbach_decomp_612 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 612 :=
+  ⟨5, 607, by decide, by decide, by decide⟩
+theorem goldbach_decomp_614 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 614 :=
+  ⟨7, 607, by decide, by decide, by decide⟩
+theorem goldbach_decomp_616 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 616 :=
+  ⟨3, 613, by decide, by decide, by decide⟩
+theorem goldbach_decomp_618 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 618 :=
+  ⟨5, 613, by decide, by decide, by decide⟩
+theorem goldbach_decomp_620 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 620 :=
+  ⟨7, 613, by decide, by decide, by decide⟩
+theorem goldbach_decomp_622 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 622 :=
+  ⟨3, 619, by decide, by decide, by decide⟩
+theorem goldbach_decomp_624 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 624 :=
+  ⟨5, 619, by decide, by decide, by decide⟩
+theorem goldbach_decomp_626 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 626 :=
+  ⟨7, 619, by decide, by decide, by decide⟩
+theorem goldbach_decomp_628 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 628 :=
+  ⟨11, 617, by decide, by decide, by decide⟩
+theorem goldbach_decomp_630 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 630 :=
+  ⟨11, 619, by decide, by decide, by decide⟩
+theorem goldbach_decomp_632 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 632 :=
+  ⟨13, 619, by decide, by decide, by decide⟩
+theorem goldbach_decomp_634 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 634 :=
+  ⟨3, 631, by decide, by decide, by decide⟩
+theorem goldbach_decomp_636 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 636 :=
+  ⟨5, 631, by decide, by decide, by decide⟩
+theorem goldbach_decomp_638 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 638 :=
+  ⟨7, 631, by decide, by decide, by decide⟩
+theorem goldbach_decomp_640 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 640 :=
+  ⟨41, 599, by decide, by decide, by decide⟩
+theorem goldbach_decomp_642 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 642 :=
+  ⟨11, 631, by decide, by decide, by decide⟩
+theorem goldbach_decomp_644 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 644 :=
+  ⟨13, 631, by decide, by decide, by decide⟩
+theorem goldbach_decomp_646 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 646 :=
+  ⟨5, 641, by decide, by decide, by decide⟩
+theorem goldbach_decomp_648 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 648 :=
+  ⟨7, 641, by decide, by decide, by decide⟩
+theorem goldbach_decomp_650 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 650 :=
+  ⟨7, 643, by decide, by decide, by decide⟩
+theorem goldbach_decomp_652 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 652 :=
+  ⟨11, 641, by decide, by decide, by decide⟩
+theorem goldbach_decomp_654 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 654 :=
+  ⟨11, 643, by decide, by decide, by decide⟩
+theorem goldbach_decomp_656 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 656 :=
+  ⟨13, 643, by decide, by decide, by decide⟩
+theorem goldbach_decomp_658 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 658 :=
+  ⟨11, 647, by decide, by decide, by decide⟩
+theorem goldbach_decomp_660 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 660 :=
+  ⟨13, 647, by decide, by decide, by decide⟩
+theorem goldbach_decomp_662 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 662 :=
+  ⟨3, 659, by decide, by decide, by decide⟩
+theorem goldbach_decomp_664 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 664 :=
+  ⟨3, 661, by decide, by decide, by decide⟩
+theorem goldbach_decomp_666 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 666 :=
+  ⟨5, 661, by decide, by decide, by decide⟩
+theorem goldbach_decomp_668 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 668 :=
+  ⟨7, 661, by decide, by decide, by decide⟩
+theorem goldbach_decomp_670 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 670 :=
+  ⟨11, 659, by decide, by decide, by decide⟩
+theorem goldbach_decomp_672 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 672 :=
+  ⟨11, 661, by decide, by decide, by decide⟩
+theorem goldbach_decomp_674 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 674 :=
+  ⟨13, 661, by decide, by decide, by decide⟩
+theorem goldbach_decomp_676 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 676 :=
+  ⟨3, 673, by decide, by decide, by decide⟩
+theorem goldbach_decomp_678 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 678 :=
+  ⟨5, 673, by decide, by decide, by decide⟩
+theorem goldbach_decomp_680 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 680 :=
+  ⟨7, 673, by decide, by decide, by decide⟩
+theorem goldbach_decomp_682 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 682 :=
+  ⟨23, 659, by decide, by decide, by decide⟩
+theorem goldbach_decomp_684 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 684 :=
+  ⟨11, 673, by decide, by decide, by decide⟩
+theorem goldbach_decomp_686 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 686 :=
+  ⟨13, 673, by decide, by decide, by decide⟩
+theorem goldbach_decomp_688 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 688 :=
+  ⟨11, 677, by decide, by decide, by decide⟩
+theorem goldbach_decomp_690 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 690 :=
+  ⟨13, 677, by decide, by decide, by decide⟩
+theorem goldbach_decomp_692 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 692 :=
+  ⟨19, 673, by decide, by decide, by decide⟩
+theorem goldbach_decomp_694 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 694 :=
+  ⟨11, 683, by decide, by decide, by decide⟩
+theorem goldbach_decomp_696 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 696 :=
+  ⟨13, 683, by decide, by decide, by decide⟩
+theorem goldbach_decomp_698 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 698 :=
+  ⟨7, 691, by decide, by decide, by decide⟩
+theorem goldbach_decomp_700 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 700 :=
+  ⟨17, 683, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BG · 偶数 702..800 显式分解 ============ -/
+
+theorem goldbach_decomp_702 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 702 :=
+  ⟨11, 691, by decide, by decide, by decide⟩
+theorem goldbach_decomp_704 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 704 :=
+  ⟨3, 701, by decide, by decide, by decide⟩
+theorem goldbach_decomp_706 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 706 :=
+  ⟨23, 683, by decide, by decide, by decide⟩
+theorem goldbach_decomp_708 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 708 :=
+  ⟨7, 701, by decide, by decide, by decide⟩
+theorem goldbach_decomp_710 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 710 :=
+  ⟨211, 499, by decide, by decide, by decide⟩
+theorem goldbach_decomp_712 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 712 :=
+  ⟨3, 709, by decide, by decide, by decide⟩
+theorem goldbach_decomp_714 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 714 :=
+  ⟨5, 709, by decide, by decide, by decide⟩
+theorem goldbach_decomp_716 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 716 :=
+  ⟨7, 709, by decide, by decide, by decide⟩
+theorem goldbach_decomp_718 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 718 :=
+  ⟨17, 701, by decide, by decide, by decide⟩
+theorem goldbach_decomp_720 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 720 :=
+  ⟨11, 709, by decide, by decide, by decide⟩
+theorem goldbach_decomp_722 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 722 :=
+  ⟨13, 709, by decide, by decide, by decide⟩
+theorem goldbach_decomp_724 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 724 :=
+  ⟨23, 701, by decide, by decide, by decide⟩
+theorem goldbach_decomp_726 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 726 :=
+  ⟨7, 719, by decide, by decide, by decide⟩
+theorem goldbach_decomp_728 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 728 :=
+  ⟨19, 709, by decide, by decide, by decide⟩
+theorem goldbach_decomp_730 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 730 :=
+  ⟨11, 719, by decide, by decide, by decide⟩
+theorem goldbach_decomp_732 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 732 :=
+  ⟨13, 719, by decide, by decide, by decide⟩
+theorem goldbach_decomp_734 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 734 :=
+  ⟨7, 727, by decide, by decide, by decide⟩
+theorem goldbach_decomp_736 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 736 :=
+  ⟨17, 719, by decide, by decide, by decide⟩
+theorem goldbach_decomp_738 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 738 :=
+  ⟨19, 719, by decide, by decide, by decide⟩
+theorem goldbach_decomp_740 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 740 :=
+  ⟨7, 733, by decide, by decide, by decide⟩
+theorem goldbach_decomp_742 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 742 :=
+  ⟨3, 739, by decide, by decide, by decide⟩
+theorem goldbach_decomp_744 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 744 :=
+  ⟨11, 733, by decide, by decide, by decide⟩
+theorem goldbach_decomp_746 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 746 :=
+  ⟨3, 743, by decide, by decide, by decide⟩
+theorem goldbach_decomp_748 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 748 :=
+  ⟨5, 743, by decide, by decide, by decide⟩
+theorem goldbach_decomp_750 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 750 :=
+  ⟨7, 743, by decide, by decide, by decide⟩
+theorem goldbach_decomp_752 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 752 :=
+  ⟨13, 739, by decide, by decide, by decide⟩
+theorem goldbach_decomp_754 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 754 :=
+  ⟨3, 751, by decide, by decide, by decide⟩
+theorem goldbach_decomp_756 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 756 :=
+  ⟨5, 751, by decide, by decide, by decide⟩
+theorem goldbach_decomp_758 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 758 :=
+  ⟨7, 751, by decide, by decide, by decide⟩
+theorem goldbach_decomp_760 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 760 :=
+  ⟨3, 757, by decide, by decide, by decide⟩
+theorem goldbach_decomp_762 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 762 :=
+  ⟨5, 757, by decide, by decide, by decide⟩
+theorem goldbach_decomp_764 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 764 :=
+  ⟨7, 757, by decide, by decide, by decide⟩
+theorem goldbach_decomp_766 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 766 :=
+  ⟨5, 761, by decide, by decide, by decide⟩
+theorem goldbach_decomp_768 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 768 :=
+  ⟨7, 761, by decide, by decide, by decide⟩
+theorem goldbach_decomp_770 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 770 :=
+  ⟨13, 757, by decide, by decide, by decide⟩
+theorem goldbach_decomp_772 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 772 :=
+  ⟨3, 769, by decide, by decide, by decide⟩
+theorem goldbach_decomp_774 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 774 :=
+  ⟨5, 769, by decide, by decide, by decide⟩
+theorem goldbach_decomp_776 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 776 :=
+  ⟨3, 773, by decide, by decide, by decide⟩
+theorem goldbach_decomp_778 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 778 :=
+  ⟨5, 773, by decide, by decide, by decide⟩
+theorem goldbach_decomp_780 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 780 :=
+  ⟨7, 773, by decide, by decide, by decide⟩
+theorem goldbach_decomp_782 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 782 :=
+  ⟨13, 769, by decide, by decide, by decide⟩
+theorem goldbach_decomp_784 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 784 :=
+  ⟨11, 773, by decide, by decide, by decide⟩
+theorem goldbach_decomp_786 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 786 :=
+  ⟨13, 773, by decide, by decide, by decide⟩
+theorem goldbach_decomp_788 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 788 :=
+  ⟨19, 769, by decide, by decide, by decide⟩
+theorem goldbach_decomp_790 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 790 :=
+  ⟨3, 787, by decide, by decide, by decide⟩
+theorem goldbach_decomp_792 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 792 :=
+  ⟨5, 787, by decide, by decide, by decide⟩
+theorem goldbach_decomp_794 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 794 :=
+  ⟨7, 787, by decide, by decide, by decide⟩
+theorem goldbach_decomp_796 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 796 :=
+  ⟨23, 773, by decide, by decide, by decide⟩
+theorem goldbach_decomp_798 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 798 :=
+  ⟨11, 787, by decide, by decide, by decide⟩
+theorem goldbach_decomp_800 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 800 :=
+  ⟨13, 787, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BH · 三素分解 (795..893 奇) ============ -/
+
+theorem weak_decomp_795 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 795 :=
+  ⟨3, 41, 751, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_797 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 797 :=
+  ⟨3, 43, 751, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_799 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 799 :=
+  ⟨5, 43, 751, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_801 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 801 :=
+  ⟨3, 41, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_803 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 803 :=
+  ⟨3, 43, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_805 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 805 :=
+  ⟨5, 43, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_807 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 807 :=
+  ⟨7, 43, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_809 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 809 :=
+  ⟨11, 41, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_811 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 811 :=
+  ⟨13, 41, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_813 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 813 :=
+  ⟨3, 53, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_815 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 815 :=
+  ⟨5, 53, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_817 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 817 :=
+  ⟨7, 53, 757, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_819 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 819 :=
+  ⟨3, 47, 769, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_821 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 821 :=
+  ⟨5, 47, 769, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_823 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 823 :=
+  ⟨7, 47, 769, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_825 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 825 :=
+  ⟨3, 53, 769, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_827 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 827 :=
+  ⟨5, 53, 769, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_829 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 829 :=
+  ⟨7, 53, 769, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_831 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 831 :=
+  ⟨13, 31, 787, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_833 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 833 :=
+  ⟨13, 59, 761, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_835 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 835 :=
+  ⟨5, 19, 811, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_837 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 837 :=
+  ⟨3, 47, 787, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_839 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 839 :=
+  ⟨5, 47, 787, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_841 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 841 :=
+  ⟨7, 47, 787, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_843 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 843 :=
+  ⟨3, 53, 787, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_845 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 845 :=
+  ⟨5, 53, 787, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_847 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 847 :=
+  ⟨7, 53, 787, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_849 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 849 :=
+  ⟨11, 29, 809, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_851 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 851 :=
+  ⟨17, 23, 811, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_853 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 853 :=
+  ⟨11, 13, 829, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_855 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 855 :=
+  ⟨13, 19, 823, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_857 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 857 :=
+  ⟨7, 11, 839, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_859 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 859 :=
+  ⟨3, 59, 797, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_861 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 861 :=
+  ⟨5, 59, 797, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_863 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 863 :=
+  ⟨7, 59, 797, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_865 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 865 :=
+  ⟨3, 53, 809, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_867 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 867 :=
+  ⟨5, 53, 809, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_869 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 869 :=
+  ⟨7, 53, 809, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_871 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 871 :=
+  ⟨3, 5, 863, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_873 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 873 :=
+  ⟨3, 59, 811, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_875 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 875 :=
+  ⟨5, 59, 811, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_877 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 877 :=
+  ⟨7, 59, 811, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_879 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 879 :=
+  ⟨3, 53, 823, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_881 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 881 :=
+  ⟨5, 53, 823, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_883 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 883 :=
+  ⟨7, 53, 823, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_885 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 885 :=
+  ⟨3, 53, 829, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_887 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 887 :=
+  ⟨5, 53, 829, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_889 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 889 :=
+  ⟨7, 53, 829, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_891 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 891 :=
+  ⟨3, 59, 829, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_893 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 893 :=
+  ⟨5, 59, 829, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BI · 三素分解 (895..993 奇) ============ -/
+
+theorem weak_decomp_895 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 895 :=
+  ⟨7, 59, 829, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_897 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 897 :=
+  ⟨5, 53, 839, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_899 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 899 :=
+  ⟨7, 53, 839, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_901 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 901 :=
+  ⟨3, 59, 839, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_903 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 903 :=
+  ⟨5, 59, 839, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_905 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 905 :=
+  ⟨7, 59, 839, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_907 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 907 :=
+  ⟨13, 17, 877, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_909 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 909 :=
+  ⟨3, 53, 853, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_911 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 911 :=
+  ⟨5, 53, 853, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_913 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 913 :=
+  ⟨7, 53, 853, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_915 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 915 :=
+  ⟨3, 53, 859, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_917 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 917 :=
+  ⟨5, 53, 859, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_919 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 919 :=
+  ⟨7, 53, 859, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_921 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 921 :=
+  ⟨3, 59, 859, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_923 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 923 :=
+  ⟨5, 59, 859, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_925 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 925 :=
+  ⟨7, 59, 859, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_927 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 927 :=
+  ⟨3, 13, 911, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_929 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 929 :=
+  ⟨13, 59, 857, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_931 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 931 :=
+  ⟨11, 13, 907, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_933 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 933 :=
+  ⟨3, 53, 877, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_935 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 935 :=
+  ⟨5, 53, 877, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_937 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 937 :=
+  ⟨7, 53, 877, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_939 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 939 :=
+  ⟨3, 53, 883, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_941 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 941 :=
+  ⟨5, 53, 883, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_943 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 943 :=
+  ⟨7, 53, 883, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_945 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 945 :=
+  ⟨3, 59, 883, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_947 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 947 :=
+  ⟨5, 59, 883, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_949 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 949 :=
+  ⟨7, 59, 883, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_951 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 951 :=
+  ⟨13, 19, 919, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_953 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 953 :=
+  ⟨11, 13, 929, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_955 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 955 :=
+  ⟨7, 19, 929, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_957 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 957 :=
+  ⟨3, 67, 887, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_959 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 959 :=
+  ⟨5, 67, 887, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_961 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 961 :=
+  ⟨7, 67, 887, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_963 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 963 :=
+  ⟨3, 53, 907, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_965 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 965 :=
+  ⟨5, 53, 907, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_967 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 967 :=
+  ⟨7, 53, 907, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_969 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 969 :=
+  ⟨3, 59, 907, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_971 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 971 :=
+  ⟨5, 59, 907, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_973 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 973 :=
+  ⟨7, 59, 907, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_975 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 975 :=
+  ⟨3, 61, 911, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_977 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 977 :=
+  ⟨5, 61, 911, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_979 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 979 :=
+  ⟨7, 61, 911, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_981 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 981 :=
+  ⟨3, 59, 919, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_983 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 983 :=
+  ⟨5, 59, 919, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_985 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 985 :=
+  ⟨7, 59, 919, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_987 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 987 :=
+  ⟨5, 71, 911, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_989 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 989 :=
+  ⟨3, 67, 919, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_991 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 991 :=
+  ⟨5, 67, 919, by decide, by decide, by decide, by decide⟩
+theorem weak_decomp_993 : ∃ p q r : ℕ, p.Prime ∧ q.Prime ∧ r.Prime ∧ p + q + r = 993 :=
+  ⟨7, 67, 919, by decide, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BJ · 偶数 802..900 显式分解 ============ -/
+
+theorem goldbach_decomp_802 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 802 :=
+  ⟨41, 761, by decide, by decide, by decide⟩
+theorem goldbach_decomp_804 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 804 :=
+  ⟨7, 797, by decide, by decide, by decide⟩
+theorem goldbach_decomp_806 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 806 :=
+  ⟨19, 787, by decide, by decide, by decide⟩
+theorem goldbach_decomp_808 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 808 :=
+  ⟨11, 797, by decide, by decide, by decide⟩
+theorem goldbach_decomp_810 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 810 :=
+  ⟨13, 797, by decide, by decide, by decide⟩
+theorem goldbach_decomp_812 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 812 :=
+  ⟨3, 809, by decide, by decide, by decide⟩
+theorem goldbach_decomp_814 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 814 :=
+  ⟨3, 811, by decide, by decide, by decide⟩
+theorem goldbach_decomp_816 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 816 :=
+  ⟨5, 811, by decide, by decide, by decide⟩
+theorem goldbach_decomp_818 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 818 :=
+  ⟨7, 811, by decide, by decide, by decide⟩
+theorem goldbach_decomp_820 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 820 :=
+  ⟨11, 809, by decide, by decide, by decide⟩
+theorem goldbach_decomp_822 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 822 :=
+  ⟨11, 811, by decide, by decide, by decide⟩
+theorem goldbach_decomp_824 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 824 :=
+  ⟨13, 811, by decide, by decide, by decide⟩
+theorem goldbach_decomp_826 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 826 :=
+  ⟨3, 823, by decide, by decide, by decide⟩
+theorem goldbach_decomp_828 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 828 :=
+  ⟨5, 823, by decide, by decide, by decide⟩
+theorem goldbach_decomp_830 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 830 :=
+  ⟨7, 823, by decide, by decide, by decide⟩
+theorem goldbach_decomp_832 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 832 :=
+  ⟨3, 829, by decide, by decide, by decide⟩
+theorem goldbach_decomp_834 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 834 :=
+  ⟨5, 829, by decide, by decide, by decide⟩
+theorem goldbach_decomp_836 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 836 :=
+  ⟨7, 829, by decide, by decide, by decide⟩
+theorem goldbach_decomp_838 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 838 :=
+  ⟨11, 827, by decide, by decide, by decide⟩
+theorem goldbach_decomp_840 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 840 :=
+  ⟨11, 829, by decide, by decide, by decide⟩
+theorem goldbach_decomp_842 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 842 :=
+  ⟨13, 829, by decide, by decide, by decide⟩
+theorem goldbach_decomp_844 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 844 :=
+  ⟨17, 827, by decide, by decide, by decide⟩
+theorem goldbach_decomp_846 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 846 :=
+  ⟨7, 839, by decide, by decide, by decide⟩
+theorem goldbach_decomp_848 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 848 :=
+  ⟨19, 829, by decide, by decide, by decide⟩
+theorem goldbach_decomp_850 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 850 :=
+  ⟨11, 839, by decide, by decide, by decide⟩
+theorem goldbach_decomp_852 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 852 :=
+  ⟨13, 839, by decide, by decide, by decide⟩
+theorem goldbach_decomp_854 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 854 :=
+  ⟨31, 823, by decide, by decide, by decide⟩
+theorem goldbach_decomp_856 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 856 :=
+  ⟨3, 853, by decide, by decide, by decide⟩
+theorem goldbach_decomp_858 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 858 :=
+  ⟨5, 853, by decide, by decide, by decide⟩
+theorem goldbach_decomp_860 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 860 :=
+  ⟨7, 853, by decide, by decide, by decide⟩
+theorem goldbach_decomp_862 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 862 :=
+  ⟨3, 859, by decide, by decide, by decide⟩
+theorem goldbach_decomp_864 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 864 :=
+  ⟨5, 859, by decide, by decide, by decide⟩
+theorem goldbach_decomp_866 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 866 :=
+  ⟨7, 859, by decide, by decide, by decide⟩
+theorem goldbach_decomp_868 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 868 :=
+  ⟨11, 857, by decide, by decide, by decide⟩
+theorem goldbach_decomp_870 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 870 :=
+  ⟨11, 859, by decide, by decide, by decide⟩
+theorem goldbach_decomp_872 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 872 :=
+  ⟨13, 859, by decide, by decide, by decide⟩
+theorem goldbach_decomp_874 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 874 :=
+  ⟨11, 863, by decide, by decide, by decide⟩
+theorem goldbach_decomp_876 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 876 :=
+  ⟨13, 863, by decide, by decide, by decide⟩
+theorem goldbach_decomp_878 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 878 :=
+  ⟨19, 859, by decide, by decide, by decide⟩
+theorem goldbach_decomp_880 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 880 :=
+  ⟨3, 877, by decide, by decide, by decide⟩
+theorem goldbach_decomp_882 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 882 :=
+  ⟨5, 877, by decide, by decide, by decide⟩
+theorem goldbach_decomp_884 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 884 :=
+  ⟨7, 877, by decide, by decide, by decide⟩
+theorem goldbach_decomp_886 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 886 :=
+  ⟨3, 883, by decide, by decide, by decide⟩
+theorem goldbach_decomp_888 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 888 :=
+  ⟨5, 883, by decide, by decide, by decide⟩
+theorem goldbach_decomp_890 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 890 :=
+  ⟨7, 883, by decide, by decide, by decide⟩
+theorem goldbach_decomp_892 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 892 :=
+  ⟨11, 881, by decide, by decide, by decide⟩
+theorem goldbach_decomp_894 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 894 :=
+  ⟨11, 883, by decide, by decide, by decide⟩
+theorem goldbach_decomp_896 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 896 :=
+  ⟨13, 883, by decide, by decide, by decide⟩
+theorem goldbach_decomp_898 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 898 :=
+  ⟨11, 887, by decide, by decide, by decide⟩
+theorem goldbach_decomp_900 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 900 :=
+  ⟨13, 887, by decide, by decide, by decide⟩
+
+/-! ## ============ Batch BK · 偶数 902..1000 显式分解 ============ -/
+
+theorem goldbach_decomp_902 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 902 :=
+  ⟨19, 883, by decide, by decide, by decide⟩
+theorem goldbach_decomp_904 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 904 :=
+  ⟨17, 887, by decide, by decide, by decide⟩
+theorem goldbach_decomp_906 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 906 :=
+  ⟨19, 887, by decide, by decide, by decide⟩
+theorem goldbach_decomp_908 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 908 :=
+  ⟨31, 877, by decide, by decide, by decide⟩
+theorem goldbach_decomp_910 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 910 :=
+  ⟨3, 907, by decide, by decide, by decide⟩
+theorem goldbach_decomp_912 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 912 :=
+  ⟨5, 907, by decide, by decide, by decide⟩
+theorem goldbach_decomp_914 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 914 :=
+  ⟨3, 911, by decide, by decide, by decide⟩
+theorem goldbach_decomp_916 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 916 :=
+  ⟨5, 911, by decide, by decide, by decide⟩
+theorem goldbach_decomp_918 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 918 :=
+  ⟨7, 911, by decide, by decide, by decide⟩
+theorem goldbach_decomp_920 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 920 :=
+  ⟨13, 907, by decide, by decide, by decide⟩
+theorem goldbach_decomp_922 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 922 :=
+  ⟨3, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_924 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 924 :=
+  ⟨5, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_926 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 926 :=
+  ⟨7, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_928 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 928 :=
+  ⟨17, 911, by decide, by decide, by decide⟩
+theorem goldbach_decomp_930 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 930 :=
+  ⟨11, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_932 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 932 :=
+  ⟨13, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_934 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 934 :=
+  ⟨5, 929, by decide, by decide, by decide⟩
+theorem goldbach_decomp_936 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 936 :=
+  ⟨7, 929, by decide, by decide, by decide⟩
+theorem goldbach_decomp_938 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 938 :=
+  ⟨19, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_940 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 940 :=
+  ⟨11, 929, by decide, by decide, by decide⟩
+theorem goldbach_decomp_942 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 942 :=
+  ⟨13, 929, by decide, by decide, by decide⟩
+theorem goldbach_decomp_944 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 944 :=
+  ⟨3, 941, by decide, by decide, by decide⟩
+theorem goldbach_decomp_946 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 946 :=
+  ⟨5, 941, by decide, by decide, by decide⟩
+theorem goldbach_decomp_948 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 948 :=
+  ⟨7, 941, by decide, by decide, by decide⟩
+theorem goldbach_decomp_950 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 950 :=
+  ⟨3, 947, by decide, by decide, by decide⟩
+theorem goldbach_decomp_952 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 952 :=
+  ⟨11, 941, by decide, by decide, by decide⟩
+theorem goldbach_decomp_954 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 954 :=
+  ⟨13, 941, by decide, by decide, by decide⟩
+theorem goldbach_decomp_956 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 956 :=
+  ⟨3, 953, by decide, by decide, by decide⟩
+theorem goldbach_decomp_958 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 958 :=
+  ⟨5, 953, by decide, by decide, by decide⟩
+theorem goldbach_decomp_960 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 960 :=
+  ⟨7, 953, by decide, by decide, by decide⟩
+theorem goldbach_decomp_962 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 962 :=
+  ⟨43, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_964 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 964 :=
+  ⟨11, 953, by decide, by decide, by decide⟩
+theorem goldbach_decomp_966 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 966 :=
+  ⟨13, 953, by decide, by decide, by decide⟩
+theorem goldbach_decomp_968 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 968 :=
+  ⟨31, 937, by decide, by decide, by decide⟩
+theorem goldbach_decomp_970 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 970 :=
+  ⟨3, 967, by decide, by decide, by decide⟩
+theorem goldbach_decomp_972 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 972 :=
+  ⟨5, 967, by decide, by decide, by decide⟩
+theorem goldbach_decomp_974 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 974 :=
+  ⟨3, 971, by decide, by decide, by decide⟩
+theorem goldbach_decomp_976 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 976 :=
+  ⟨5, 971, by decide, by decide, by decide⟩
+theorem goldbach_decomp_978 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 978 :=
+  ⟨11, 967, by decide, by decide, by decide⟩
+theorem goldbach_decomp_980 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 980 :=
+  ⟨13, 967, by decide, by decide, by decide⟩
+theorem goldbach_decomp_982 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 982 :=
+  ⟨5, 977, by decide, by decide, by decide⟩
+theorem goldbach_decomp_984 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 984 :=
+  ⟨7, 977, by decide, by decide, by decide⟩
+theorem goldbach_decomp_986 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 986 :=
+  ⟨3, 983, by decide, by decide, by decide⟩
+theorem goldbach_decomp_988 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 988 :=
+  ⟨11, 977, by decide, by decide, by decide⟩
+theorem goldbach_decomp_990 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 990 :=
+  ⟨13, 977, by decide, by decide, by decide⟩
+theorem goldbach_decomp_992 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 992 :=
+  ⟨73, 919, by decide, by decide, by decide⟩
+theorem goldbach_decomp_994 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 994 :=
+  ⟨11, 983, by decide, by decide, by decide⟩
+theorem goldbach_decomp_996 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 996 :=
+  ⟨13, 983, by decide, by decide, by decide⟩
+theorem goldbach_decomp_998 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 998 :=
+  ⟨7, 991, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1000 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1000 :=
+  ⟨3, 997, by decide, by decide, by decide⟩
+
+
+/-! ## ============ Batch BL · 偶数 1002..1100 显式分解 ============ -/
+
+theorem goldbach_decomp_1002 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1002 :=
+  ⟨5, 997, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1004 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1004 :=
+  ⟨7, 997, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1006 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1006 :=
+  ⟨23, 983, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1008 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1008 :=
+  ⟨11, 997, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1010 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1010 :=
+  ⟨13, 997, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1012 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1012 :=
+  ⟨3, 1009, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1014 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1014 :=
+  ⟨5, 1009, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1016 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1016 :=
+  ⟨3, 1013, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1018 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1018 :=
+  ⟨5, 1013, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1020 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1020 :=
+  ⟨7, 1013, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1022 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1022 :=
+  ⟨3, 1019, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1024 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1024 :=
+  ⟨3, 1021, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1026 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1026 :=
+  ⟨5, 1021, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1028 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1028 :=
+  ⟨7, 1021, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1030 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1030 :=
+  ⟨11, 1019, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1032 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1032 :=
+  ⟨11, 1021, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1034 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1034 :=
+  ⟨3, 1031, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1036 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1036 :=
+  ⟨3, 1033, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1038 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1038 :=
+  ⟨5, 1033, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1040 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1040 :=
+  ⟨7, 1033, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1042 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1042 :=
+  ⟨3, 1039, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1044 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1044 :=
+  ⟨5, 1039, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1046 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1046 :=
+  ⟨7, 1039, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1048 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1048 :=
+  ⟨17, 1031, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1050 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1050 :=
+  ⟨11, 1039, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1052 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1052 :=
+  ⟨3, 1049, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1054 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1054 :=
+  ⟨3, 1051, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1056 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1056 :=
+  ⟨5, 1051, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1058 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1058 :=
+  ⟨7, 1051, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1060 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1060 :=
+  ⟨11, 1049, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1062 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1062 :=
+  ⟨11, 1051, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1064 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1064 :=
+  ⟨3, 1061, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1066 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1066 :=
+  ⟨3, 1063, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1068 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1068 :=
+  ⟨5, 1063, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1070 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1070 :=
+  ⟨7, 1063, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1072 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1072 :=
+  ⟨3, 1069, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1074 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1074 :=
+  ⟨5, 1069, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1076 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1076 :=
+  ⟨7, 1069, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1078 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1078 :=
+  ⟨17, 1061, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1080 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1080 :=
+  ⟨11, 1069, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1082 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1082 :=
+  ⟨13, 1069, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1084 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1084 :=
+  ⟨23, 1061, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1086 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1086 :=
+  ⟨17, 1069, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1088 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1088 :=
+  ⟨19, 1069, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1090 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1090 :=
+  ⟨3, 1087, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1092 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1092 :=
+  ⟨5, 1087, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1094 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1094 :=
+  ⟨3, 1091, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1096 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1096 :=
+  ⟨3, 1093, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1098 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1098 :=
+  ⟨5, 1093, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1100 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1100 :=
+  ⟨3, 1097, by decide, by decide, by decide⟩
+
+
+/-! ## ============ Batch BM · 偶数 1102..1200 显式分解 ============ -/
+
+theorem goldbach_decomp_1102 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1102 :=
+  ⟨5, 1097, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1104 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1104 :=
+  ⟨7, 1097, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1106 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1106 :=
+  ⟨3, 1103, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1108 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1108 :=
+  ⟨5, 1103, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1110 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1110 :=
+  ⟨7, 1103, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1112 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1112 :=
+  ⟨3, 1109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1114 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1114 :=
+  ⟨5, 1109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1116 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1116 :=
+  ⟨7, 1109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1118 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1118 :=
+  ⟨31, 1087, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1120 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1120 :=
+  ⟨3, 1117, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1122 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1122 :=
+  ⟨5, 1117, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1124 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1124 :=
+  ⟨7, 1117, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1126 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1126 :=
+  ⟨3, 1123, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1128 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1128 :=
+  ⟨5, 1123, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1130 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1130 :=
+  ⟨7, 1123, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1132 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1132 :=
+  ⟨3, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1134 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1134 :=
+  ⟨5, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1136 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1136 :=
+  ⟨7, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1138 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1138 :=
+  ⟨29, 1109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1140 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1140 :=
+  ⟨11, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1142 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1142 :=
+  ⟨13, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1144 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1144 :=
+  ⟨41, 1103, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1146 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1146 :=
+  ⟨17, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1148 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1148 :=
+  ⟨19, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1150 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1150 :=
+  ⟨41, 1109, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1152 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1152 :=
+  ⟨23, 1129, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1154 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1154 :=
+  ⟨3, 1151, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1156 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1156 :=
+  ⟨3, 1153, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1158 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1158 :=
+  ⟨5, 1153, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1160 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1160 :=
+  ⟨7, 1153, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1162 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1162 :=
+  ⟨11, 1151, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1164 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1164 :=
+  ⟨11, 1153, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1166 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1166 :=
+  ⟨3, 1163, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1168 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1168 :=
+  ⟨5, 1163, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1170 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1170 :=
+  ⟨7, 1163, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1172 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1172 :=
+  ⟨19, 1153, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1174 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1174 :=
+  ⟨3, 1171, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1176 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1176 :=
+  ⟨5, 1171, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1178 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1178 :=
+  ⟨7, 1171, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1180 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1180 :=
+  ⟨17, 1163, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1182 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1182 :=
+  ⟨11, 1171, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1184 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1184 :=
+  ⟨3, 1181, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1186 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1186 :=
+  ⟨5, 1181, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1188 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1188 :=
+  ⟨7, 1181, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1190 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1190 :=
+  ⟨3, 1187, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1192 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1192 :=
+  ⟨5, 1187, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1194 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1194 :=
+  ⟨7, 1187, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1196 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1196 :=
+  ⟨3, 1193, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1198 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1198 :=
+  ⟨5, 1193, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1200 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1200 :=
+  ⟨7, 1193, by decide, by decide, by decide⟩
+
+
+/-! ## ============ Batch BN · 偶数 1202..1300 显式分解 ============ -/
+
+theorem goldbach_decomp_1202 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1202 :=
+  ⟨31, 1171, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1204 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1204 :=
+  ⟨3, 1201, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1206 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1206 :=
+  ⟨5, 1201, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1208 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1208 :=
+  ⟨7, 1201, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1210 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1210 :=
+  ⟨17, 1193, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1212 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1212 :=
+  ⟨11, 1201, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1214 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1214 :=
+  ⟨13, 1201, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1216 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1216 :=
+  ⟨3, 1213, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1218 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1218 :=
+  ⟨5, 1213, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1220 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1220 :=
+  ⟨3, 1217, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1222 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1222 :=
+  ⟨5, 1217, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1224 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1224 :=
+  ⟨7, 1217, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1226 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1226 :=
+  ⟨3, 1223, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1228 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1228 :=
+  ⟨5, 1223, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1230 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1230 :=
+  ⟨7, 1223, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1232 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1232 :=
+  ⟨3, 1229, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1234 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1234 :=
+  ⟨3, 1231, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1236 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1236 :=
+  ⟨5, 1231, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1238 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1238 :=
+  ⟨7, 1231, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1240 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1240 :=
+  ⟨3, 1237, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1242 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1242 :=
+  ⟨5, 1237, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1244 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1244 :=
+  ⟨7, 1237, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1246 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1246 :=
+  ⟨17, 1229, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1248 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1248 :=
+  ⟨11, 1237, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1250 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1250 :=
+  ⟨13, 1237, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1252 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1252 :=
+  ⟨3, 1249, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1254 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1254 :=
+  ⟨5, 1249, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1256 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1256 :=
+  ⟨7, 1249, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1258 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1258 :=
+  ⟨29, 1229, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1260 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1260 :=
+  ⟨11, 1249, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1262 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1262 :=
+  ⟨3, 1259, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1264 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1264 :=
+  ⟨5, 1259, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1266 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1266 :=
+  ⟨7, 1259, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1268 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1268 :=
+  ⟨19, 1249, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1270 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1270 :=
+  ⟨11, 1259, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1272 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1272 :=
+  ⟨13, 1259, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1274 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1274 :=
+  ⟨37, 1237, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1276 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1276 :=
+  ⟨17, 1259, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1278 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1278 :=
+  ⟨19, 1259, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1280 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1280 :=
+  ⟨3, 1277, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1282 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1282 :=
+  ⟨3, 1279, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1284 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1284 :=
+  ⟨5, 1279, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1286 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1286 :=
+  ⟨3, 1283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1288 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1288 :=
+  ⟨5, 1283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1290 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1290 :=
+  ⟨7, 1283, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1292 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1292 :=
+  ⟨3, 1289, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1294 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1294 :=
+  ⟨3, 1291, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1296 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1296 :=
+  ⟨5, 1291, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1298 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1298 :=
+  ⟨7, 1291, by decide, by decide, by decide⟩
+theorem goldbach_decomp_1300 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1300 :=
+  ⟨3, 1297, by decide, by decide, by decide⟩
+
+
+/-! ## ============ Batch BO · 偶数 1302..1400 显式分解 ============ -/
+
+theorem goldbach_decomp_1302 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1302 :=
+  ⟨5, 1297, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1304 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1304 :=
+  ⟨3, 1301, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1306 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1306 :=
+  ⟨3, 1303, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1308 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1308 :=
+  ⟨5, 1303, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1310 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1310 :=
+  ⟨3, 1307, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1312 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1312 :=
+  ⟨5, 1307, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1314 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1314 :=
+  ⟨7, 1307, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1316 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1316 :=
+  ⟨13, 1303, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1318 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1318 :=
+  ⟨11, 1307, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1320 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1320 :=
+  ⟨13, 1307, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1322 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1322 :=
+  ⟨3, 1319, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1324 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1324 :=
+  ⟨3, 1321, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1326 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1326 :=
+  ⟨5, 1321, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1328 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1328 :=
+  ⟨7, 1321, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1330 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1330 :=
+  ⟨3, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1332 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1332 :=
+  ⟨5, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1334 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1334 :=
+  ⟨7, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1336 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1336 :=
+  ⟨17, 1319, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1338 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1338 :=
+  ⟨11, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1340 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1340 :=
+  ⟨13, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1342 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1342 :=
+  ⟨23, 1319, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1344 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1344 :=
+  ⟨17, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1346 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1346 :=
+  ⟨19, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1348 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1348 :=
+  ⟨29, 1319, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1350 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1350 :=
+  ⟨23, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1352 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1352 :=
+  ⟨31, 1321, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1354 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1354 :=
+  ⟨47, 1307, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1356 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1356 :=
+  ⟨29, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1358 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1358 :=
+  ⟨31, 1327, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1360 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1360 :=
+  ⟨41, 1319, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1362 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1362 :=
+  ⟨41, 1321, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1364 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1364 :=
+  ⟨3, 1361, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1366 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1366 :=
+  ⟨5, 1361, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1368 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1368 :=
+  ⟨7, 1361, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1370 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1370 :=
+  ⟨3, 1367, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1372 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1372 :=
+  ⟨5, 1367, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1374 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1374 :=
+  ⟨7, 1367, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1376 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1376 :=
+  ⟨3, 1373, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1378 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1378 :=
+  ⟨5, 1373, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1380 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1380 :=
+  ⟨7, 1373, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1382 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1382 :=
+  ⟨61, 1321, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1384 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1384 :=
+  ⟨3, 1381, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1386 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1386 :=
+  ⟨5, 1381, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1388 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1388 :=
+  ⟨7, 1381, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1390 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1390 :=
+  ⟨17, 1373, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1392 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1392 :=
+  ⟨11, 1381, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1394 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1394 :=
+  ⟨13, 1381, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1396 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1396 :=
+  ⟨23, 1373, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1398 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1398 :=
+  ⟨17, 1381, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1400 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1400 :=
+  ⟨19, 1381, by native_decide, by native_decide, by native_decide⟩
+
+
+/-! ## ============ Batch BP · 偶数 1402..1500 显式分解 ============ -/
+
+theorem goldbach_decomp_1402 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1402 :=
+  ⟨3, 1399, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1404 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1404 :=
+  ⟨5, 1399, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1406 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1406 :=
+  ⟨7, 1399, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1408 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1408 :=
+  ⟨41, 1367, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1410 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1410 :=
+  ⟨11, 1399, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1412 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1412 :=
+  ⟨3, 1409, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1414 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1414 :=
+  ⟨5, 1409, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1416 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1416 :=
+  ⟨7, 1409, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1418 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1418 :=
+  ⟨19, 1399, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1420 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1420 :=
+  ⟨11, 1409, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1422 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1422 :=
+  ⟨13, 1409, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1424 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1424 :=
+  ⟨43, 1381, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1426 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1426 :=
+  ⟨3, 1423, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1428 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1428 :=
+  ⟨5, 1423, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1430 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1430 :=
+  ⟨3, 1427, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1432 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1432 :=
+  ⟨3, 1429, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1434 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1434 :=
+  ⟨5, 1429, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1436 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1436 :=
+  ⟨3, 1433, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1438 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1438 :=
+  ⟨5, 1433, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1440 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1440 :=
+  ⟨7, 1433, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1442 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1442 :=
+  ⟨3, 1439, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1444 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1444 :=
+  ⟨5, 1439, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1446 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1446 :=
+  ⟨7, 1439, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1448 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1448 :=
+  ⟨19, 1429, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1450 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1450 :=
+  ⟨3, 1447, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1452 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1452 :=
+  ⟨5, 1447, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1454 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1454 :=
+  ⟨3, 1451, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1456 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1456 :=
+  ⟨3, 1453, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1458 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1458 :=
+  ⟨5, 1453, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1460 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1460 :=
+  ⟨7, 1453, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1462 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1462 :=
+  ⟨3, 1459, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1464 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1464 :=
+  ⟨5, 1459, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1466 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1466 :=
+  ⟨7, 1459, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1468 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1468 :=
+  ⟨17, 1451, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1470 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1470 :=
+  ⟨11, 1459, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1472 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1472 :=
+  ⟨13, 1459, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1474 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1474 :=
+  ⟨3, 1471, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1476 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1476 :=
+  ⟨5, 1471, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1478 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1478 :=
+  ⟨7, 1471, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1480 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1480 :=
+  ⟨29, 1451, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1482 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1482 :=
+  ⟨11, 1471, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1484 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1484 :=
+  ⟨3, 1481, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1486 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1486 :=
+  ⟨3, 1483, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1488 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1488 :=
+  ⟨5, 1483, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1490 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1490 :=
+  ⟨3, 1487, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1492 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1492 :=
+  ⟨3, 1489, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1494 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1494 :=
+  ⟨5, 1489, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1496 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1496 :=
+  ⟨3, 1493, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1498 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1498 :=
+  ⟨5, 1493, by native_decide, by native_decide, by native_decide⟩
+theorem goldbach_decomp_1500 : ∃ p q : ℕ, p.Prime ∧ q.Prime ∧ p + q = 1500 :=
+  ⟨7, 1493, by native_decide, by native_decide, by native_decide⟩
+
 end Goldbach
